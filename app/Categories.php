@@ -2,14 +2,14 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model {
+class Categories extends Model {
 
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'category';
+    protected $table = 'categories';
 
     /**
      * The attributes that are mass assignable.

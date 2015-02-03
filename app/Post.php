@@ -9,7 +9,7 @@ class Post extends Model {
      *
      * @var string
      */
-    protected $table = 'post';
+    protected $table = 'posts';
 
     /**
      * The attributes that are mass assignable.
@@ -56,7 +56,7 @@ class Post extends Model {
      */
     public function category(){
 
-        return $this->hasMany('App\Category');
+        return $this->hasMany('App\Categories');
     }
 
 }

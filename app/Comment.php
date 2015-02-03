@@ -9,7 +9,7 @@ class Comment extends Model {
      *
      * @var string
      */
-    protected $table = 'comment';
+    protected $table = 'comments';
 
     /**
      * The attributes that are mass assignable.

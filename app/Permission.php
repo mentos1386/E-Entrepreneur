@@ -9,7 +9,7 @@ class Permission extends Model {
      *
      * @var string
      */
-    protected $table = 'permission';
+    protected $table = 'permissions';
 
     /**
      * The attributes that are mass assignable.
