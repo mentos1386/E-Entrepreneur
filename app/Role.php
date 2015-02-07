@@ -16,7 +16,7 @@ class Role extends Model {
      *
      * @var array
      */
-    protected $fillable = [ 'name', 'comment' ];
+    protected $fillable = [ 'name', 'comment', 'permissions_id' ];
 
     /**
      *  One Role can be Assigned to Many Users
@@ -25,7 +25,7 @@ class Role extends Model {
      */
     public function user(){
 
-        return $this->belongsToMany('App\User');
+        return $this->hasMany('App\User');
     }
 
     /**

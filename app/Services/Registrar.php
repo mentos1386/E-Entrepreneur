@@ -1,8 +1,9 @@
 <?php namespace App\Services;
 
 use App\User;
+use Illuminate\Support\Facades\DB;
 use Validator;
-use Illuminate\Contracts\Auth\Registrar as RegistrarContract;
+use Illuminate\Contracts\Auth\Registrar as RegistrarContract;;
 
 class Registrar implements RegistrarContract {
 
@@ -29,10 +30,14 @@ class Registrar implements RegistrarContract {
 	 */
 	public function create(array $data)
 	{
+		// Find the default Role, and assign user to that role!
+		$default_role = DB::table('roles')->where('default', true)->pluck('id');
+
 		return User::create([
 			'username' => $data['username'],
 			'email' => $data['email'],
 			'password' => bcrypt($data['password']),
+			'role_id' => $default_role
 		]);
 	}
 

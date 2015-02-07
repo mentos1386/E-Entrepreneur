@@ -39,7 +39,6 @@
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="#">Action</a></li>
                         <li><a href="#">Another action</a></li>
-                        <li>{!! HTML::linkRoute('dashboard.settings.account.index', 'Account') !!}</li>
                         <li class="divider"></li>
                         <li>{!! HTML::linkRoute('logout', 'Logout') !!}</li>
                     </ul>

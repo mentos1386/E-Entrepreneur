@@ -15,12 +15,10 @@ class CreateRolesTable extends Migration {
 		Schema::create('roles', function(Blueprint $table)
 		{
 			$table->increments('id');
-			//$table->integer('permissions_id')->unsigned()->index();
 			$table->string('name');
 			$table->text('comment');
+			$table->boolean('default')->default(false);
 			$table->timestamps();
-
-			//$table->foreign('permissions_id')->reference('id')->on('permissions')->onDelete('cascade');
 		});
 	}
 

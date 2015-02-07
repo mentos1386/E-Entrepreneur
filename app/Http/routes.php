@@ -1,16 +1,5 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
-
 Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
 
 Route::controllers([ ## REMOVE IN FUTURE!
@@ -18,36 +7,48 @@ Route::controllers([ ## REMOVE IN FUTURE!
 	'password' => 'Auth\PasswordController',
 ]);
 
+/*
+ * User Login/Register and Logout
+ */
 Route::get('/login', ['as' => 'login', 'uses' => 'Auth\AuthController@getLogin']);
-
 Route::get('/register', ['as' => 'register', 'uses' => 'Auth\AuthController@getRegister']);
+Route::get('/logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@getLogout']);
 
-# LOGIN FILTER
+
+/*
+ * Restricted access
+ */
 Route::group(array('middleware' => 'auth'), function()
 {
-
 	###############################
 	# DASHBOARD
 	Route::get('/dashboard', array('as' => 'dashboard', 'uses' => 'Dashboard\DashboardController@index'));
 
 	###############################
+	# STORE
+	Route::resource('/dashboard/store', 'Dashboard\StoreController');
+
+	###############################
+	# PAGES
+	Route::resource('/dashboard/pages', 'Dashboard\PagesController');
+
+	###############################
+	# BLOG
+	Route::resource('/dashboard/blog', 'Dashboard\BlogController');
+
+	###############################
 	# USERS
-	Route::get('/dashboard/users', array('as' => 'users', 'uses' => 'Dashboard\UsersController@index'));
+	Route::resource('/dashboard/users', 'Dashboard\UsersController');
 
 	###############################
-	# Settings
-	Route::get('dashboard/settings', function(){
-		return Redirect::route('dashboard.settings.account.index');
-	});
-
-	# Account
-	Route::resource('dashboard/settings/account', 'AccountController', ['only' => ['index', 'update']]);
-
+	# APPEARANCE
+	Route::resource('/dashboard/appearance', 'Dashboard\AppearanceController');
 
 	###############################
-	# User
-	Route::get('users/delete', array('as' => 'users.delete', 'uses' => 'UsersController@delete'));
+	# SETTINGS
+	Route::resource('/dashboard/settings', 'Dashboard\SettingsController');
 
-	Route::get('/logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@getLogout']);
-
+	###############################
+	# TOOLS
+	Route::resource('/dashboard/tools', 'Dashboard\ToolsController');
 });

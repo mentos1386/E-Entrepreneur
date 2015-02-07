@@ -22,7 +22,7 @@
                 <td>{{ $user['username'] }}</td>
                 <td>{{ $user['email'] }}</td>
                 <td>{{ $user['created_at'] }}</td>
-                <td>{{ $user['role'] }}</td>
+                <td>{{ $user['role_id'] }}</td>
             </tbody>
         @endforeach
     </table>

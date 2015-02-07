@@ -129,6 +129,11 @@ body {
 .sidebar > ul > .sub-menu > li > a > .pull-right {
     margin-right: 0px;
 }
+
+.sidebar > ul > .sub-menu > li.active > a {
+    background: #dadada;
+    text-decoration: none;
+}
 /*
  * Main content
  */
