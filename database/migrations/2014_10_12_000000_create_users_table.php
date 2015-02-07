@@ -16,11 +16,13 @@ class CreateUsersTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string('username');
+			//$table->integer('roles_id')->unsigned()->index();
 			$table->string('email')->unique();
-			$table->string('role')->default('user');
 			$table->string('password', 60);
 			$table->rememberToken();
 			$table->timestamps();
+
+			//$table->foreign('roles_id')->reference('id')->on('roles')->onDelete('cascade');
 		});
 	}
 

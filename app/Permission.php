@@ -28,8 +28,9 @@ class Permission extends Model {
         'posts_create',
         /**
          * TODO: Do i need this below?
-         */
+         *
         'posts_publish',
+         */
     ];
 
     /**
