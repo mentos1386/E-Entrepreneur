@@ -54,6 +54,14 @@
 
             @include('dashboard.layouts.sidebar')
 
+            <div class="footer">
+                <p class="text-center">
+                    Created by <a href="https://twitter.com/mentos1386">Mentos1386</a>.
+                    Free for everyone! All rights reserved.
+                    <br>
+                    <a href="https://github.com/mentos1386/E-Entrepreneur/"><span class="fa fa-github"></span></a>
+                </p>
+            </div>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 

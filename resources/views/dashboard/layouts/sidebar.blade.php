@@ -8,12 +8,10 @@
         [
             '<span class="fa fa-dashboard"></span> Dashboard <span class="fa fa-chevron-right pull-right"></span>',
             '#',
-            Request::url(),
         ],
         [
             '<span class="fa fa-dashboard"></span> SSS <span class="fa fa-chevron-right pull-right"></span>',
             '#',
-            Request::url(),
         ],
     ))
 !!}
@@ -31,14 +29,12 @@
     Request::url(),
     array(
         [
-        '</span> All Pages <span class="fa fa-chevron-right pull-right"></span>',
-        route('dashboard.pages.index'),
-        Request::url(),
+            '</span> All Pages <span class="fa fa-chevron-right pull-right"></span>',
+            route('dashboard.pages.index'),
         ],
         [
-        '</span> Add New <span class="fa fa-chevron-right pull-right"></span>',
-        '#',
-        Request::url(),
+            '</span> Add New <span class="fa fa-chevron-right pull-right"></span>',
+            '#',
         ],
     ))
 !!}
@@ -61,19 +57,16 @@
     Request::url(),
     array(
         [
-        '<span class="fa fa-users"></span> Users <span class="fa fa-chevron-right pull-right"></span>',
-        route('dashboard.users.index'),
-        Request::url(),
+            '<span class="fa fa-users"></span> Users <span class="fa fa-chevron-right pull-right"></span>',
+            route('dashboard.users.index'),
         ],
         [
-        '<span class="fa fa-align-justify"></span> Ranks <span class="fa fa-chevron-right pull-right"></span>',
-        '#',
-        Request::url(),
+            '<span class="fa fa-align-justify"></span> Ranks <span class="fa fa-chevron-right pull-right"></span>',
+            '#',
         ],
         [
-        '<span class="fa fa-key"></span> Permissions <span class="fa fa-chevron-right pull-right"></span>',
-        '#',
-        Request::url(),
+            '<span class="fa fa-user"></span> My Profile <span class="fa fa-chevron-right pull-right"></span>',
+            route('dashboard.users.index').'/'.Auth::user()->username,
         ],
     ))
 !!}

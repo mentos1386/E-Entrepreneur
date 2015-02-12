@@ -134,6 +134,10 @@ body {
     background: #dadada;
     text-decoration: none;
 }
+
+.sidebar > .footer {
+    color: #bfbfbf;
+}
 /*
  * Main content
  */

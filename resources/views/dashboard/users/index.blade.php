@@ -19,7 +19,7 @@
         @foreach($users as $user)
             <tbody>
                 <td>{{ $user['id'] }}</td>
-                <td>{{ $user['username'] }}</td>
+                <td><a href="{{ route('dashboard.users.index').'/'.$user['username'] }}">{{ $user['username'] }}</a></td>
                 <td>{{ $user['email'] }}</td>
                 <td>{{ $user['created_at'] }}</td>
                 <td>{{ $user['role_id'] }}</td>

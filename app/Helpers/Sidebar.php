@@ -1,19 +1,29 @@
 <?php namespace App\Helpers;
 class Sidebar {
 
-    /**
-     * @param $text
-     * @param $link
-     * @param $currentLink
-     * @param array $submenu
-     * @return string
-     */
+
     public static function Pills ($text, $link, $currentLink, $submenu = array()){
 
         $response = '';
 
-        if($currentLink !== $link):
+        if($submenu !== null)
+        {
+            foreach ($submenu as $item)
+            {
+                if ($item[1] == $currentLink)
+                {
+                    $submenu_active = true;
+                }
+            }
+        }else{
+            dd($submenu);
+        }
+
+        if(! isset($submenu_active)){$submenu_active = "not set";}
+
+        if(($link !== $currentLink) && $submenu_active !== true):
             $response .= '<li><a href="'.$link.'">'.$text.'</a></li>';
+
             return $response;
         else:
 
@@ -24,7 +34,7 @@ class Sidebar {
                 $response .= '<div class="sub-menu">';
 
                 foreach($submenu as $item){
-                    if($item[2] !== $item[1])
+                    if($currentLink !== $item[1])
                     {
                         $response .= '<li><a href="' . $item[1] . '">' . $item[0] . '</a></li>';
 
