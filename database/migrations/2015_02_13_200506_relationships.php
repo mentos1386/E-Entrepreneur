@@ -20,6 +20,10 @@ class Relationships extends Migration {
 			$table->integer('role_id')->unsigned();
 			$table->foreign('role_id')->references('id')->on('roles')->onUpdate('cascade');
 
+			// TODO: Implant this?
+			//$table->integer('data_id')->unsigned();
+			//$table->foreign('data_id')->references('id')->on('data')->onUpdate('cascade');
+
 		});
 
 		/*

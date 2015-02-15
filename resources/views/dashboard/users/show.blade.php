@@ -8,43 +8,74 @@
 
     <!-- TODO: REPLACE OLD FORM WITH NEW ONE! CHOSE WHERE ARE YOU GOING TO EDIT USER; HERE OR NEW PAGE? !-->
 
-    <h1 class="page-header">Show: {{ $user['username'] }}</h1>
+    <h1 class="page-header">
+        <span class="fa fa-user"></span> User: {{ $user['username'] }}
+        <div class="pull-right">
+            <a href=" {{ route('dashboard.users.index').'/'.$user['username'].'/edit' }}"><span class="fa fa-pencil-square"></span></a>
+            <a href=" {{ route('dashboard.users.index').'/'.$user['username'].'/delete' }}"><span class="fa fa-minus-square"></span></a>
+        </div>
+    </h1>
 
     <div class="row">
 
-        <div class="col-md-6">
-            {!! Form::model($user, ['method' => 'PATCH', 'route' => ['dashboard.users.update', 'user']]) !!}
+        <div class="col-md-4">
+            <h2>User info</h2>
 
-            <!-- Email Form group -->
-            <div class="form-group col-md-12 ">
-                {!! Form::label('email', 'Email:') !!}
-                {!! Form::text('email', null, ['class' => 'form-control']) !!}
-            </div>
+            <p><b>Username:</b> {{ $user['username'] }}</p>
+            <p><b>Email:</b> {{ $user['email'] }}</p>
+            <p><b>Created at:</b> {{ $user['created_at'] }}</p>
+            <p><b>Role:</b> <a href="{{ route('dashboard.users.roles.index').'/'.$user['role']['name'] }}">{{ $user['role']['name'] }}</a></p>
 
-            <!-- Password Form group -->
-            <div class="form-group col-md-12">
-                {!! Form::label('password', 'Password:') !!}
-                {!! Form::password('password', ['class' => 'form-control']) !!}
-            </div>
 
-            <div class="form-group col-md-12">
-                {!! Form::submit('Save', array('class' => 'btn btn-lg btn-success width-100')) !!}
-            </div>
-
-            {!! Form::close() !!}
         </div>
 
-        <div class="col-md-4 col-md-offset-1">
+        <div class="col-md-2">
 
             {!! Gravatar::get($user['email'], '200', 'account-gravatar thumbnail img-responsive') !!}
-            <p class="text-center"><b><a href="http://www.gravatar.com/">Edit gravatar <span class="fa fa-external-link"></span></a></b></p>
+            <p class="text-center"><b><a href="http://www.gravatar.com/">Edit gravatar image  <span class="fa fa-external-link"></span></a></b></p>
 
         </div>
 
-    </div>
+        <div class="clearfix"></div>
+        <div class="col-md-6">
+            <h2>Posts</h2>
+            <table class="table">
+                <thead>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Body</th>
+                    <th>Created at</th>
+                </thead>
+                @foreach($user['posts'] as $post)
+                    <tbody>
+                        <td><a href="{{ route('dashboard.blog.posts.index').'/'.$post['id'] }}">{{ $post['id'] }}</a></td>
+                        <td>{{ $post['title'] }}</td>
+                        <td>{{ $post['body'] }}</td>
+                        <td>{{ $post['created_at'] }}</td>
+                    </tbody>
+                @endforeach
+            </table>
+        </div>
 
-    <div class="col-md-6">
-        <a href="{{ URL::route('dashboard.users.destroy') }}" class="btn btn-danger btn-lg"><span class="fa fa-remove"></span> Delete account</a>
+        <div class="col-md-6">
+            <h2>Comments</h2>
+            <table class="table">
+                <thead>
+                    <th>#</th>
+                    <th>Body</th>
+                    <th>Created at</th>
+                    <th>Post Id</th>
+                </thead>
+                @foreach($user['comments'] as $comment)
+                    <tbody>
+                        <td>{{ $comment['id'] }}</td>
+                        <td>{{ $comment['body'] }}</td>
+                        <td>{{ $comment['created_at'] }}</td>
+                        <td><a href="{{ route('dashboard.blog.posts.index').'/'.$comment['post_id'] }}">{{ $comment['post_id'] }}</a></td>
+                    </tbody>
+                @endforeach
+            </table>
+        </div>
     </div>
 
     </div>

@@ -6,7 +6,12 @@
 
 @section('content')
 
-    <h1 class="page-header">Users</h1>
+    <h1 class="page-header">
+        <span class="fa fa-users"></span> Users
+        <div class="pull-right">
+            <a href=" {{ route('dashboard.users.create') }}"><span class="fa fa-plus-square"></span></a>
+        </div>
+    </h1>
 
     <table class="table">
         <thead>
@@ -22,7 +27,7 @@
                 <td><a href="{{ route('dashboard.users.index').'/'.$user['username'] }}">{{ $user['username'] }}</a></td>
                 <td>{{ $user['email'] }}</td>
                 <td>{{ $user['created_at'] }}</td>
-                <td>{{ $user['role_id'] }}</td>
+                <td><a href="{{ route('dashboard.users.roles.index').'/'. $user['role']['name'] }}">{{ $user['role']['name'] }}</td>
             </tbody>
         @endforeach
     </table>

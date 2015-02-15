@@ -62,7 +62,6 @@ body {
         overflow-x: hidden;
         overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
         background: #202020;
-        border-right: 1px solid #eee;
     }
 }
 
@@ -152,10 +151,21 @@ body {
     }
 }
 .main .page-header {
-    margin-top: 0;
+    background: none repeat scroll 0% 0% rgb(66, 139, 202);
+    margin-top: -20px;
+    margin-left: -40px;
+    margin-right: -40px;
+    padding: 20px;
+    color: #f3f3f3;
 }
 
+.main .page-header a {
+    color: #f3f3f3;
+}
 
+.main .page-header a:hover {
+    color: #202020;
+}
 /*
  * Dashboard/Account
  +
@@ -163,6 +173,7 @@ body {
 
 .account-gravatar {
     border-radius: 50%;
+    margin: auto;
 }
 
 /*

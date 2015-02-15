@@ -4,11 +4,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-use App\Role;
-
-class BlogController extends Controller {
+class PostController extends Controller {
 
 	/**
 	 * Display a listing of the resource.

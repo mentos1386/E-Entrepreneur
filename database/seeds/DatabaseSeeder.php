@@ -28,7 +28,7 @@ class UserTableSeeder extends Seeder {
 
 		$faker = Faker::create();
 
-		foreach(range(1,15) as $index){
+		foreach(range(1,30) as $index){
 
 			User::create([
 				'username' => $faker->userName,

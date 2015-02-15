@@ -36,8 +36,17 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 *
 	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-	public function post(){
+	public function posts(){
 		return $this->hasMany('App\Post');
+	}
+
+	/**
+	 *  User can have many posts
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function comments(){
+		return $this->hasMany('App\Comment');
 	}
 
 	/**

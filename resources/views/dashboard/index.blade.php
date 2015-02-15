@@ -6,8 +6,6 @@
 
 @section('content')
 
-    <h1 class="page-header">Welcome to dashboard {{ Auth::user()->username }}</h1>
-
-    <a href="/api/callback/digitalocean">DigitalOcean api Authentication</a>
+    <h1 class="page-header">Welcome back {{ Auth::user()->username }}</h1>
 
 @endsection

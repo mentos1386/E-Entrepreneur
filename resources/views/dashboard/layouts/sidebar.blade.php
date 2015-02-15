@@ -42,8 +42,21 @@
 {!! Sidebar::Pills(
     '<span class="fa fa-file-text"></span> Blog <span class="fa fa-chevron-right pull-right"></span>',
     route('dashboard.blog.index'),
-    Request::url()
-    )
+    Request::url(),
+    array(
+        [
+        '<span class="fa fa-file-text"></span> Blog <span class="fa fa-chevron-right pull-right"></span>',
+        route('dashboard.blog.index'),
+        ],
+        [
+        '<span class="fa fa-pencil"></span> Posts <span class="fa fa-chevron-right pull-right"></span>',
+        route('dashboard.blog.posts.index'),
+        ],
+        [
+        '<span class="fa fa-comments"></span> Comments <span class="fa fa-chevron-right pull-right"></span>',
+        route('dashboard.blog.comments.index'),
+        ],
+    ))
 !!}
 </ul>
 
@@ -61,8 +74,8 @@
             route('dashboard.users.index'),
         ],
         [
-            '<span class="fa fa-align-justify"></span> Ranks <span class="fa fa-chevron-right pull-right"></span>',
-            '#',
+            '<span class="fa fa-align-justify"></span> Roles <span class="fa fa-chevron-right pull-right"></span>',
+            route('dashboard.users.roles.index'),
         ],
         [
             '<span class="fa fa-user"></span> My Profile <span class="fa fa-chevron-right pull-right"></span>',

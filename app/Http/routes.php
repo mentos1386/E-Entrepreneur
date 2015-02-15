@@ -34,10 +34,21 @@ Route::group(array('middleware' => 'auth'), function()
 
 	###############################
 	# BLOG
+		###############################
+		# POSTS
+		Route::resource('/dashboard/blog/posts', 'Dashboard\PostController');
+		###############################
+		# COMMENTS
+		Route::resource('/dashboard/blog/comments', 'Dashboard\CommentController');
+	#
 	Route::resource('/dashboard/blog', 'Dashboard\BlogController');
 
 	###############################
 	# USERS
+		###############################
+		# ROLES
+		Route::resource('/dashboard/users/roles', 'Dashboard\RolesController');
+	#
 	Route::resource('/dashboard/users', 'Dashboard\UsersController');
 
 	###############################

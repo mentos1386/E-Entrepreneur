@@ -18,7 +18,7 @@ class CreatePermissionsTable extends Migration {
 
 			//$table->integer('role_id')->unsigned();
 
-			$table->boolean('dashboard');
+			$table->boolean('dashboard_view');
 			$table->boolean('users_edit');
 			$table->boolean('comments_post');
 			$table->boolean('comments_moderate');

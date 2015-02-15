@@ -3,7 +3,7 @@
 use App\User;
 use Illuminate\Support\Facades\DB;
 use Validator;
-use Illuminate\Contracts\Auth\Registrar as RegistrarContract;;
+use Illuminate\Contracts\Auth\Registrar as RegistrarContract;
 
 class Registrar implements RegistrarContract {
 
