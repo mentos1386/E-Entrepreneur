@@ -19,7 +19,7 @@ class UsersController extends Controller {
     protected $auth;
 
     /**
-     * The create user implementation.
+     * The Create User implementation.
      *
      * @var CreateUser
      */
@@ -95,7 +95,7 @@ class UsersController extends Controller {
 
         $this->createUser->create($request->all());
 
-        return redirect(route('dashboard.users.index'))->with('message', 'SomeMessage');
+        return redirect(route('dashboard.users.index'))->with('message', 'User successfully created!');
 
     }
 
