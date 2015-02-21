@@ -42,12 +42,12 @@ class UsersController extends Controller {
     /**
      * Display the specified resource.
      *
-     * @param  int  $name
+     * @param  int  $id
      * @return Response
      */
-    public function show($name)
+    public function show($id)
     {
-        $user = User::with('role', 'comments', 'posts')->where('username', $name)->first();
+        $user = User::with('role', 'comments', 'posts')->findOrFail($id);
 
         return view('dashboard.users.show', ['user' => $user]);
     }
@@ -84,7 +84,9 @@ class UsersController extends Controller {
     public function store(Request $request)
     {
 
-        $validator = $this->createUser->validator($request->all());
+        $createUser = new CreateUser;
+
+        $validator = $createUser->validator($request->all());
 
         if ($validator->fails())
         {
@@ -93,7 +95,7 @@ class UsersController extends Controller {
             );
         }
 
-        $this->createUser->create($request->all());
+        $createUser->create($request->all());
 
         return redirect(route('dashboard.users.index'))->with('message', 'User successfully created!');
 

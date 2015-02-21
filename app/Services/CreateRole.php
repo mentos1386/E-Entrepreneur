@@ -1,7 +1,8 @@
 <?php namespace App\Services;
 
-use App\User;
-use Illuminate\Validation\Validator;
+use App\Role;
+use App\Permission;
+use Validator;
 
 class CreateRole {
 
@@ -37,13 +38,32 @@ class CreateRole {
      */
     public function create(array $data)
     {
-        Permission::create([
 
-        ]);
-
+        // Create Role
         Role::create([
-
+            'name' => $data['name'],
+            'comment' => $data['comment'],
         ]);
+
+        // Get role id
+        $role_id = Role::where('name', $data['name'])->first()->id;
+
+        // Create permissions for role
+        Permission::create([
+            'dashboard' => $data['dashboard_view'], //TODO: CHANGE TO dashboard_view
+            'users_edit' => $data['users_edit'],
+            'comments_post' => $data['comments_post'],
+            'comments_moderate' => $data['comments_moderate'],
+            'statistics_view' => $data['statistics_view'],
+            'store_buy' => $data['store_buy'],
+            'store_add' => $data['store_add'],
+            'store_orders' => $data['store_orders'],
+            'posts_create' => $data['posts_create'],
+            'settings_edit' => $data['settings_edit'],
+            'role_id' => $role_id,
+        ]);
+
+        dd(Role::with('permission')->find($role_id)->toArray());
     }
 
 }

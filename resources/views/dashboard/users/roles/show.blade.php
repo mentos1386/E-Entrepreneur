@@ -9,8 +9,14 @@
     <h1 class="page-header">
         <span class="fa fa-align-justify"></span> Role: {{ $role['name'] }}
         <div class="pull-right">
-            <a href=" {{ route('dashboard.users.roles.index').'/'.$role['name'].'/edit' }}"><span class="fa fa-pencil-square"></span></a>
-            <a href=" {{ route('dashboard.users.roles.index').'/'.$role['name'].'/delete' }}"><span class="fa fa-minus-square"></span></a>
+            <div class="btn-group" role="group">
+                <a href=" {{ route('dashboard.users.roles.index').'/'.$role['id'].'/edit' }}" type="button" class="btn btn-default">
+                    <span class="fa fa-pencil"></span> Edit
+                </a>
+                <a href=" {{ route('dashboard.users.roles.index').'/'.$role['id'].'/delete' }}" type="button" class="btn btn-default">
+                    <span class="fa fa-minus-circle"></span> Delete
+                </a>
+            </div>
         </div>
     </h1>
 
@@ -112,7 +118,7 @@
                 @foreach($role['user'] as $user)
                     <tbody>
                     <td>{{ $user['id'] }}</td>
-                    <td><a href="{{ route('dashboard.users.index').'/'.$user['username'] }}">{{ $user['username'] }}</a></td>
+                    <td><a href="{{ route('dashboard.users.index').'/'.$user['id'] }}">{{ $user['username'] }}</a></td>
                     <td>{{ $user['email'] }}</td>
                     <td>{{ $user['created_at'] }}</td>
                     </tbody>

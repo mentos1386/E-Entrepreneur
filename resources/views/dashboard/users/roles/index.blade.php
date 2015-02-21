@@ -9,7 +9,9 @@
     <h1 class="page-header">
         <span class="fa fa-align-justify"></span> Roles
         <div class="pull-right">
-            <a href=" {{ route('dashboard.users.roles.create') }}"><span class="fa fa-plus-square"></span></a>
+            <a href=" {{ route('dashboard.users.roles.create') }}" type="button" class="btn btn-default">
+                <span class="fa fa-plus-circle"></span> Create
+            </a>
         </div>
     </h1>
 
@@ -24,7 +26,7 @@
         @foreach($roles as $role)
             <tbody>
                 <td>{{ $role['id'] }}</td>
-                <td><a href="{{ route('dashboard.users.roles.index').'/'.$role['name'] }}">{{ $role['name'] }}</a></td>
+                <td><a href="{{ route('dashboard.users.roles.index').'/'.$role['id'] }}">{{ $role['name'] }}</a></td>
                 <td>{{ $role['comment'] }}</td>
                 <td>{{ $role->user->count() }}</td>
             </tbody>

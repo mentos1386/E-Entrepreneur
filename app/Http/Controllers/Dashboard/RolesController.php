@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\User;
 use Illuminate\Http\Request;
 
 use App\Role;
@@ -19,7 +20,7 @@ class RolesController extends Controller {
 	protected $auth;
 
 	/**
-	 * The create user implementation.
+	 * The create role implementation.
 	 *
 	 * @var CreateRole
 	 */
@@ -41,12 +42,12 @@ class RolesController extends Controller {
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param  int  $name
+	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($name)
+	public function show($id)
 	{
-		$role = Role::with('user','permission')->where('name', $name)->first();
+		$role = Role::with('user','permission')->findOrFail($id);
 
 		return View('dashboard.users.roles.show', ['role' => $role]);
 	}
@@ -75,15 +76,15 @@ class RolesController extends Controller {
 	/**
 	 * Store the specified resource in storage.
 	 *
-	 * @param array Request $request
-	 * @return Response
+	 * @param Request $request
+	 * @return \Illuminate\Http\Response
 	 */
 	public function store(Request $request)
 	{
 
-		dd($request->all());
+		$createRole = new CreateRole;
 
-		$validator = $this->createRole->validator($request->all());
+		$validator = $createRole->validator($request->all());
 
 		if ($validator->fails())
 		{
@@ -92,7 +93,7 @@ class RolesController extends Controller {
 			);
 		}
 
-		$this->createRole->create($request->all());
+		$createRole->create($request->all());
 
 		return redirect(route('dashboard.users.roles.index'))->with('message', 'SomeMessage');
 

@@ -17,6 +17,7 @@ class Permission extends Model {
      * @var array
      */
     protected $fillable = [
+        'role_id',
         'users_edit',
         'comments_post',
         'comments_moderate',

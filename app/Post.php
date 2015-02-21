@@ -16,7 +16,7 @@ class Post extends Model {
      *
      * @var array
      */
-    protected $fillable = ['title', 'body'];
+    protected $fillable = ['title', 'body', 'user_id'];
 
 
     /**
@@ -46,7 +46,7 @@ class Post extends Model {
      */
     public function tag(){
 
-        return $this->hasMany('App\Tag');
+        return $this->belongsToMany('App\Tag');
     }
 
     /**
@@ -56,7 +56,7 @@ class Post extends Model {
      */
     public function category(){
 
-        return $this->hasMany('App\Categories');
+        return $this->belongsToMany('App\Categories', 'post_category', 'category_id', 'post_id');
     }
 
 }

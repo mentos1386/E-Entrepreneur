@@ -9,7 +9,9 @@
     <h1 class="page-header">
         <span class="fa fa-users"></span> Users
         <div class="pull-right">
-            <a href=" {{ route('dashboard.users.create') }}"><span class="fa fa-plus-square"></span></a>
+            <a href=" {{ route('dashboard.users.create') }}" type="button" class="btn btn-default">
+                <span class="fa fa-plus-circle"></span> Create
+            </a>
         </div>
     </h1>
 
@@ -24,7 +26,7 @@
         @foreach($users as $user)
             <tbody>
                 <td>{{ $user['id'] }}</td>
-                <td><a href="{{ route('dashboard.users.index').'/'.$user['username'] }}">{{ $user['username'] }}</a></td>
+                <td><a href="{{ route('dashboard.users.index').'/'.$user['id'] }}">{{ $user['username'] }}</a></td>
                 <td>{{ $user['email'] }}</td>
                 <td>{{ $user['created_at'] }}</td>
                 <td><a href="{{ route('dashboard.users.roles.index').'/'. $user['role']['name'] }}">{{ $user['role']['name'] }}</td>

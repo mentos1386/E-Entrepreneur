@@ -79,7 +79,7 @@
         ],
         [
             '<span class="fa fa-user"></span> My Profile <span class="fa fa-chevron-right pull-right"></span>',
-            route('dashboard.users.index').'/'.Auth::user()->username,
+            route('dashboard.users.index').'/'.Auth::id(),
         ],
     ))
 !!}

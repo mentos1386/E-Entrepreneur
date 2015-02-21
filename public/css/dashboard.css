@@ -159,13 +159,6 @@ body {
     color: #f3f3f3;
 }
 
-.main .page-header a {
-    color: #f3f3f3;
-}
-
-.main .page-header a:hover {
-    color: #202020;
-}
 /*
  * Dashboard/Account
  +
@@ -189,4 +182,13 @@ body {
     color: #f3f3f3;
     text-align: center;
     margin-bottom: 40px;
+}
+
+/*
+ * Errors Alerts
+ *
+ */
+
+.alert li {
+    margin-left: 10px;
 }

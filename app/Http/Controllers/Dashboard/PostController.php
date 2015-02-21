@@ -3,9 +3,29 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Post;
+use App\Comment;
+use App\Tag;
+use App\Categories;
+
+use App\Services\CreatePost;
 use Illuminate\Http\Request;
 
 class PostController extends Controller {
+
+	/**
+	 * The Guard implementation.
+	 *
+	 * @var Guard
+	 */
+	protected $auth;
+
+	/**
+	 * The create role implementation.
+	 *
+	 * @var CreateRole
+	 */
+	protected $createRole;
 
 	/**
 	 * Display a listing of the resource.
@@ -14,7 +34,9 @@ class PostController extends Controller {
 	 */
 	public function index()
 	{
-		return view('dashboard.index');
+		$posts = Post::with('comment')->paginate(15);
+
+		return view('dashboard.blog.posts.index', ['posts' => $posts]);
 	}
 
 	/**
@@ -24,17 +46,35 @@ class PostController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		$tags = Tag::all();
+
+		$categories = Categories::all();
+
+		return view('dashboard.blog.posts.create', ['tags' => $tags, 'categories' => $categories]);
 	}
 
 	/**
 	 * Store a newly created resource in storage.
 	 *
-	 * @return Response
+	 * @param Request $request
+	 * @return \Illuminate\Http\Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
-		//
+		$createPost = new CreatePost;
+
+		$validator = $createPost->validator($request->all());
+
+		if ($validator->fails())
+		{
+			$this->throwValidationException(
+				$request, $validator
+			);
+		}
+
+		$createPost->create($request->all());
+
+		return redirect(route('dashboard.blog.posts.index'))->with('message', 'Post successfully created!');
 	}
 
 	/**
@@ -45,7 +85,9 @@ class PostController extends Controller {
 	 */
 	public function show($id)
 	{
-		//
+		$post = Post::with('comment', 'tag', 'category')->findOrFail($id);
+
+		return view('dashboard.blog.posts.show', ['post' => $post]);
 	}
 
 	/**

@@ -1,9 +1,10 @@
 <?php namespace App\Services;
 
-use App\User;
+use App\Post;
 use Validator;
+use Illuminate\Support\Facades\Auth;
 
-class CreateUser {
+class CreatePost {
 
     /**
      * Get a validator for an incoming registration request.
@@ -14,10 +15,8 @@ class CreateUser {
     public function validator(array $data)
     {
         return Validator::make($data, [
-            'username' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6',
-            'role_id' => 'required',
+            'title' => 'required|max:255',
+            'body' => 'required',
         ]);
     }
 
@@ -29,11 +28,10 @@ class CreateUser {
      */
     public function create(array $data)
     {
-        return User::create([
-            'username' => $data['username'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-            'role_id' => $data['role_id'],
+        return Post::create([
+            'title' => $data['title'],
+            'body' => $data['body'],
+            'user_id' => Auth::id(),
         ]);
     }
 

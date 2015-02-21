@@ -11,8 +11,14 @@
     <h1 class="page-header">
         <span class="fa fa-user"></span> User: {{ $user['username'] }}
         <div class="pull-right">
-            <a href=" {{ route('dashboard.users.index').'/'.$user['username'].'/edit' }}"><span class="fa fa-pencil-square"></span></a>
-            <a href=" {{ route('dashboard.users.index').'/'.$user['username'].'/delete' }}"><span class="fa fa-minus-square"></span></a>
+            <div class="btn-group" role="group">
+                <a href=" {{ route('dashboard.users.index').'/'.$user['id'].'/edit' }}" type="button" class="btn btn-default">
+                    <span class="fa fa-pencil"></span> Edit
+                </a>
+                <a href=" {{ route('dashboard.users.index').'/'.$user['id'].'/delete' }}" type="button" class="btn btn-default">
+                    <span class="fa fa-minus-circle"></span> Delete
+                </a>
+            </div>
         </div>
     </h1>
 
@@ -48,8 +54,8 @@
                 </thead>
                 @foreach($user['posts'] as $post)
                     <tbody>
-                        <td><a href="{{ route('dashboard.blog.posts.index').'/'.$post['id'] }}">{{ $post['id'] }}</a></td>
-                        <td>{{ $post['title'] }}</td>
+                        <td>{{ $post['id'] }}</td>
+                        <td><a href="{{ route('dashboard.blog.posts.index').'/'.$post['id'] }}">{{ $post['title'] }}</a></td>
                         <td>{{ $post['body'] }}</td>
                         <td>{{ $post['created_at'] }}</td>
                     </tbody>

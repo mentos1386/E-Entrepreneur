@@ -14,6 +14,9 @@
 
     <div class="row">
 
+        <!-- Inlcude Alerts view !-->
+        @include('dashboard.layouts.alerts')
+
         <div class="col-md-12">
             {!! Form::open(['url' => route('dashboard.users.roles.store')]) !!}
 

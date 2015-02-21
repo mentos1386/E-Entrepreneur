@@ -12,7 +12,12 @@
         </div>
     </h1>
 
+    <!-- Inlcude Alerts view !-->
+    @include('dashboard.layouts.alerts')
+
     <div class="row">
+
+
 
         <div class="col-md-6">
 
