@@ -185,6 +185,18 @@ body {
 }
 
 /*
+ * Create/Show Post
+ *
+ */
+
+/* Tags/Category list */
+
+.cat-tags .list-group-item-heading {
+    color: #f3f3f3;
+    background: #428BCA;
+}
+
+/*
  * Errors Alerts
  *
  */

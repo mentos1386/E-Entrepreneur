@@ -56,7 +56,7 @@ class Post extends Model {
      */
     public function category(){
 
-        return $this->belongsToMany('App\Categories', 'post_category', 'category_id', 'post_id');
+        return $this->belongsToMany('App\Categories', 'post_category', 'post_id', 'category_id');
     }
 
 }

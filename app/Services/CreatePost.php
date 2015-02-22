@@ -15,7 +15,7 @@ class CreatePost {
     public function validator(array $data)
     {
         return Validator::make($data, [
-            'title' => 'required|max:255',
+            'title' => 'required|max:255|unique:posts',
             'body' => 'required',
         ]);
     }
@@ -28,11 +28,20 @@ class CreatePost {
      */
     public function create(array $data)
     {
-        return Post::create([
+        Post::create([
             'title' => $data['title'],
             'body' => $data['body'],
             'user_id' => Auth::id(),
         ]);
+
+        // Find just created post TODO: Find a better way?
+        $post = Post::where('title', $data['title'])->first();
+
+        // Assign tags
+        $post->tag()->attach($data['tags']);
+
+        // Assign categories
+        $post->category()->attach($data['categories']);
     }
 
 }

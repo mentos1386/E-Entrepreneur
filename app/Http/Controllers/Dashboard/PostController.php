@@ -61,6 +61,9 @@ class PostController extends Controller {
 	 */
 	public function store(Request $request)
 	{
+
+		//dd($request->all());
+
 		$createPost = new CreatePost;
 
 		$validator = $createPost->validator($request->all());
@@ -98,7 +101,15 @@ class PostController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+		$post = Post::with('tag', 'category')->findOrFail($id);
+
+		$tags = Tag::all();
+
+		$categories = Categories::all();
+
+		dd($post->toArray(), $tags->toArray(), $categories->toArray());
+
+		return view('dashboard.blog.posts.edit', ['post' => $post, 'tags' => $tags, 'categories' => $categories]);
 	}
 
 	/**

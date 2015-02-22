@@ -28,7 +28,7 @@
 
         <div class="col-md-2">
             <div class="col-md-12">
-                <ul class="list-group">
+                <ul class="list-group cat-tags">
                     <ul class="list-group-item list-group-item-heading">
                         Categories
                     </ul>
@@ -38,7 +38,7 @@
                 </ul>
             </div>
             <div class="col-md-12">
-                <ul class="list-group list">
+                <ul class="list-group cat-tags">
                     <ul class="list-group-item list-group-item-heading">
                         Tags
                     </ul>

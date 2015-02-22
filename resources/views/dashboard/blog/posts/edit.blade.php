@@ -1,13 +1,13 @@
 @extends('dashboard.layouts.master')
 
 @section('meta')
-    <title>Create Post</title>
+    <title>Edit: {{ $post['title'] }}</title>
 @endsection
 
 @section('content')
 
     <h1 class="page-header">
-        <span class="fa fa-pencil"></span> Create Post
+        <span class="fa fa-pencil"></span> Edit: {{ $post['title'] }}
         <div class="pull-right">
         </div>
     </h1>
@@ -17,7 +17,7 @@
 
     <div class="row">
 
-        {!! Form::open(['url' => route('dashboard.blog.posts.store')]) !!}
+        {!! Form::model($post, ['route' => ['dashboard.blog.posts.update', $post->id]]) !!}
 
         <div class="col-md-8">
 
@@ -59,7 +59,11 @@
                         </p>
                         @foreach($categories as $category)
                             <p class="list-group-item">
-                                <input type="checkbox" name="categories[]" value="{{$category['id']}}">
+                                <input type="checkbox" name="categories[]" value="{{$category['id']}}"
+                                @if (in_array($category['id'], $post['category']))
+                                    checked
+                                @endif
+                                >
                                 {{ $category['name'] }}
                             </p>
                         @endforeach
@@ -75,7 +79,11 @@
                         </p>
                         @foreach($tags as $tag)
                             <p class="list-group-item">
-                                <input type="checkbox" name="tags[]" value="{{ $tag['id'] }}">
+                                <input type="checkbox" name="tags[]" value="{{ $tag['id'] }}"
+                                @if (in_array($tag['id'], $post['tag']))
+                                    checked
+                                @endif
+                                >
                                 {{ $tag['name'] }}
                             </p>
                         @endforeach

@@ -6,8 +6,6 @@
 
 @section('content')
 
-    <!-- TODO: REPLACE OLD FORM WITH NEW ONE! CHOSE WHERE ARE YOU GOING TO EDIT USER; HERE OR NEW PAGE? !-->
-
     <h1 class="page-header">
         <span class="fa fa-user"></span> User: {{ $user['username'] }}
         <div class="pull-right">
@@ -30,7 +28,7 @@
             <p><b>Username:</b> {{ $user['username'] }}</p>
             <p><b>Email:</b> {{ $user['email'] }}</p>
             <p><b>Created at:</b> {{ $user['created_at'] }}</p>
-            <p><b>Role:</b> <a href="{{ route('dashboard.users.roles.index').'/'.$user['role']['name'] }}">{{ $user['role']['name'] }}</a></p>
+            <p><b>Role:</b> <a href="{{ route('dashboard.users.roles.index').'/'.$user['role']['id'] }}">{{ $user['role']['name'] }}</a></p>
 
 
         </div>
