@@ -17,16 +17,24 @@ class CreateRole {
         return Validator::make($data, [
             'name' => 'required|max:25|unique:roles',
             'comment' => 'required|max:255',
-            'dashboard_view' => 'required|integer',
-            'users_edit' => 'required|integer',
-            'comments_post' => 'required|integer',
-            'comments_moderate' => 'required|integer',
-            'statistics_view' => 'required|integer',
-            'store_buy' => 'required|integer',
-            'store_add' => 'required|integer',
-            'store_orders' => 'required|integer',
-            'posts_create' => 'required|integer',
-            'settings_edit' => 'required|integer',
+
+            // Backend
+            'dashboard' => 'required|integer',
+            'dashboard_users' => 'required|integer',
+            'dashboard_blog_posts' => 'required|integer',
+            'dashboard_blog_comments' => 'required|integer',
+            'dashboard_statistics' => 'required|integer',
+            'dashboard_store_add' => 'required|integer',
+            'dashboard_store_orders' => 'required|integer',
+            'dashboard_settings_tools' => 'required|integer',
+            'dashboard_appearance' => 'required|integer',
+            'dashboard_pages' => 'required|integer',
+
+            // Frontend
+            'user_comments_post' => 'required|integer',
+            'user_store_buy' => 'required|integer',
+
+
         ]);
     }
 
@@ -50,20 +58,26 @@ class CreateRole {
 
         // Create permissions for role
         Permission::create([
-            'dashboard' => $data['dashboard_view'], //TODO: CHANGE TO dashboard_view
-            'users_edit' => $data['users_edit'],
-            'comments_post' => $data['comments_post'],
-            'comments_moderate' => $data['comments_moderate'],
-            'statistics_view' => $data['statistics_view'],
-            'store_buy' => $data['store_buy'],
-            'store_add' => $data['store_add'],
-            'store_orders' => $data['store_orders'],
-            'posts_create' => $data['posts_create'],
-            'settings_edit' => $data['settings_edit'],
+
+            // Backend
+            'dashboard' => $data['dashboard'],
+            'dashboard_users' => $data['dashboard_users'],
+            'dashboard_blog_posts' => $data['dashboard_blog_posts'],
+            'dashboard_blog_comments' => $data['dashboard_blog_comments'],
+            'dashboard_statistics' => $data['dashboard_statistics'],
+            'dashboard_store_add' => $data['dashboard_store_add'],
+            'dashboard_store_orders' => $data['dashboard_store_orders'],
+            'dashboard_settings_tools' => $data['dashboard_settings_tools'],
+            'dashboard_appearance' => $data['dashboard_appearance'],
+            'dashboard_pages' => $data['dashboard_pages'],
+
+            // Frontend
+            'user_comments_post' => $data['user_comments_post'],
+            'user_store_buy' => $data['user_store_buy'],
+
             'role_id' => $role_id,
         ]);
 
-        dd(Role::with('permission')->find($role_id)->toArray());
     }
 
 }

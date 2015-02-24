@@ -1,0 +1,31 @@
+<?php namespace App\Http\Middleware\Permissions\Dashboard\Blog;
+
+use App\Role;
+use Illuminate\Support\Facades\Auth;
+
+use App\Http\Middleware\Permissions\Permission;
+
+class Blog extends Permission {
+
+     public function check_perm(){
+
+        /*
+         *  Make Logic to check if user has Permission!
+         *
+         *  Return True/False
+         */
+
+        $user = Auth::user();
+
+        $permissions = Role::find($user['role_id'])->permission;
+
+        if($permissions->dashboard_blog_posts == 1 || $permissions->dashboard_blog_comments == 1){
+            return true;
+        }else
+        {
+            return false;
+        }
+
+    }
+
+}

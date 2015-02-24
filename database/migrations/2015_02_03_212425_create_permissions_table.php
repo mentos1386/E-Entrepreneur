@@ -18,16 +18,21 @@ class CreatePermissionsTable extends Migration {
 
 			//$table->integer('role_id')->unsigned();
 
-			$table->boolean('dashboard_view');
-			$table->boolean('users_edit');
-			$table->boolean('comments_post');
-			$table->boolean('comments_moderate');
-			$table->boolean('statistics_view');
-			$table->boolean('store_buy');
-			$table->boolean('store_add');
-			$table->boolean('store_orders');
-			$table->boolean('settings_edit');
-			$table->boolean('posts_create');
+			// Backend
+			$table->boolean('dashboard');
+			$table->boolean('dashboard_users');
+			$table->boolean('dashboard_blog_comments');
+			$table->boolean('dashboard_blog_posts');
+			$table->boolean('dashboard_statistics');
+			$table->boolean('dashboard_store_add');
+			$table->boolean('dashboard_store_orders');
+			$table->boolean('dashboard_pages');
+			$table->boolean('dashboard_appearance');
+			$table->boolean('dashboard_settings_tools');
+
+			// Frontend
+			$table->boolean('user_store_buy');
+			$table->boolean('user_comments_post');
 			$table->timestamps();
 
 			//$table->foreign('role_id')->references('id')->on('roles');

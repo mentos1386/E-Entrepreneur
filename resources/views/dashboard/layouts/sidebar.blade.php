@@ -22,6 +22,13 @@
     Request::url()
     )
 !!}
+<!-- Store !-->
+{!! Sidebar::Pills(
+    '<span class="fa fa-line-chart"></span> Statistics <span class="fa fa-chevron-right pull-right"></span>',
+    route('dashboard.statistics.index'),
+    Request::url()
+    )
+!!}
 <!-- Pages !-->
 {!! Sidebar::Pills(
     '<span class="fa fa-server"></span> Pages <span class="fa fa-chevron-right pull-right"></span>',

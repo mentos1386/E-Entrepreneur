@@ -35,10 +35,10 @@
                     </div>
                     <div class="col-md-6">
                         <label class="radio-inline">
-                            <input type="radio" name="dashboard_view" value="1"> True
+                            <input type="radio" name="dashboard" value="1"> True
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" name="dashboard_view" value="0" checked> False
+                            <input type="radio" name="dashboard" value="0" checked> False
                         </label>
                     </div>
                 </div>
@@ -49,10 +49,10 @@
                     </div>
                     <div class="col-md-6">
                         <label class="radio-inline">
-                            <input type="radio" name="users_edit" value="1"> True
+                            <input type="radio" name="dashboard_users" value="1"> True
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" name="users_edit" value="0" checked> False
+                            <input type="radio" name="dashboard_users" value="0" checked> False
                         </label>
                     </div>
                 </div>
@@ -63,10 +63,10 @@
                     </div>
                     <div class="col-md-6">
                         <label class="radio-inline">
-                            <input type="radio" name="comments_post" value="1"> True
+                            <input type="radio" name="user_comments_post" value="1"> True
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" name="comments_post" value="0" checked> False
+                            <input type="radio" name="user_comments_post" value="0" checked> False
                         </label>
                     </div>
                 </div>
@@ -77,10 +77,10 @@
                     </div>
                     <div class="col-md-6">
                         <label class="radio-inline">
-                            <input type="radio" name="comments_moderate" value="1"> True
+                            <input type="radio" name="dashboard_blog_comments" value="1"> True
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" name="comments_moderate"  value="0" checked> False
+                            <input type="radio" name="dashboard_blog_comments"  value="0" checked> False
                         </label>
                     </div>
                 </div>
@@ -91,10 +91,10 @@
                     </div>
                     <div class="col-md-6">
                         <label class="radio-inline">
-                            <input type="radio" name="statistics_view" value="1"> True
+                            <input type="radio" name="dashboard_statistics" value="1"> True
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" name="statistics_view" value="0" checked> False
+                            <input type="radio" name="dashboard_statistics" value="0" checked> False
                         </label>
                     </div>
                 </div>
@@ -105,10 +105,10 @@
                     </div>
                     <div class="col-md-6">
                         <label class="radio-inline">
-                            <input type="radio" name="store_buy" value="1"> True
+                            <input type="radio" name="user_store_buy" value="1"> True
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" name="store_buy" value="0" checked> False
+                            <input type="radio" name="user_store_buy" value="0" checked> False
                         </label>
                     </div>
                 </div>
@@ -119,10 +119,10 @@
                     </div>
                     <div class="col-md-6">
                         <label class="radio-inline">
-                            <input type="radio" name="store_add" value="1"> True
+                            <input type="radio" name="dashboard_store_add" value="1"> True
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" name="store_add" value="0" checked> False
+                            <input type="radio" name="dashboard_store_add" value="0" checked> False
                         </label>
                     </div>
                 </div>
@@ -133,10 +133,10 @@
                     </div>
                     <div class="col-md-6">
                         <label class="radio-inline">
-                            <input type="radio" name="store_orders" value="1"> True
+                            <input type="radio" name="dashboard_store_orders" value="1"> True
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" name="store_orders" value="0" checked> False
+                            <input type="radio" name="dashboard_store_orders" value="0" checked> False
                         </label>
                     </div>
                 </div>
@@ -147,10 +147,38 @@
                     </div>
                     <div class="col-md-6">
                         <label class="radio-inline">
-                            <input type="radio" name="posts_create" value="1"> True
+                            <input type="radio" name="dashboard_blog_posts" value="1"> True
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" name="posts_create" value="0" checked> False
+                            <input type="radio" name="dashboard_blog_posts" value="0" checked> False
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-12">
+                    <div class="col-md-6">
+                        <label for="dashboard">Can Change Site Appearance:</label>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="radio-inline">
+                            <input type="radio" name="dashboard_appearance" value="1"> True
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="dashboard_appearance" value="0" checked> False
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-12">
+                    <div class="col-md-6">
+                        <label for="dashboard">Can Add/Remove Pages:</label>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="radio-inline">
+                            <input type="radio" name="dashboard_pages" value="1"> True
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="dashboard_pages" value="0" checked> False
                         </label>
                     </div>
                 </div>
@@ -161,10 +189,10 @@
                     </div>
                     <div class="col-md-6">
                         <label class="radio-inline">
-                            <input type="radio" name="settings_edit" value="1"> True
+                            <input type="radio" name="dashboard_settings_tools" value="1"> True
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" name="settings_edit" value="0" checked> False
+                            <input type="radio" name="dashboard_settings_tools" value="0" checked> False
                         </label>
                     </div>
                 </div>

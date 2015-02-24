@@ -18,48 +18,107 @@ Route::get('/logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@getLogou
 /*
  * Restricted access
  */
-Route::group(array('middleware' => 'auth'), function()
+Route::group(array('middleware' => 'perm.dashboard'), function()
 {
-	###############################
-	# DASHBOARD
+	/*
+	 * Dashboard
+	 */
 	Route::get('/dashboard', array('as' => 'dashboard', 'uses' => 'Dashboard\DashboardController@index'));
 
-	###############################
-	# STORE
-	Route::resource('/dashboard/store', 'Dashboard\StoreController');
+	/*
+	 *  Store
+	 *   -> Store Add
+	 *   -> Store Orders
+	 */
+	Route::group(array('middleware' => 'perm.dashboard.store'), function()
+	{
+		// -> Store Add
+		Route::group(array('middleware' => 'perm.dashboard.store.add'), function()
+		{
+			Route::resource('/dashboard/store/add', 'Dashboard\StoreController');
+		});
 
-	###############################
-	# PAGES
-	Route::resource('/dashboard/pages', 'Dashboard\PagesController');
+		// -> Store Orders
+		Route::group(array('middleware' => 'perm.store.orders'), function()
+		{
+			Route::resource('/dashboard/store/orders', 'Dashboard\StoreController');
+		});
 
-	###############################
-	# BLOG
-		###############################
-		# POSTS
-		Route::resource('/dashboard/blog/posts', 'Dashboard\PostController');
-		###############################
-		# COMMENTS
-		Route::resource('/dashboard/blog/comments', 'Dashboard\CommentController');
-	#
-	Route::resource('/dashboard/blog', 'Dashboard\BlogController');
+		// Store
+		Route::resource('/dashboard/store', 'Dashboard\StoreController');
+	});
+	/*
+	 * Statistics
+	 */
+	Route::group(array('middleware' => 'perm.dashboard.statistics'), function()
+	{
+		// Statistics
+		Route::resource('/dashboard/statistics', 'Dashboard\StatisticsController');
+	});
+	/*
+	 * Pages
+	 */
+	Route::group(array('middleware' => 'perm.dashboard.pages'), function()
+	{
+		// Pages
+		Route::resource('/dashboard/pages', 'Dashboard\PagesController');
+	});
+	/*
+	 *  Blog
+	 * 	 -> Posts
+	 * 	 -> Comments
+	 */
+	Route::group(array('middleware' => 'perm.dashboard.blog'), function()
+	{
+		// -> Posts
+		Route::group(array('middleware' => 'perm.dashboard.blog.posts'), function()
+		{
+			Route::resource('/dashboard/blog/posts', 'Dashboard\PostController');
+		});
 
-	###############################
-	# USERS
-		###############################
-		# ROLES
+		// -> Comments
+		Route::group(array('middleware' => 'perm.dashboard.blog.comments'), function()
+		{
+			Route::resource('/dashboard/blog/comments', 'Dashboard\CommentController');
+		});
+
+		// Blog
+		Route::resource('/dashboard/blog', 'Dashboard\BlogController');
+	});
+
+	/*
+	 * Users
+	 *  -> Roles
+	 */
+	Route::group(array('middleware' => 'perm.dashboard.users'), function()
+	{
+		// -> Roles
 		Route::resource('/dashboard/users/roles', 'Dashboard\RolesController');
-	#
-	Route::resource('/dashboard/users', 'Dashboard\UsersController');
 
-	###############################
-	# APPEARANCE
-	Route::resource('/dashboard/appearance', 'Dashboard\AppearanceController');
+		// Users
+		Route::resource('/dashboard/users', 'Dashboard\UsersController');
+	});
 
-	###############################
-	# SETTINGS
-	Route::resource('/dashboard/settings', 'Dashboard\SettingsController');
+	/*
+	 * Appearance
+	 */
+	Route::group(array('middleware' => 'perm.dashboard.appearance'), function()
+	{
+		// Appearance
+		Route::resource('/dashboard/appearance', 'Dashboard\AppearanceController');
+	});
 
-	###############################
-	# TOOLS
-	Route::resource('/dashboard/tools', 'Dashboard\ToolsController');
+	/*
+	 *  Settings
+	 *
+	 *  Tools
+	 */
+	Route::group(array('middleware' => 'perm.dashboard.settings_tools'), function()
+	{
+		// Settings
+		Route::resource('/dashboard/settings', 'Dashboard\SettingsController');
+
+		// Tools
+		Route::resource('/dashboard/tools', 'Dashboard\ToolsController');
+	});
 });

@@ -82,30 +82,42 @@ class Relationships extends Migration {
 		DB::table('permissions')->insert(array(
 			'id' => 1,
 			'role_id' => 1,
+
+			// Backend
 			'dashboard' => false,
-			'users_edit' => false,
-			'comments_post' => true,
-			'comments_moderate' => false,
-			'statistics_view' => false,
-			'store_buy' => true,
-			'store_add' => false,
-			'store_orders' => false,
-			'settings_edit' => false,
-			'posts_create' => false
+			'dashboard_users' => false,
+			'dashboard_blog_posts' => false,
+			'dashboard_blog_comments' => false,
+			'dashboard_statistics' => false,
+			'dashboard_store_add' => false,
+			'dashboard_store_orders' => false,
+			'dashboard_settings_tools' => false,
+			'dashboard_appearance' => false,
+			'dashboard_pages' => false,
+
+			// Frontend
+			'user_comments_post' => true,
+			'user_store_buy' => true
+
 		));
 		DB::table('permissions')->insert(array(
 			'id' => 2,
 			'role_id' => 2,
+			// Backend
 			'dashboard' => true,
-			'users_edit' => true,
-			'comments_post' => true,
-			'comments_moderate' => true,
-			'statistics_view' => true,
-			'store_buy' => true,
-			'store_add' => true,
-			'store_orders' => true,
-			'settings_edit' => true,
-			'posts_create' => true
+			'dashboard_users' => true,
+			'dashboard_blog_posts' => true,
+			'dashboard_blog_comments' => true,
+			'dashboard_statistics' => true,
+			'dashboard_store_add' => true,
+			'dashboard_store_orders' => true,
+			'dashboard_settings_tools' => true,
+			'dashboard_appearance' => true,
+			'dashboard_pages' => true,
+
+			// Frontend
+			'user_comments_post' => true,
+			'user_store_buy' => true
 		));
 
 		/*

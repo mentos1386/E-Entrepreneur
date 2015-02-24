@@ -17,21 +17,24 @@ class Permission extends Model {
      * @var array
      */
     protected $fillable = [
+
         'role_id',
-        'users_edit',
-        'comments_post',
-        'comments_moderate',
-        'statistics_view',
-        'store_buy',
-        'store_add',
-        'store_orders',
-        'settings_edit',
-        'posts_create',
-        /**
-         * TODO: Do i need this below?
-         *
-        'posts_publish',
-         */
+
+        // Backend
+        'dashboard',
+        'dashboard_users',
+        'dashboard_blog_posts',
+        'dashboard_blog_comments',
+        'dashboard_statistics',
+        'dashboard_store_add',
+        'dashboard_store_orders',
+        'dashboard_settings_tools',
+        'dashboard_appearance',
+        'dashboard_pages',
+
+        // Frontend
+        'user_comments_post',
+        'user_store_buy',
     ];
 
     /**

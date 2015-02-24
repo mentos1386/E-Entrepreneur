@@ -1,11 +1,25 @@
-<?php namespace App\Http\Middleware;
+<?php namespace App\Http\Middleware\Permissions;
 
 use Closure;
+use Illuminate\Contracts\Auth\Guard;
 
-use App\Role;
-use Illuminate\Support\Facades\Auth;
+class Permission {
+	/**
+	 * The Guard implementation.
+	 *
+	 * @var Guard
+	 */
+	protected $auth;
 
-class Permission extends Authenticate {
+	/**
+	 * Create a new filter instance.
+	 *
+	 * @param  Guard $auth
+	 */
+	public function __construct(Guard $auth)
+	{
+		$this->auth = $auth;
+	}
 
 	/**
 	 * Handle an incoming request.
@@ -28,8 +42,8 @@ class Permission extends Authenticate {
 			}
 		}
 
-		// Check if user has requierd permission
-		if ($this->check_perm($request))
+		// Check if user has required permission
+		if ( ! $this->check_perm($request))
 		{
 			if ($request->ajax())
 			{
@@ -44,19 +58,8 @@ class Permission extends Authenticate {
 		return $next($request);
 	}
 
-	private function check_perm($request){
-
-		/*
-		 *  Make Logic to check if user has Permission!
-		 *
-		 *  Return True/False
-		 */
-
-		$user = Auth::user();
-
-		$permissions = Role::find($user['role_id'])->permission;
-
-		dump($permissions);
-
+	// Database check thing
+	public function check_perm(){
 	}
+
 }

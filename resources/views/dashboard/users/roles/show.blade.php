@@ -43,55 +43,67 @@
 
                 <tbody>
                     <td>Users</td>
-                    <td> {{ $role['permission']['users_edit'] }} </td>
+                    <td> {{ $role['permission']['dashboard_users'] }} </td>
                     <td>Can Edit Users</td>
                 </tbody>
 
                 <tbody>
                     <td>Comments Post</td>
-                    <td> {{ $role['permission']['comments_post'] }} </td>
+                    <td> {{ $role['permission']['user_comments_post'] }} </td>
                     <td>Can Post Comments</td>
                 </tbody>
 
                 <tbody>
                     <td>Comments Moderate</td>
-                    <td> {{ $role['permission']['comments_moderate'] }} </td>
+                    <td> {{ $role['permission']['dashboard_blog_comments'] }} </td>
                     <td>Can Edit/Delete comments</td>
                 </tbody>
 
                 <tbody>
                     <td>Statistics</td>
-                    <td> {{ $role['permission']['statistics_view'] }} </td>
+                    <td> {{ $role['permission']['dashboard_statistics'] }} </td>
                     <td>Can see statistics (Site/Store)</td>
                 </tbody>
 
                 <tbody>
                     <td>Store Buy</td>
-                    <td> {{ $role['permission']['store_buy'] }} </td>
+                    <td> {{ $role['permission']['user_store_buy'] }} </td>
                     <td>Can buy items</td>
                 </tbody>
 
                 <tbody>
                     <td>Store Add</td>
-                    <td> {{ $role['permission']['store_add'] }} </td>
+                    <td> {{ $role['permission']['dashboard_store_add'] }} </td>
                     <td>Can add items to store</td>
                 </tbody>
 
                 <tbody>
                     <td>Store Orders</td>
-                    <td> {{ $role['permission']['store_orders'] }} </td>
+                    <td> {{ $role['permission']['dashboard_store_orders'] }} </td>
                     <td>Can Edit/Delete store Orders</td>
                 </tbody>
 
                 <tbody>
                     <td>Posts Create</td>
-                    <td> {{ $role['permission']['posts_create'] }} </td>
+                    <td> {{ $role['permission']['dashboard_blog_posts'] }} </td>
                     <td>Can Create Posts</td>
                 </tbody>
 
                 <tbody>
+                    <td>Pages</td>
+                    <td> {{ $role['permission']['dashboard_pages'] }} </td>
+                    <td>Can Edit Site Appearance</td>
+                </tbody>
+
+                <tbody>
+                    <td>Appearance</td>
+                    <td> {{ $role['permission']['dashboard_appearance'] }} </td>
+                    <td>Can Edit Site Appearance</td>
+                </tbody>
+
+                <tbody>
                     <td>Settings</td>
-                    <td> {{ $role['permission']['settings_edit'] }} </td>
+                    <td> {{ $role['permission']['dashboard_settings_tools'] }} </td>
                     <td>Can Edit Site Settings</td>
                 </tbody>
 
