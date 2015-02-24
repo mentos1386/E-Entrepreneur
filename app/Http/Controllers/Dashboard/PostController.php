@@ -107,7 +107,7 @@ class PostController extends Controller {
 
 		$categories = Categories::all();
 
-		dd($post->toArray(), $tags->toArray(), $categories->toArray());
+		//dd($post->toArray(), $tags->toArray(), $categories->toArray());
 
 		return view('dashboard.blog.posts.edit', ['post' => $post, 'tags' => $tags, 'categories' => $categories]);
 	}

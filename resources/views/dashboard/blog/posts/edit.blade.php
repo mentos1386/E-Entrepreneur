@@ -57,12 +57,9 @@
                         <p class="list-group-item list-group-item-heading">
                             Categories
                         </p>
-                        @foreach($categories as $category)
+                        @foreach($categories as $category) <!-- TODO: IF IS SELECTED FROM BEFORE; MAKE IT CHECKED! !-->
                             <p class="list-group-item">
                                 <input type="checkbox" name="categories[]" value="{{$category['id']}}"
-                                @if (in_array($category['id'], $post['category']))
-                                    checked
-                                @endif
                                 >
                                 {{ $category['name'] }}
                             </p>
@@ -77,12 +74,9 @@
                         <p class="list-group-item list-group-item-heading">
                             Tags
                         </p>
-                        @foreach($tags as $tag)
+                        @foreach($tags as $tag) <!-- TODO: IF IS SELECTED FROM BEFORE; MAKE IT CHECKED! !-->
                             <p class="list-group-item">
                                 <input type="checkbox" name="tags[]" value="{{ $tag['id'] }}"
-                                @if (in_array($tag['id'], $post['tag']))
-                                    checked
-                                @endif
                                 >
                                 {{ $tag['name'] }}
                             </p>
