@@ -38,10 +38,16 @@ class CreatePost {
         $post = Post::where('title', $data['title'])->first();
 
         // Assign tags
-        $post->tag()->attach($data['tags']);
+        if(! empty($data['tags']))
+        {
+            $post->tag()->attach($data['tags']);
+        }
 
         // Assign categories
-        $post->category()->attach($data['categories']);
+        if(! empty($data['categories']))
+        {
+            $post->category()->attach($data['categories']);
+        }
     }
 
 }

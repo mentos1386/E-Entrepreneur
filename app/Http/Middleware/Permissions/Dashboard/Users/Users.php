@@ -4,6 +4,7 @@ use App\Role;
 use Illuminate\Support\Facades\Auth;
 
 use App\Http\Middleware\Permissions\Permission;
+use Illuminate\Support\Facades\Session;
 
 class Users extends Permission {
 
@@ -18,6 +19,9 @@ class Users extends Permission {
         $user = Auth::user();
 
         $permissions = Role::find($user['role_id'])->permission;
+
+         // We use this in sidebar to assign "Active" status
+        Session::put('sidebar', 'users');
 
         if($permissions->dashboard_users == 1){
             return true;

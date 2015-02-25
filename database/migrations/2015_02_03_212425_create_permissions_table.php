@@ -28,7 +28,7 @@ class CreatePermissionsTable extends Migration {
 			$table->boolean('dashboard_store_orders');
 			$table->boolean('dashboard_pages');
 			$table->boolean('dashboard_appearance');
-			$table->boolean('dashboard_settings_tools');
+			$table->boolean('dashboard_settings');
 
 			// Frontend
 			$table->boolean('user_store_buy');

@@ -91,7 +91,7 @@ class Relationships extends Migration {
 			'dashboard_statistics' => false,
 			'dashboard_store_add' => false,
 			'dashboard_store_orders' => false,
-			'dashboard_settings_tools' => false,
+			'dashboard_settings' => false,
 			'dashboard_appearance' => false,
 			'dashboard_pages' => false,
 
@@ -111,7 +111,7 @@ class Relationships extends Migration {
 			'dashboard_statistics' => true,
 			'dashboard_store_add' => true,
 			'dashboard_store_orders' => true,
-			'dashboard_settings_tools' => true,
+			'dashboard_settings' => true,
 			'dashboard_appearance' => true,
 			'dashboard_pages' => true,
 

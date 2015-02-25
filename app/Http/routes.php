@@ -113,12 +113,10 @@ Route::group(array('middleware' => 'perm.dashboard'), function()
 	 *
 	 *  Tools
 	 */
-	Route::group(array('middleware' => 'perm.dashboard.settings_tools'), function()
+	Route::group(array('middleware' => 'perm.dashboard.settings'), function()
 	{
 		// Settings
 		Route::resource('/dashboard/settings', 'Dashboard\SettingsController');
 
-		// Tools
-		Route::resource('/dashboard/tools', 'Dashboard\ToolsController');
 	});
 });

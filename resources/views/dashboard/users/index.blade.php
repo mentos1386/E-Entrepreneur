@@ -29,7 +29,7 @@
                 <td><a href="{{ route('dashboard.users.index').'/'.$user['id'] }}">{{ $user['username'] }}</a></td>
                 <td>{{ $user['email'] }}</td>
                 <td>{{ $user['created_at'] }}</td>
-                <td><a href="{{ route('dashboard.users.roles.index').'/'. $user['role']['name'] }}">{{ $user['role']['name'] }}</td>
+                <td><a href="{{ route('dashboard.users.roles.index').'/'. $user['role']['id'] }}">{{ $user['role']['name'] }}</td>
             </tbody>
         @endforeach
     </table>

@@ -48,8 +48,8 @@ class Kernel extends HttpKernel {
 		'perm.dashboard.appearance' => 'App\Http\Middleware\Permissions\Dashboard\Appearance\Appearance',
 		// Pages
 		'perm.dashboard.pages' => 'App\Http\Middleware\Permissions\Dashboard\Pages\Pages',
-		// Settings_Tools
-		'perm.dashboard.settings_tools' => 'App\Http\Middleware\Permissions\Dashboard\Settings_Tools\Settings_Tools',
+		// Settings
+		'perm.dashboard.settings' => 'App\Http\Middleware\Permissions\Dashboard\Settings\Settings',
 	];
 
 }

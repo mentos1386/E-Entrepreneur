@@ -1,11 +1,12 @@
-<?php namespace App\Http\Middleware\Permissions\Dashboard\Settings_Tools;
+<?php namespace App\Http\Middleware\Permissions\Dashboard\Settings;
 
 use App\Role;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 use App\Http\Middleware\Permissions\Permission;
 
-class Settings_Tools extends Permission {
+class Settings extends Permission {
 
      public function check_perm(){
 
@@ -19,7 +20,10 @@ class Settings_Tools extends Permission {
 
         $permissions = Role::find($user['role_id'])->permission;
 
-        if($permissions->dashboard_settings_tools == 1){
+         // We use this in sidebar to assign "Active" status
+         Session::put('sidebar', 'settings');
+
+        if($permissions->dashboard_settings == 1){
             return true;
         }else
         {

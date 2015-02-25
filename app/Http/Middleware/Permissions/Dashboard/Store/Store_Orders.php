@@ -2,6 +2,7 @@
 
 use App\Role;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 use App\Http\Middleware\Permissions\Permission;
 
@@ -18,6 +19,9 @@ class Store_Orders extends Permission {
         $user = Auth::user();
 
         $permissions = Role::find($user['role_id'])->permission;
+
+         // We use this in sidebar to assign "Active" status
+         Session::put('sidebar', 'store');
 
         if($permissions->dashboard_store_orders == 1){
             return true;
