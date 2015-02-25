@@ -26,7 +26,7 @@ class CreateRole {
             'dashboard_statistics' => 'required|integer',
             'dashboard_store_add' => 'required|integer',
             'dashboard_store_orders' => 'required|integer',
-            'dashboard_settings_tools' => 'required|integer',
+            'dashboard_settings' => 'required|integer',
             'dashboard_appearance' => 'required|integer',
             'dashboard_pages' => 'required|integer',
 
@@ -67,7 +67,7 @@ class CreateRole {
             'dashboard_statistics' => $data['dashboard_statistics'],
             'dashboard_store_add' => $data['dashboard_store_add'],
             'dashboard_store_orders' => $data['dashboard_store_orders'],
-            'dashboard_settings_tools' => $data['dashboard_settings_tools'],
+            'dashboard_settings' => $data['dashboard_settings'],
             'dashboard_appearance' => $data['dashboard_appearance'],
             'dashboard_pages' => $data['dashboard_pages'],
 

@@ -14,9 +14,23 @@ Route::get('/login', ['as' => 'login', 'uses' => 'Auth\AuthController@getLogin']
 Route::get('/register', ['as' => 'register', 'uses' => 'Auth\AuthController@getRegister']);
 Route::get('/logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@getLogout']);
 
+/*
+ *
+ * Front end
+ *
+ */
 
 /*
- * Restricted access
+ * Posts
+ */
+Route::resource('/post', 'Frontend\PostsController', ['only' => ['index', 'show']]);
+
+
+
+/*
+ *
+ * Restricted access [Dashboard]
+ *
  */
 Route::group(array('middleware' => 'perm.dashboard'), function()
 {
@@ -66,6 +80,8 @@ Route::group(array('middleware' => 'perm.dashboard'), function()
 	/*
 	 *  Blog
 	 * 	 -> Posts
+	 * 	   -> Tags
+	 *     -> Categories
 	 * 	 -> Comments
 	 */
 	Route::group(array('middleware' => 'perm.dashboard.blog'), function()
@@ -73,7 +89,13 @@ Route::group(array('middleware' => 'perm.dashboard'), function()
 		// -> Posts
 		Route::group(array('middleware' => 'perm.dashboard.blog.posts'), function()
 		{
+			// Posts
 			Route::resource('/dashboard/blog/posts', 'Dashboard\PostController');
+			// Tags
+			Route::resource('/dashboard/blog/tags', 'Dashboard\TagsController');
+			// Categories
+			Route::resource('/dashboard/blog/categories', 'Dashboard\CategoriesController');
+
 		});
 
 		// -> Comments

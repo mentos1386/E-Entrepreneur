@@ -68,6 +68,14 @@
         '<span class="fa fa-comments"></span> Comments <span class="fa fa-chevron-right pull-right"></span>',
         route('dashboard.blog.comments.index'),
         ],
+        [
+        '<span class="fa fa-tags"></span> Tags <span class="fa fa-chevron-right pull-right"></span>',
+        route('dashboard.blog.tags.index'),
+        ],
+        [
+        '<span class="fa fa-sitemap"></span> Categories <span class="fa fa-chevron-right pull-right"></span>',
+        route('dashboard.blog.categories.index'),
+        ],
     ))
 !!}
 </ul>

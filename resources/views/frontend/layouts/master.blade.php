@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		
 		<!-- Yield meta -->
-		@yield('meta', '<title>E-Podjetnistvo</title>')
+		@yield('meta', '<title>'.Settings::first()->name.'</title>')
 
 		<!-- Bootstrap CDN -->
 		<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
@@ -28,25 +28,23 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					{{ HTML::linkRoute('home', 'E-Podjetnistvo', NULL, array( 'class' => 'navbar-brand' ))}}
+					{!! HTML::linkRoute('home', Settings::first()->name, NULL, array( 'class' => 'navbar-brand' ))!!}
 				</div>
 			
 				<div class="collapse navbar-collapse navbar-ex1-collapse">
-					<ul class="nav navbar-nav">
-						<li><a href="#about">About</a></li>
-
+					<ul class="nav navbar-nav navbar-right">
 						@if (Auth::guest())
-
-							<li>{{ HTML::linkRoute('login', 'Login') }}</li>
-							<li>{{ HTML::linkRoute('register', 'Register') }}</li>
-
+							<li>{!! HTML::linkRoute('login', 'Login') !!}</li>
+							<li>{!! HTML::linkRoute('register', 'Register') !!}</li>
 						@else
-
-							<li>{{ HTML::linkRoute('logout', 'logout') }}</li>
-							<li>{{ HTML::linkRoute('dashboard', 'Dashboard') }}</li>
-
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Menu <span class="caret"></span></a>
+								<ul class="dropdown-menu" role="menu">
+									<li>{!! HTML::linkRoute('logout', 'logout') !!}</li>
+									<li>{!! HTML::linkRoute('dashboard', 'Dashboard') !!}</li>
+								</ul>
+							</li>
 						@endif
-
 					</ul>
 				</div>
 

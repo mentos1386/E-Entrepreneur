@@ -189,10 +189,10 @@
                     </div>
                     <div class="col-md-6">
                         <label class="radio-inline">
-                            <input type="radio" name="dashboard_settings_tools" value="1"> True
+                            <input type="radio" name="dashboard_settings" value="1"> True
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" name="dashboard_settings_tools" value="0" checked> False
+                            <input type="radio" name="dashboard_settings" value="0" checked> False
                         </label>
                     </div>
                 </div>

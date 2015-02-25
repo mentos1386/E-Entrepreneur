@@ -103,7 +103,7 @@
 
                 <tbody>
                     <td>Settings</td>
-                    <td> {{ $role['permission']['dashboard_settings_tools'] }} </td>
+                    <td> {{ $role['permission']['dashboard_settings'] }} </td>
                     <td>Can Edit Site Settings</td>
                 </tbody>
 
