@@ -17,7 +17,7 @@
 
     <div class="row">
 
-        {!! Form::model($post, ['route' => ['dashboard.blog.posts.update', $post->id]]) !!}
+        {!! Form::model($post, ['method' => 'PUT','route' => ['dashboard.blog.posts.update', $post->id]]) !!}
 
         <div class="col-md-8">
 
@@ -46,7 +46,7 @@
             <div class="col-md-12">
                 <div class="jumbotron">
 
-                    <p>Here you can create new post.</p>
+                    <p>Here you can edit post.</p>
 
                 </div>
             </div>

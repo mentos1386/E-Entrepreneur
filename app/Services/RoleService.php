@@ -4,10 +4,10 @@ use App\Role;
 use App\Permission;
 use Validator;
 
-class CreateRole {
+class RoleService {
 
     /**
-     * Get a validator for an incoming registration request.
+     * Get a validator for an incoming create role request.
      *
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
@@ -15,7 +15,7 @@ class CreateRole {
     public function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:25|unique:roles',
+            'name' => 'required|max:25',
             'comment' => 'required|max:255',
 
             // Backend
@@ -39,22 +39,17 @@ class CreateRole {
     }
 
     /**
-     * Create a new user instance after a valid registration.
-     *
      * @param  array  $data
-     * @return User
      */
     public function create(array $data)
     {
 
         // Create Role
-        Role::create([
+        $role = Role::create([
             'name' => $data['name'],
             'comment' => $data['comment'],
         ]);
 
-        // Get role id
-        $role_id = Role::where('name', $data['name'])->first()->id;
 
         // Create permissions for role
         Permission::create([
@@ -75,7 +70,7 @@ class CreateRole {
             'user_comments_post' => $data['user_comments_post'],
             'user_store_buy' => $data['user_store_buy'],
 
-            'role_id' => $role_id,
+            'role_id' => $role->id,
         ]);
 
     }

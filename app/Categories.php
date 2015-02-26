@@ -16,7 +16,7 @@ class Categories extends Model {
      *
      * @var array
      */
-    protected $fillable = [ 'name', 'comment' ];
+    protected $fillable = ['name', 'comment', 'parent'];
 
     /**
      *  One Category can belong to Many Posts

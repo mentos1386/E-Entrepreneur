@@ -1,8 +1,10 @@
 <?php namespace App\Http\Controllers\Dashboard;
 
+use App\Categories;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Services\CategoryService;
 use Illuminate\Http\Request;
 
 class CategoriesController extends Controller {
@@ -14,7 +16,9 @@ class CategoriesController extends Controller {
 	 */
 	public function index()
 	{
-		return view('dashboard.index');
+		$categories = Categories::paginate();
+
+		return view('dashboard.blog.categories.index', ['categories' => $categories]);
 	}
 
 	/**
@@ -24,17 +28,31 @@ class CategoriesController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		return view('dashboard.blog.categories.create');
 	}
 
 	/**
 	 * Store a newly created resource in storage.
 	 *
+	 * @param array Request $request
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
-		//
+		$createCategory = new CategoryService;
+
+		$validator = $createCategory->validator($request->all());
+
+		if ($validator->fails())
+		{
+			$this->throwValidationException(
+				$request, $validator
+			);
+		}
+
+		$createCategory->create($request->all());
+
+		return redirect(route('dashboard.blog.categories.index'))->with('message', 'SomeMessage');
 	}
 
 	/**

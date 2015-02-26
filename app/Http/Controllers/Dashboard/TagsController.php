@@ -3,6 +3,8 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Services\TagService;
+use App\Tag;
 use Illuminate\Http\Request;
 
 class TagsController extends Controller {
@@ -14,7 +16,9 @@ class TagsController extends Controller {
 	 */
 	public function index()
 	{
-		return view('dashboard.index');
+		$tags = Tag::paginate();
+
+		return view('dashboard.blog.tags.index', ['tags' => $tags]);
 	}
 
 	/**
@@ -24,17 +28,31 @@ class TagsController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		return view('dashboard.blog.tags.create');
 	}
 
 	/**
 	 * Store a newly created resource in storage.
 	 *
+	 * @param array Request $request
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
-		//
+		$createTag = new TagService;
+
+		$validator = $createTag->validator($request->all());
+
+		if ($validator->fails())
+		{
+			$this->throwValidationException(
+				$request, $validator
+			);
+		}
+
+		$createTag->create($request->all());
+
+		return redirect(route('dashboard.blog.tags.index'))->with('message', 'SomeMessage');
 	}
 
 	/**

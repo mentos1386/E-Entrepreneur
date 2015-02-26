@@ -3,7 +3,7 @@
 use App\User;
 use Validator;
 
-class CreateUser {
+class UserService {
 
     /**
      * Get a validator for an incoming registration request.

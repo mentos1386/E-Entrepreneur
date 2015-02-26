@@ -14,10 +14,10 @@
 				</div>
 				<div class="panel-footer">
 					@foreach($post->tag as $tag)
-						{{ $tag->name }}
+						<span class="fa fa-tag"> {{ $tag->name }} </span>
 					@endforeach
 					@foreach($post->category as $category)
-						{{ $category->name }}
+						<span class="fa fa-sitemap"> {{ $category->name }} </span>
 					@endforeach
 				</div>
 			</div>

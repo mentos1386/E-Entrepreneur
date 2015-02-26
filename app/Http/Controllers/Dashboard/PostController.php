@@ -8,24 +8,10 @@ use App\Comment;
 use App\Tag;
 use App\Categories;
 
-use App\Services\CreatePost;
+use App\Services\PostService;
 use Illuminate\Http\Request;
 
 class PostController extends Controller {
-
-	/**
-	 * The Guard implementation.
-	 *
-	 * @var Guard
-	 */
-	protected $auth;
-
-	/**
-	 * The create role implementation.
-	 *
-	 * @var CreateRole
-	 */
-	protected $createRole;
 
 	/**
 	 * Display a listing of the resource.
@@ -61,10 +47,7 @@ class PostController extends Controller {
 	 */
 	public function store(Request $request)
 	{
-
-		//dd($request->all());
-
-		$createPost = new CreatePost;
+		$createPost = new PostService;
 
 		$validator = $createPost->validator($request->all());
 
@@ -107,7 +90,6 @@ class PostController extends Controller {
 
 		$categories = Categories::all();
 
-		//dd($post->toArray(), $tags->toArray(), $categories->toArray());
 
 		return view('dashboard.blog.posts.edit', ['post' => $post, 'tags' => $tags, 'categories' => $categories]);
 	}
@@ -115,12 +97,27 @@ class PostController extends Controller {
 	/**
 	 * Update the specified resource in storage.
 	 *
+	 * @param array Request $request
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(Request $request, $id)
 	{
-		//
+		$updatePost = new PostService;
+
+		$validator = $updatePost->validator($request->all());
+
+		if ($validator->fails())
+		{
+			$this->throwValidationException(
+				$request, $validator
+			);
+		}
+
+		$updatePost->update($request->all(), $id);
+
+		return redirect(route('dashboard.blog.posts.index'))->with('message', 'Post successfully updated!');
+
 	}
 
 	/**

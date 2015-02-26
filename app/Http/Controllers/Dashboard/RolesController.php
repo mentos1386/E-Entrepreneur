@@ -3,28 +3,12 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\User;
 use Illuminate\Http\Request;
 
 use App\Role;
-
-use App\Services\CreateRole;
+use App\Services\RoleService;
 
 class RolesController extends Controller {
-
-	/**
-	 * The Guard implementation.
-	 *
-	 * @var Guard
-	 */
-	protected $auth;
-
-	/**
-	 * The create role implementation.
-	 *
-	 * @var CreateRole
-	 */
-	protected $createRole;
 
 	/**
 	 * Display a listing of the resource.
@@ -82,7 +66,7 @@ class RolesController extends Controller {
 	public function store(Request $request)
 	{
 
-		$createRole = new CreateRole;
+		$createRole = new RoleService;
 
 		$validator = $createRole->validator($request->all());
 

@@ -143,7 +143,7 @@ class Relationships extends Migration {
 		 */
 
 		DB::table('app')->insert(array(
-			'name' => 'Fake Name',
+			'name' => 'E Podjetje',
 			'language' => 'en',
 		));
 	}
@@ -155,7 +155,7 @@ class Relationships extends Migration {
 	 */
 	public function down()
 	{
-		$e = 'aa';
+		$e = 'aa'; // php artisan migrate:rollback DOSNT REALY WORK!
 	}
 
 }

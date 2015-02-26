@@ -21,13 +21,13 @@
 
         <div class="col-md-8">
 
-            <!-- Username Form group -->
+            <!-- Title Form group -->
             <div class="form-group col-md-12">
                 {!! Form::label('title', 'Title:') !!}
                 {!! Form::text('title', null, ['class' => 'form-control']) !!}
             </div>
 
-            <!-- Email Form group -->
+            <!-- Body Form group -->
             <div class="form-group col-md-12">
                 {!! Form::label('body', 'Body:') !!}
                 {!! Form::textarea('body', null, ['class' => 'form-control']) !!}
