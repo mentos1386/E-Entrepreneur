@@ -1,13 +1,13 @@
 @extends('dashboard.layouts.master')
 
 @section('meta')
-    <title>Create Category</title>
+    <title>Edit Category</title>
 @endsection
 
 @section('content')
 
     <h1 class="page-header">
-        <span class="fa fa-sitemap"></span> Create Category
+        <span class="fa fa-sitemap"></span> Edit Category
         <div class="pull-right">
         </div>
     </h1>
@@ -17,7 +17,8 @@
 
     <div class="row">
 
-        {!! Form::open(['url' => route('dashboard.blog.categories.store')]) !!}
+        {!! Form::model($category, ['method' => 'PUT','route' => ['dashboard.blog.categories.update', $category->id]])
+        !!}
 
         <div class="col-md-8">
 
@@ -47,7 +48,7 @@
             <div class="col-md-12">
                 <div class="jumbotron">
 
-                    <p>Here you can create new category.</p>
+                    <p>Here you can edit category.</p>
 
                 </div>
             </div>
@@ -57,11 +58,18 @@
                 <label for="select-role" class="control-label">Select parent:</label>
                 <select class="form-control" name="parent">
 
+
+                    @if ($category['parent'] != null || $category['parent'] != 0)
+                        <option value="{{ $category['parent'] }}">Current parent</option>
+                    @endif
+
                     <option value="">No parent</option>
 
-                    @foreach($categories as $category)
+                    @foreach($categories as $category_all)
 
-                        <option value="{{ $category['id'] }}"> {{$category['name']}} </option>
+                        @if ($category['parent'] != $category_all['id'])
+                            <option value="{{ $category_all['id'] }}"> {{$category_all['name']}} </option>
+                        @endif
 
                     @endforeach
 

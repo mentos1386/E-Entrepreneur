@@ -28,7 +28,9 @@ class CategoriesController extends Controller {
 	 */
 	public function create()
 	{
-		return view('dashboard.blog.categories.create');
+		$categories = Categories::all();
+
+		return view('dashboard.blog.categories.create', ['categories' => $categories]);
 	}
 
 	/**
@@ -63,7 +65,9 @@ class CategoriesController extends Controller {
 	 */
 	public function show($id)
 	{
-		//
+		$category = Categories::with('post', 'post.user')->findOrFail($id);
+
+		return view('dashboard.blog.categories.show', ['category' => $category]);
 	}
 
 	/**
@@ -74,7 +78,11 @@ class CategoriesController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+		$category = Categories::findOrFail($id);
+
+		$categories = Categories::all();
+
+		return view('dashboard.blog.categories.edit', ['category' => $category, 'categories' => $categories]);
 	}
 
 	/**

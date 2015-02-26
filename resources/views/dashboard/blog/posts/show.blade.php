@@ -22,15 +22,27 @@
 
     <div class="row">
 
-        <div class="col-md-10">
-            <div class="well">{{ $post['body'] }}</div>
+        <div class="col-md-9">
+            <div col-md-12>
+                <div class="well">{{ $post['body'] }}</div>
+            </div>
         </div>
 
-        <div class="col-md-2">
+        <div class="col-md-3">
             <div class="col-md-12">
                 <ul class="list-group cat-tags">
                     <ul class="list-group-item list-group-item-heading">
-                        Categories
+                        <span class="fa fa-info-circle"></span> Info
+                    </ul>
+                    <li class="list-group-item"><span class="fa fa-user"></span> {{ $post->user->username }}</li>
+                    <li class="list-group-item"><span class="fa fa-clock-o"></span> {{ $post->created_at }}</li>
+                    <li class="list-group-item"><span class="fa fa-comments"></span> {{ count($post->comment) }}</li>
+                </ul>
+            </div>
+            <div class="col-md-12">
+                <ul class="list-group cat-tags">
+                    <ul class="list-group-item list-group-item-heading">
+                        <span class="fa fa-sitemap"></span> Categories
                     </ul>
                 @foreach($post['category'] as $category)
                     <li class="list-group-item">{{ $category['name'] }}</li>
@@ -40,7 +52,7 @@
             <div class="col-md-12">
                 <ul class="list-group cat-tags">
                     <ul class="list-group-item list-group-item-heading">
-                        Tags
+                        <span class="fa fa-tags"></span> Tags
                     </ul>
                     @foreach($post['tag'] as $tag)
                         <li class="list-group-item">{{ $tag['name'] }}</li>

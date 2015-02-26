@@ -21,6 +21,8 @@
         <th>Name</th>
         <th>Body</th>
         <th>Created at</th>
+        <th>Created by</th>
+        <th>Comments</th>
         </thead>
         @foreach($posts as $post)
             <tbody>
@@ -28,6 +30,10 @@
             <td><a href="{{ route('dashboard.blog.posts.index').'/'.$post['id'] }}">{{ $post['title'] }}</a></td>
             <td>{{ $post['body'] }}</td>
             <td>{{ $post['created_at'] }}</td>
+            <td>
+                <a href="{{ route('dashboard.users.index').'/'.$post['user']['id'] }}">{{ $post['user']['username'] }}</a>
+            </td>
+            <td>{{ count($post['comments']) }}</td>
             </tbody>
         @endforeach
     </table>

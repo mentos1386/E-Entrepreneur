@@ -24,7 +24,8 @@ class Post extends Model {
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function author(){
+    public function user()
+    {
 
         return $this->belongsTo('App\User');
     }
@@ -46,7 +47,7 @@ class Post extends Model {
      */
     public function tag(){
 
-        return $this->belongsToMany('App\Tag');
+        return $this->belongsToMany('App\Tag', 'post_tag', 'post_id', 'tag_id');
     }
 
     /**

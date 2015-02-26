@@ -26,7 +26,7 @@ class PostsController extends Controller {
 	 */
 	public function show($id)
 	{
-		$post = Post::with('comment', 'tag', 'category')->find($id);
+		$post = Post::with('comment', 'tag', 'category', 'user')->findOrFail($id);
 
 		return view('frontend.post.show', ['post' => $post]);
 	}

@@ -11,7 +11,7 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		$posts = Post::with('comment')->paginate();
+		$posts = Post::with('tag', 'category', 'user')->orderBy('created_at', 'DEC')->paginate();
 
 		return view('frontend.home', ['posts' => $posts]);
 	}

@@ -5,10 +5,12 @@ use App\Http\Controllers\Controller;
 
 use App\Post;
 use App\Comment;
+use App\Role;
 use App\Tag;
 use App\Categories;
 
 use App\Services\PostService;
+use App\User;
 use Illuminate\Http\Request;
 
 class PostController extends Controller {
@@ -20,7 +22,7 @@ class PostController extends Controller {
 	 */
 	public function index()
 	{
-		$posts = Post::with('comment')->paginate(15);
+		$posts = Post::with('comment', 'user')->paginate(15);
 
 		return view('dashboard.blog.posts.index', ['posts' => $posts]);
 	}
@@ -32,11 +34,13 @@ class PostController extends Controller {
 	 */
 	public function create()
 	{
+		$users = User::all();
+
 		$tags = Tag::all();
 
 		$categories = Categories::all();
 
-		return view('dashboard.blog.posts.create', ['tags' => $tags, 'categories' => $categories]);
+		return view('dashboard.blog.posts.create', ['tags' => $tags, 'categories' => $categories, 'users' => $users]);
 	}
 
 	/**
@@ -71,7 +75,7 @@ class PostController extends Controller {
 	 */
 	public function show($id)
 	{
-		$post = Post::with('comment', 'tag', 'category')->findOrFail($id);
+		$post = Post::with('comment', 'tag', 'category', 'user')->findOrFail($id);
 
 		return view('dashboard.blog.posts.show', ['post' => $post]);
 	}
@@ -86,12 +90,14 @@ class PostController extends Controller {
 	{
 		$post = Post::with('tag', 'category')->findOrFail($id);
 
+		$users = User::all();
+
 		$tags = Tag::all();
 
 		$categories = Categories::all();
 
 
-		return view('dashboard.blog.posts.edit', ['post' => $post, 'tags' => $tags, 'categories' => $categories]);
+		return view('dashboard.blog.posts.edit', ['post' => $post, 'tags' => $tags, 'categories' => $categories, 'users' => $users]);
 	}
 
 	/**
@@ -128,7 +134,15 @@ class PostController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+
+		$post = Post::findOrFail($id);
+
+		$post->tag()->detach();
+		$post->category()->detach();
+
+		$post->delete();
+
+		return redirect(route('dashboard.blog.posts.index'))->with('message', 'Post successfully deleted!');
 	}
 
 }

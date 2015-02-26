@@ -4,7 +4,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Auth\Guard;
 
-use App\Services\CreateUser;
+use App\Services\UserService;
 
 use App\User;
 use App\Role;
@@ -84,7 +84,7 @@ class UsersController extends Controller {
     public function store(Request $request)
     {
 
-        $createUser = new CreateUser;
+        $createUser = new UserService;
 
         $validator = $createUser->validator($request->all());
 

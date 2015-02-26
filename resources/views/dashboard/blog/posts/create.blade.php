@@ -51,6 +51,7 @@
                 </div>
             </div>
 
+            <!-- Select Categories -->
             <div class="col-md-12">
                 <div class="form-group">
                     <div class="list-group cat-tags">
@@ -67,6 +68,7 @@
                 </div>
             </div>
 
+            <!-- Select Tags -->
             <div class="col-md-12">
                 <div class="form-group">
                     <div class="list-group cat-tags">
@@ -81,6 +83,24 @@
                         @endforeach
                     </div>
                 </div>
+            </div>
+
+            <!-- Select User -->
+            <div class="form-group col-md-12">
+                <label for="select-role" class="control-label">Post as:</label>
+                <select class="form-control" name="user_id">
+
+                    <option value="{{ Auth::id() }}">Me</option>
+
+                    @foreach($users as $user)
+
+                        @if($user['id'] != Auth::id())
+                            <option value="{{ $user['id'] }}"> {{$user['username']}} </option>
+                        @endif
+
+                    @endforeach
+
+                </select>
             </div>
 
             {!! Form::close() !!}

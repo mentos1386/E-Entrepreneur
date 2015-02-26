@@ -30,7 +30,7 @@ class PostService {
         $post = Post::create([
             'title'   => $data['title'],
             'body'    => $data['body'],
-            'user_id' => Auth::id(),
+            'user_id' => $data['user_id'],
         ]);
 
         // Assign tags
@@ -59,7 +59,7 @@ class PostService {
 
         $post->title = $data['title'];
         $post->body = $data['body'];
-        $post->user_id = Auth::id();
+        $post->user_id = $data['user_id'];
 
         $post->save();
 

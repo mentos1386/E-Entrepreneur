@@ -91,10 +91,13 @@ Route::group(array('middleware' => 'perm.dashboard'), function()
 		{
 			// Posts
 			Route::resource('/dashboard/blog/posts', 'Dashboard\PostController');
+			Route::get('/dashboard/blog/posts/{id}/delete', 'Dashboard\PostController@destroy');
 			// Tags
 			Route::resource('/dashboard/blog/tags', 'Dashboard\TagsController');
+			Route::get('/dashboard/blog/tags/{id}/delete', 'Dashboard\TagsController@destroy');
 			// Categories
 			Route::resource('/dashboard/blog/categories', 'Dashboard\CategoriesController');
+			Route::get('/dashboard/blog/categories/{id}/delete', 'Dashboard\CategoriesController@destroy');
 
 		});
 

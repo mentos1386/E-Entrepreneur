@@ -13,10 +13,12 @@ class CategoryService {
      */
     public function validator(array $data)
     {
+
+        //dd($data);
         return Validator::make($data, [
             'name'    => 'required|max:255',
             'comment' => 'required',
-            'parent'  => 'numeric'
+            'parent' => 'sometimes|exists:categories,id'
         ]);
     }
 

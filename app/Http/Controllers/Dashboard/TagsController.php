@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers\Dashboard;
 
+use App\Categories;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -96,7 +97,14 @@ class TagsController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+
+		$tag = Tag::findOrFail($id);
+
+		// TODO: Fix it!
+		dd('NE DELA');
+		$tag->post();
+
+		$tag->delete();
 	}
 
 }
