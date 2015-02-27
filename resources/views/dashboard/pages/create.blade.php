@@ -69,8 +69,6 @@
                 <select class="form-control" name="role_id[]" multiple data-size="10"
                         data-live-search="true" multiple data-selected-text-format="count>4">
 
-                    <option value="">Everyone</option>
-
                     @foreach($roles as $role)
 
                         <option value="{{ $role['id'] }}"> {{$role['name']}} </option>
