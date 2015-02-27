@@ -4,7 +4,7 @@
     <title>Dashboard</title>
 @endsection
 
-@section('content')
+@section('header')
 
     <h1 class="page-header">Welcome back {{ Auth::user()->username }}</h1>
 

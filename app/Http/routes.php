@@ -1,29 +1,17 @@
 <?php
 
-Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
-
-Route::controllers([ ## REMOVE IN FUTURE!
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
-]);
 
 /*
  * User Login/Register and Logout
  */
+Route::controllers([
+	'auth'     => 'Auth\AuthController',
+	'password' => 'Auth\PasswordController',
+]);
 Route::get('/login', ['as' => 'login', 'uses' => 'Auth\AuthController@getLogin']);
 Route::get('/register', ['as' => 'register', 'uses' => 'Auth\AuthController@getRegister']);
 Route::get('/logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@getLogout']);
 
-/*
- *
- * Front end
- *
- */
-
-/*
- * Posts
- */
-Route::resource('/post', 'Frontend\PostsController', ['only' => ['index', 'show']]);
 
 
 
@@ -145,3 +133,25 @@ Route::group(array('middleware' => 'perm.dashboard'), function()
 
 	});
 });
+
+/*
+ *
+ * Front end [Everything Else]
+ *
+ */
+/*
+ * Front page
+ */
+Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
+
+/*
+ * Posts
+ */
+Route::resource('/post', 'Frontend\PostsController', ['only' => ['index', 'show']]);
+
+/*
+ * Pages
+ */
+Route::get('/{url}', 'Frontend\PagesController@show');
+Route::get('/page/password/{id}', ['as' => 'page.password', 'uses' => 'Frontend\PagesController@password']);
+Route::post('/page/password/{id}', ['as' => 'page.password.check', 'uses' => 'Frontend\PagesController@password_check']);

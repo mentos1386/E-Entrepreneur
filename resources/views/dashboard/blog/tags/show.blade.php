@@ -1,19 +1,19 @@
 @extends('dashboard.layouts.master')
 
 @section('meta')
-    <title>{{ $category['name'] }}</title>
+    <title>{{ $tag['name'] }}</title>
 @endsection
 
 @section('header')
 
     <h1 class="page-header">
-        <span class="fa fa-sitemap"></span> Category: {{ $category['name'] }}
+        <span class="fa fa-tag"></span> Tag: {{ $tag['name'] }}
         <div class="pull-right">
-            <a href=" {{ route('dashboard.blog.categories.index').'/'.$category['id'].'/edit' }}" type="button"
+            <a href=" {{ route('dashboard.blog.tags.index').'/'.$tag['id'].'/edit' }}" type="button"
                class="btn btn-default">
                 <span class="fa fa-pencil"></span> Edit
             </a>
-            <a href=" {{ route('dashboard.blog.categories.index').'/'.$category['id'].'/delete' }}" type="button"
+            <a href=" {{ route('dashboard.blog.tags.index').'/'.$tag['id'].'/delete' }}" type="button"
                class="btn btn-default">
                 <span class="fa fa-minus-circle"></span> Delete
             </a>
@@ -25,11 +25,11 @@
 @section('content')
 
     <div class="col-md-9">
-        <div class="well">{{ $category['comment'] }}</div>
+        <div class="well">{{ $tag['comment'] }}</div>
     </div>
 
     <div class="col-md-9">
-        <h2 class="sub-header">Posts using this Category</h2>
+        <h2 class="sub-header">Posts using this Tag</h2>
         <table class="table">
             <thead>
             <th>#</th>
@@ -38,7 +38,7 @@
             <th>Created at</th>
             <th>Created by</th>
             </thead>
-            @foreach($category->post->toArray() as $post)
+            @foreach($tag->post->toArray() as $post)
                 <tbody>
                 <td>{{ $post['id'] }}</td>
                 <td><a href="{{ route('dashboard.blog.posts.index').'/'.$post['id'] }}">{{ $post['title'] }}</a></td>

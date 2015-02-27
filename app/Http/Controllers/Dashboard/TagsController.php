@@ -53,7 +53,7 @@ class TagsController extends Controller {
 
 		$createTag->create($request->all());
 
-		return redirect(route('dashboard.blog.tags.index'))->with('message', 'SomeMessage');
+		return redirect(route('dashboard.blog.tags.index'))->with('message_success', '<strong>Success!</strong> Tag successfully created!');
 	}
 
 	/**
@@ -64,7 +64,9 @@ class TagsController extends Controller {
 	 */
 	public function show($id)
 	{
-		//
+		$tag = Tag::with('post', 'post.user')->findOrFail($id);
+
+		return view('dashboard.blog.tags.show', ['tag' => $tag]);
 	}
 
 	/**
@@ -75,18 +77,34 @@ class TagsController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+		$tag = Tag::findOrFail($id);
+
+		return view('dashboard.blog.tags.edit', ['tag' => $tag]);
 	}
 
 	/**
 	 * Update the specified resource in storage.
 	 *
+	 * @param array Request $request
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(Request $request, $id)
 	{
-		//
+		$updateTag = new TagService;
+
+		$validator = $updateTag->validator($request->all());
+
+		if ($validator->fails())
+		{
+			$this->throwValidationException(
+				$request, $validator
+			);
+		}
+
+		$updateTag->update($request->all(), $id);
+
+		return redirect(route('dashboard.blog.tags.index'))->with('message_success', '<strong>Success!</strong> Tag successfully updated!');
 	}
 
 	/**

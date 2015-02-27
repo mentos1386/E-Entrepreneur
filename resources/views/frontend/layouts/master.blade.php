@@ -51,11 +51,8 @@
 			</div>
 		</nav>
 
-		@if (Session::has('global'))
-			<div class="container">
-				<div class="alert alert-info" role="alert">{{ Session::get('global') }}</div>
-			</div>
-		@endif
+		@include('frontend.layouts.alerts')
+
 		<!-- Yield content -->
 		@yield('content')
 

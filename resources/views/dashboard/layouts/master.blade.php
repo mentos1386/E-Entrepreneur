@@ -65,6 +65,10 @@
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
+            @yield('header')
+
+            @include('dashboard.layouts.alerts')
+
             @yield('content')
 
         </div>
@@ -77,5 +81,14 @@
 <script src="//code.jquery.com/jquery.js"></script>
 <!-- Bootstrap JavaScript -->
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<!-- Better selects -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/bootstrap-select.min.js"></script>
+<link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" rel="stylesheet">
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('select').selectpicker();
+    });
+</script>
+
 </body>
 </html>

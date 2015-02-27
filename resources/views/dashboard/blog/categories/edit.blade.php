@@ -4,7 +4,7 @@
     <title>Edit Category</title>
 @endsection
 
-@section('content')
+@section('header')
 
     <h1 class="page-header">
         <span class="fa fa-sitemap"></span> Edit Category
@@ -12,8 +12,9 @@
         </div>
     </h1>
 
-    <!-- Inlcude Alerts view !-->
-    @include('dashboard.layouts.alerts')
+@endsection
+
+@section('content')
 
     <div class="row">
 
@@ -58,19 +59,22 @@
                 <label for="select-role" class="control-label">Select parent:</label>
                 <select class="form-control" name="parent">
 
-
-                    @if ($category['parent'] != null || $category['parent'] != 0)
-                        <option value="{{ $category['parent'] }}">Current parent</option>
+                    @if ($category['parent'])
+                        <option value="{{ $category['parent'] }}">
+                            @foreach($categories as $category_search)
+                                @if ($category_search['id'] == $category['parent'])
+                                    <span class="fa fa-check"></span> {{ $category_search['name'] }}
+                                @endif
+                            @endforeach
+                        </option>
                     @endif
 
                     <option value="">No parent</option>
 
                     @foreach($categories as $category_all)
-
                         @if ($category['parent'] != $category_all['id'])
                             <option value="{{ $category_all['id'] }}"> {{$category_all['name']}} </option>
                         @endif
-
                     @endforeach
 
                 </select>

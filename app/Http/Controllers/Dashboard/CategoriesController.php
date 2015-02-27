@@ -54,7 +54,8 @@ class CategoriesController extends Controller {
 
 		$createCategory->create($request->all());
 
-		return redirect(route('dashboard.blog.categories.index'))->with('message', 'SomeMessage');
+		return redirect(route('dashboard.blog.categories.index'))
+			->with('message_success', '<strong>Success!</strong> Category successfully created!');
 	}
 
 	/**
@@ -88,12 +89,27 @@ class CategoriesController extends Controller {
 	/**
 	 * Update the specified resource in storage.
 	 *
+	 * @param array Request $request
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(Request $request, $id)
 	{
-		//
+		$updateCategory = new CategoryService;
+
+		$validator = $updateCategory->validator($request->all());
+
+		if ($validator->fails())
+		{
+			$this->throwValidationException(
+				$request, $validator
+			);
+		}
+
+		$updateCategory->update($request->all(), $id);
+
+		return redirect(route('dashboard.blog.categories.index'))
+			->with('message_success', '<strong>Success!</strong> Category successfully updated!');
 	}
 
 	/**

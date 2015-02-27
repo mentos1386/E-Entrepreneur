@@ -51,6 +51,8 @@ class PostController extends Controller {
 	 */
 	public function store(Request $request)
 	{
+		//dd($request->all());
+
 		$createPost = new PostService;
 
 		$validator = $createPost->validator($request->all());
@@ -64,7 +66,8 @@ class PostController extends Controller {
 
 		$createPost->create($request->all());
 
-		return redirect(route('dashboard.blog.posts.index'))->with('message', 'Post successfully created!');
+		return redirect(route('dashboard.blog.posts.index'))
+			->with('message_success', '<strong>Success!</strong> Post successfully created!');
 	}
 
 	/**
@@ -122,7 +125,8 @@ class PostController extends Controller {
 
 		$updatePost->update($request->all(), $id);
 
-		return redirect(route('dashboard.blog.posts.index'))->with('message', 'Post successfully updated!');
+		return redirect(route('dashboard.blog.posts.index'))
+			->with('message_success', '<strong>Success!</strong> Post successfully updated!');
 
 	}
 

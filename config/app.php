@@ -200,10 +200,12 @@ return [
 		'Form'		=> 'Illuminate\Html\FormFacade',
 		'HTML'		=> 'Illuminate\Html\HtmlFacade',
 
-		## CUSTOM
+		## Helpers
 		'Gravatar'	=> 'App\Helpers\Gravatar',
 		'Sidebar' 	=> 'App\Helpers\Sidebar',
 		'Link' 	=> 'App\Helpers\Links',
+		'FormH' => 'App\Helpers\Form',
+
 		'Settings' 	=> 'App\App',
 
 	],

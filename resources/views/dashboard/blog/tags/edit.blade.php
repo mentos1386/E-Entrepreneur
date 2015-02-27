@@ -1,13 +1,13 @@
 @extends('dashboard.layouts.master')
 
 @section('meta')
-    <title>Create Tag</title>
+    <title>Edit Tag</title>
 @endsection
 
 @section('header')
 
     <h1 class="page-header">
-        <span class="fa fa-tags"></span> Create Tag
+        <span class="fa fa-tag"></span> Edit Tag
         <div class="pull-right">
         </div>
     </h1>
@@ -18,7 +18,7 @@
 
     <div class="row">
 
-        {!! Form::open(['url' => route('dashboard.blog.tags.store')]) !!}
+        {!! Form::model($tag, ['method' => 'PUT','route' => ['dashboard.blog.tags.update', $tag->id]])!!}
 
         <div class="col-md-8">
 
@@ -44,13 +44,15 @@
 
         <div class="col-md-4">
 
+
             <div class="col-md-12">
                 <div class="jumbotron">
 
-                    <p>Here you can create new tag.</p>
+                    <p>Here you can edit tag.</p>
 
                 </div>
             </div>
+
 
             {!! Form::close() !!}
 

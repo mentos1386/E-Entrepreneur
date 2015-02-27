@@ -4,7 +4,7 @@
     <title>{{ $user['username'] }}</title>
 @endsection
 
-@section('content')
+@section('header')
 
     <h1 class="page-header">
         <span class="fa fa-user"></span> User: {{ $user['username'] }}
@@ -19,6 +19,10 @@
             </div>
         </div>
     </h1>
+
+@endsection
+
+@section('content')
 
     <div class="row">
 

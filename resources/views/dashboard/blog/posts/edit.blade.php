@@ -4,7 +4,7 @@
     <title>Edit: {{ $post['title'] }}</title>
 @endsection
 
-@section('content')
+@section('header')
 
     <h1 class="page-header">
         <span class="fa fa-pencil"></span> Edit: {{ $post['title'] }}
@@ -12,8 +12,9 @@
         </div>
     </h1>
 
-    <!-- Inlcude Alerts view !-->
-    @include('dashboard.layouts.alerts')
+@endsection
+
+@section('content')
 
     <div class="row">
 
@@ -51,66 +52,46 @@
                 </div>
             </div>
 
+
+            <!-- Select Categories -->
             <div class="col-md-12">
                 <div class="form-group">
-                    <div class="list-group cat-tags">
-                        <p class="list-group-item list-group-item-heading">
-                            Categories
-                        </p>
-                        @foreach($categories as $category) <!-- TODO: IF IS SELECTED FROM BEFORE; MAKE IT CHECKED! !-->
-                            <p class="list-group-item">
-                                <input type="checkbox" name="categories[]" value="{{$category['id']}}"
-                                @if ($post['category'] !== null)
-                                    @foreach($post['category'] as $post_category)
-                                        @if ($category['id'] == $post_category['id'])
-                                       checked
-                                                @endif
-                                            @endforeach
-                                        @endif
-                                >
-                                {{ $category['name'] }}
-                            </p>
+                    <label for="select-role" class="control-label">Categories:</label>
+                    <select class="form-control" name="categories[]" multiple data-live-search="true">
+                        @foreach($categories as $category)
+                            <option value="{{$category['id']}}"
+                                    {{ FormH::check_selected($post['category'], $category) }}
+                                    >{{ $category['name'] }}</option>
                         @endforeach
-                    </div>
+                    </select>
                 </div>
             </div>
 
+            <!-- Select Tags -->
             <div class="col-md-12">
                 <div class="form-group">
-                    <div class="list-group cat-tags">
-                        <p class="list-group-item list-group-item-heading">
-                            Tags
-                        </p>
-                        @foreach($tags as $tag) <!-- TODO: IF IS SELECTED FROM BEFORE; MAKE IT CHECKED! !-->
-                            <p class="list-group-item">
-                                <input type="checkbox" name="tags[]" value="{{ $tag['id'] }}"
-                                @if ($post['tag'] !== null)
-                                    @foreach($post['tag'] as $post_tag)
-                                        @if ($tag['id'] == $post_tag['id'])
-                                       checked
-                                                @endif
-                                            @endforeach
-                                        @endif
-                                >
-                                {{ $tag['name'] }}
-                            </p>
+                    <label for="select-role" class="control-label">Tags:</label>
+                    <select class="form-control" name="tags[]" multiple data-live-search="true">
+                        @foreach($tags as $tag)
+                            <option value="{{ $tag['id'] }}"
+                                    {{ FormH::check_selected($post['tag'], $tag) }}
+                                    >{{ $tag['name'] }}</option>
                         @endforeach
-                    </div>
+                    </select>
                 </div>
             </div>
 
             <!-- Select User -->
             <div class="form-group col-md-12">
                 <label for="select-role" class="control-label">Post as:</label>
-                <select class="form-control" name="user_id">
-
-                    <option value="{{ $post['user_id'] }}">Previous user</option>
+                <select class="form-control" name="user_id" data-live-search="true" data-size="10">
 
                     @foreach($users as $user)
-
-                        @if($user['id'] != $post['user_id'])
-                            <option value="{{ $user['id'] }}" checked> {{$user['username']}} </option>
+                        <option value="{{ $user['id'] }}"
+                        @if($user['id'] == $post['user_id'])
+                                selected
                         @endif
+                                > {{$user['username']}} </option>
 
                     @endforeach
 

@@ -45,7 +45,7 @@
         ],
         [
             '</span> Add New <span class="fa fa-chevron-right pull-right"></span>',
-            '#',
+    route('dashboard.pages.create'),
         ],
     ))
 !!}

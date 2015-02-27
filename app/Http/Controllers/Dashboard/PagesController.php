@@ -3,8 +3,11 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Services\PageService;
+use App\User;
 use Illuminate\Http\Request;
-
+use App\Page;
+use App\Role;
 class PagesController extends Controller {
 
 	/**
@@ -14,7 +17,9 @@ class PagesController extends Controller {
 	 */
 	public function index()
 	{
-		return view('dashboard.index');
+		$pages = Page::paginate();
+
+		return view('dashboard.pages.index', ['pages' => $pages]);
 	}
 
 	/**
@@ -24,17 +29,36 @@ class PagesController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		$roles = Role::all();
+
+		$users = User::all();
+
+		return view('dashboard.pages.create', ['roles' => $roles, 'users' => $users]);
 	}
 
 	/**
 	 * Store a newly created resource in storage.
 	 *
-	 * @return Response
+	 * @param Request $request
+	 * @return \Illuminate\Http\Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
-		//
+		$createPage = new PageService;
+
+		$validator = $createPage->validator($request->all());
+
+		if ($validator->fails())
+		{
+			$this->throwValidationException(
+				$request, $validator
+			);
+		}
+
+		$createPage->create($request->all());
+
+		return redirect(route('dashboard.pages.index'))
+			->with('message_success', '<strong>Success!</strong> Page successfully created!');
 	}
 
 	/**
@@ -45,7 +69,7 @@ class PagesController extends Controller {
 	 */
 	public function show($id)
 	{
-		//
+		dd(Page::with('user', 'role')->find($id));
 	}
 
 	/**

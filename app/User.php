@@ -58,4 +58,15 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		return $this->belongsTo('App\Role');
 	}
 
+	/**
+	 *  One User can be Assigned to Many Pages [Permission to access page]
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+	 */
+	public function page()
+	{
+
+		return $this->hasMany('App\Page', 'page_user', 'page_id', 'user_id');
+	}
+
 }

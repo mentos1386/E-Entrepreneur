@@ -4,7 +4,7 @@
     <title>Create User</title>
 @endsection
 
-@section('content')
+@section('header')
 
     <h1 class="page-header">
         <span class="fa fa-user"></span> Create User
@@ -12,8 +12,9 @@
         </div>
     </h1>
 
-    <!-- Inlcude Alerts view !-->
-    @include('dashboard.layouts.alerts')
+@endsection
+
+@section('content')
 
     <div class="row">
 

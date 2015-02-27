@@ -38,4 +38,15 @@ class Role extends Model {
         return $this->hasOne('App\Permission');
     }
 
+    /**
+     *  One Role can be Assigned to Many Pages [Permission to access page]
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function page()
+    {
+
+        return $this->hasMany('App\Page', 'page_role', 'page_id', 'role_id');
+    }
+
 }

@@ -23,6 +23,8 @@ class CategoryService {
     }
 
     /**
+     *  Create Category
+     *
      * @param  array $data
      */
     public function create(array $data)
@@ -33,6 +35,25 @@ class CategoryService {
             'parent'  => $data['parent']
         ]);
 
+    }
+
+
+    /**
+     *  Update category
+     *
+     * @param array $data
+     * @param int $id
+     */
+    public function update(array $data, $id)
+    {
+
+        $category = Categories::findOrNew($id);
+
+        $category->name = $data['name'];
+        $category->comment = $data['comment'];
+        $category->parent = $data['parent'];
+
+        $category->save();
     }
 
 }

@@ -4,7 +4,7 @@
     <title>Create Post</title>
 @endsection
 
-@section('content')
+@section('header')
 
     <h1 class="page-header">
         <span class="fa fa-pencil"></span> Create Post
@@ -12,8 +12,9 @@
         </div>
     </h1>
 
-    <!-- Inlcude Alerts view !-->
-    @include('dashboard.layouts.alerts')
+@endsection
+
+@section('content')
 
     <div class="row">
 
@@ -54,53 +55,45 @@
             <!-- Select Categories -->
             <div class="col-md-12">
                 <div class="form-group">
-                    <div class="list-group cat-tags">
-                        <p class="list-group-item list-group-item-heading">
-                            Categories
-                        </p>
+                    <label for="select-role" class="control-label">Categories:</label>
+                    <select class="form-control" name="categories[]" multiple>
                         @foreach($categories as $category)
-                            <p class="list-group-item">
-                                <input type="checkbox" name="categories[]" value="{{$category['id']}}">
-                                {{ $category['name'] }}
-                            </p>
+                            <option value="{{$category['id']}}">{{ $category['name'] }}</option>
                         @endforeach
-                    </div>
+                    </select>
                 </div>
             </div>
 
             <!-- Select Tags -->
             <div class="col-md-12">
                 <div class="form-group">
-                    <div class="list-group cat-tags">
-                        <p class="list-group-item list-group-item-heading">
-                            Tags
-                        </p>
+                    <label for="select-role" class="control-label">Tags:</label>
+                    <select class="form-control" name="tags[]" multiple>
                         @foreach($tags as $tag)
-                            <p class="list-group-item">
-                                <input type="checkbox" name="tags[]" value="{{ $tag['id'] }}">
-                                {{ $tag['name'] }}
-                            </p>
+                            <option value="{{ $tag['id'] }}">{{ $tag['name'] }}</option>
                         @endforeach
-                    </div>
+                    </select>
                 </div>
             </div>
 
             <!-- Select User -->
-            <div class="form-group col-md-12">
-                <label for="select-role" class="control-label">Post as:</label>
-                <select class="form-control" name="user_id">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="select-role" class="control-label">Post as:</label>
+                    <select class="form-control" name="user_id">
 
-                    <option value="{{ Auth::id() }}">Me</option>
+                        <option value="{{ Auth::id() }}">Me</option>
 
-                    @foreach($users as $user)
+                        @foreach($users as $user)
 
-                        @if($user['id'] != Auth::id())
-                            <option value="{{ $user['id'] }}"> {{$user['username']}} </option>
-                        @endif
+                            @if($user['id'] != Auth::id())
+                                <option value="{{ $user['id'] }}"> {{$user['username']}} </option>
+                            @endif
 
-                    @endforeach
+                        @endforeach
 
-                </select>
+                    </select>
+                </div>
             </div>
 
             {!! Form::close() !!}

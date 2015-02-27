@@ -97,7 +97,8 @@ class UsersController extends Controller {
 
         $createUser->create($request->all());
 
-        return redirect(route('dashboard.users.index'))->with('message', 'User successfully created!');
+        return redirect(route('dashboard.users.index'))
+            ->with('message_success', '<strong>Success!</strong> User successfully created!');
 
     }
 

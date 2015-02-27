@@ -20,6 +20,8 @@ class TagService {
     }
 
     /**
+     * Create tag
+     *
      * @param  array $data
      */
     public function create(array $data)
@@ -29,6 +31,23 @@ class TagService {
             'comment' => $data['comment'],
         ]);
 
+    }
+
+    /**
+     *  Update tag
+     *
+     * @param array $data
+     * @param int $id
+     */
+    public function update(array $data, $id)
+    {
+
+        $tag = Tag::findOrNew($id);
+
+        $tag->name = $data['name'];
+        $tag->comment = $data['comment'];
+
+        $tag->save();
     }
 
 }

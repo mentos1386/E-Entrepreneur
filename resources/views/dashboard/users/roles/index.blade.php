@@ -4,7 +4,7 @@
     <title>Roles</title>
 @endsection
 
-@section('content')
+@section('header')
 
     <h1 class="page-header">
         <span class="fa fa-align-justify"></span> Roles
@@ -14,6 +14,10 @@
             </a>
         </div>
     </h1>
+
+@endsection
+
+@section('content')
 
     <table class="table">
 
