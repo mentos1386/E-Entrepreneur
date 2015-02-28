@@ -205,6 +205,7 @@ return [
 		'Sidebar' 	=> 'App\Helpers\Sidebar',
 		'Link' 	=> 'App\Helpers\Links',
 		'FormH' => 'App\Helpers\Form',
+		'HtmlH' => 'App\Helpers\Html',
 
 		'Settings' 	=> 'App\App',
 

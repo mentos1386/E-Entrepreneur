@@ -36,7 +36,7 @@ class PageService {
             'content'  => $data['content'],
             'url'      => $data['url'],
             'type'     => $data['type'],
-            'password' => Hash::make($data['password'])
+            'password' => (($data['password'] !== '') ? Hash::make($data['password']) : ''),
         ]);
 
         // Assign Role [Permission]
@@ -116,7 +116,7 @@ class PageService {
         }
 
         // Is password required
-        if (isset($page['password']))
+        if ($page['password'] !== '')
         {
             return redirect()->route('page.password', [$page]);
         }

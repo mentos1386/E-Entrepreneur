@@ -69,7 +69,9 @@ class PagesController extends Controller {
 	 */
 	public function show($id)
 	{
-		dd(Page::with('user', 'role')->find($id));
+		$page = Page::with('user', 'role')->find($id);
+
+		return view('dashboard.pages.show', ['page' => $page]);
 	}
 
 	/**

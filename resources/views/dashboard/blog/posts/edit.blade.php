@@ -57,7 +57,7 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <label for="select-role" class="control-label">Categories:</label>
-                    <select class="form-control" name="categories[]" multiple data-live-search="true">
+                    <select class="form-control" name="categories[]" multiple data-live-search="true" data-size="10">
                         @foreach($categories as $category)
                             <option value="{{$category['id']}}"
                                     {{ FormH::check_selected($post['category'], $category) }}
@@ -71,7 +71,7 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <label for="select-role" class="control-label">Tags:</label>
-                    <select class="form-control" name="tags[]" multiple data-live-search="true">
+                    <select class="form-control" name="tags[]" multiple data-live-search="true" data-size="10">
                         @foreach($tags as $tag)
                             <option value="{{ $tag['id'] }}"
                                     {{ FormH::check_selected($post['tag'], $tag) }}

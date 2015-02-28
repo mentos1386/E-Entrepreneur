@@ -56,7 +56,7 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <label for="select-role" class="control-label">Categories:</label>
-                    <select class="form-control" name="categories[]" multiple>
+                    <select class="form-control" name="categories[]" multiple data-live-search="true" data-size="10">
                         @foreach($categories as $category)
                             <option value="{{$category['id']}}">{{ $category['name'] }}</option>
                         @endforeach
@@ -68,7 +68,7 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <label for="select-role" class="control-label">Tags:</label>
-                    <select class="form-control" name="tags[]" multiple>
+                    <select class="form-control" name="tags[]" multiple data-live-search="true" data-size="10">
                         @foreach($tags as $tag)
                             <option value="{{ $tag['id'] }}">{{ $tag['name'] }}</option>
                         @endforeach
@@ -80,7 +80,7 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <label for="select-role" class="control-label">Post as:</label>
-                    <select class="form-control" name="user_id">
+                    <select class="form-control" name="user_id" data-live-search="true" data-size="10">
 
                         <option value="{{ Auth::id() }}">Me</option>
 

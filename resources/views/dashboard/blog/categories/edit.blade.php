@@ -57,7 +57,7 @@
             <!-- Select Parent -->
             <div class="form-group col-md-12">
                 <label for="select-role" class="control-label">Select parent:</label>
-                <select class="form-control" name="parent">
+                <select class="form-control" name="parent" data-live-search="true" data-size="10">
 
                     @if ($category['parent'])
                         <option value="{{ $category['parent'] }}">
