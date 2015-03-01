@@ -1,41 +1,16 @@
-<html>
-<head>
-    <link href='http://fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
+@extends('frontend.layouts.master')
 
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            color: #B0BEC5;
-            display: table;
-            font-weight: 100;
-            font-family: 'Lato';
-        }
+@section('content')
 
-        .container {
-            text-align: center;
-            display: table-cell;
-            vertical-align: middle;
-        }
+    <div class="col-md-6 col-md-offset-3">
+        <div class="jumbotron">
+            <h2 class="text-danger"><span class="fa fa-exclamation-triangle"></span> Error 403: Unauthorized action!
+            </h2>
 
-        .content {
-            text-align: center;
-            display: inline-block;
-        }
+            <p>You were trying to access site that is protected.</p>
 
-        .title {
-            font-size: 72px;
-            margin-bottom: 40px;
-        }
-    </style>
-</head>
-<body>
-<div class="container">
-    <div class="content">
-        <div class="title">Not enough permissions.</div>
+            <p><a class="btn btn-primary btn-lg" href="/" role="button">Home</a></p>
     </div>
 </div>
-</body>
-</html>
+
+@endsection

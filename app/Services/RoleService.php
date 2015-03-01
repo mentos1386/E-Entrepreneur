@@ -39,6 +39,8 @@ class RoleService {
     }
 
     /**
+     *  Create role
+     *
      * @param  array  $data
      */
     public function create(array $data)
@@ -55,24 +57,67 @@ class RoleService {
         Permission::create([
 
             // Backend
-            'dashboard' => $data['dashboard'],
-            'dashboard_users' => $data['dashboard_users'],
-            'dashboard_blog_posts' => $data['dashboard_blog_posts'],
+            'dashboard'              => $data['dashboard'],
+            'dashboard_users'        => $data['dashboard_users'],
+            'dashboard_blog_posts'   => $data['dashboard_blog_posts'],
             'dashboard_blog_comments' => $data['dashboard_blog_comments'],
-            'dashboard_statistics' => $data['dashboard_statistics'],
-            'dashboard_store_add' => $data['dashboard_store_add'],
+            'dashboard_statistics'   => $data['dashboard_statistics'],
+            'dashboard_store_add'    => $data['dashboard_store_add'],
             'dashboard_store_orders' => $data['dashboard_store_orders'],
-            'dashboard_settings' => $data['dashboard_settings'],
-            'dashboard_appearance' => $data['dashboard_appearance'],
-            'dashboard_pages' => $data['dashboard_pages'],
+            'dashboard_settings'     => $data['dashboard_settings'],
+            'dashboard_appearance'   => $data['dashboard_appearance'],
+            'dashboard_pages'        => $data['dashboard_pages'],
 
             // Frontend
-            'user_comments_post' => $data['user_comments_post'],
-            'user_store_buy' => $data['user_store_buy'],
+            'user_comments_post'     => $data['user_comments_post'],
+            'user_store_buy'         => $data['user_store_buy'],
 
-            'role_id' => $role->id,
+            'role_id'                => $role->id,
         ]);
+    }
+
+    /**
+     *  Update role
+     *
+     * @param $id
+     * @param  array $data
+     */
+    public function update(array $data, $id)
+    {
+        //dd($data, $id);
+
+        $role = Role::findOrNew($id);
+
+        $role->name = $data['name'];
+        $role->comment = $data['comment'];
+
+        $role->save();
+
+        $role = Role::with('permission')->find($id)->permission;
+
+        // Update permissions for role
+        $permissions = Permission::findOrNew($role->id);
+
+        // Backend
+        $permissions->dashboard = $data['dashboard'];
+        $permissions->dashboard_users = $data['dashboard_users'];
+        $permissions->dashboard_blog_posts = $data['dashboard_blog_posts'];
+        $permissions->dashboard_blog_comments = $data['dashboard_blog_comments'];
+        $permissions->dashboard_statistics = $data['dashboard_statistics'];
+        $permissions->dashboard_store_add = $data['dashboard_store_add'];
+        $permissions->dashboard_store_orders = $data['dashboard_store_orders'];
+        $permissions->dashboard_settings = $data['dashboard_settings'];
+        $permissions->dashboard_appearance = $data['dashboard_appearance'];
+        $permissions->dashboard_pages = $data['dashboard_pages'];
+
+        // Frontend
+        $permissions->user_comments_post = $data['user_comments_post'];
+        $permissions->user_store_buy = $data['user_store_buy'];
+
+        $permissions->save();
+
 
     }
+
 
 }

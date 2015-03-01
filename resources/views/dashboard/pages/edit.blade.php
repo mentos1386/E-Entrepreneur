@@ -1,13 +1,13 @@
 @extends('dashboard.layouts.master')
 
 @section('meta')
-    <title>Create Page</title>
+    <title>Edit Page</title>
 @endsection
 
 @section('header')
 
     <h1 class="page-header">
-        <span class="fa fa-server"></span> Create Page
+        <span class="fa fa-server"></span> Edit Page
         <div class="pull-right">
         </div>
     </h1>
@@ -18,7 +18,7 @@
 
     <div class="row">
 
-        {!! Form::open(['url' => route('dashboard.pages.store')]) !!}
+        {!! Form::model($page, ['method' => 'PUT','route' => ['dashboard.pages.update', $page->id]]) !!}
 
         <div class="col-md-8">
 
@@ -47,7 +47,7 @@
             <div class="col-md-12">
                 <div class="jumbotron">
 
-                    <p>Here you can create new page.</p>
+                    <p>Here you can edit page.</p>
 
                 </div>
             </div>
@@ -71,7 +71,9 @@
 
                     @foreach($roles as $role)
 
-                        <option value="{{ $role['id'] }}"> {{$role['name']}} </option>
+                        <option value="{{ $role['id'] }}"
+                                {{ FormH::check_selected($page['role'], $role) }}
+                                > {{$role['name']}} </option>
 
                     @endforeach
 
@@ -86,7 +88,9 @@
 
                     @foreach($users as $user)
 
-                        <option value="{{ $user['id'] }}"> {{$user['username']}} </option>
+                        <option value="{{ $user['id'] }}"
+                                {{ FormH::check_selected($page['user'], $user) }}
+                                > {{$user['username']}} </option>
 
                     @endforeach
 
@@ -106,7 +110,7 @@
                 <label for="select-role" class="control-label">Page type:</label>
                 <select class="form-control" name="type">
 
-                    <!-- TODO: WHEN MAKING THEMES SYSTEM; HERE SHOULD BE AUTO POPULATED DEPENDING ON THEME CAPABILITIES !-->
+                    <!-- WHEN MAKING THEMES SYSTEM; HERE SHOULD BE AUTO POPULATED DEPENDING ON THEME CAPABILITIES !-->
 
                     <option value="red">Red</option>
                     <option value="blue">Blue</option>

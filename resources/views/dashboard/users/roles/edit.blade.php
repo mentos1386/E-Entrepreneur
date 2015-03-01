@@ -1,13 +1,13 @@
 @extends('dashboard.layouts.master')
 
 @section('meta')
-    <title>Create Role</title>
+    <title>Edit Role</title>
 @endsection
 
 @section('header')
 
     <h1 class="page-header">
-        <span class="fa fa-align-justify"></span> Create Role
+        <span class="fa fa-align-justify"></span> Edit: {{ $role['name'] }}
         <div class="pull-right">
         </div>
     </h1>
@@ -17,13 +17,14 @@
 @section('content')
 
     <div class="col-md-12">
-        {!! Form::open(['url' => route('dashboard.users.roles.store')]) !!}
+        {!! Form::model($role->permission, ['method' => 'PUT','route' => ['dashboard.users.roles.update', $role->id]])
+        !!}
 
         <div class="col-md-6">
             <!-- Name Form group -->
             <div class="form-group col-md-12">
                 {!! Form::label('name', 'Name:') !!}
-                {!! Form::text('name', null, ['class' => 'form-control']) !!}
+                {!! Form::text('name', $role->name, ['class' => 'form-control']) !!}
             </div>
 
 
@@ -36,7 +37,7 @@
                         {!! Form::radio('dashboard', '1') !!} True
                     </label>
                     <label>
-                        {!! Form::radio('dashboard', '0', true) !!} False
+                        {!! Form::radio('dashboard', '0') !!} False
                     </label>
                 </div>
             </div>
@@ -50,7 +51,7 @@
                         {!! Form::radio('dashboard_users', '1') !!} True
                     </label>
                     <label>
-                        {!! Form::radio('dashboard_users', '0', true) !!} False
+                        {!! Form::radio('dashboard_users', '0') !!} False
                     </label>
                 </div>
             </div>
@@ -64,7 +65,7 @@
                         {!! Form::radio('user_comments_post', '1') !!} True
                     </label>
                     <label>
-                        {!! Form::radio('user_comments_post', '0', true) !!} False
+                        {!! Form::radio('user_comments_post', '0') !!} False
                     </label>
                 </div>
             </div>
@@ -78,7 +79,7 @@
                         {!! Form::radio('dashboard_blog_comments', '1') !!} True
                     </label>
                     <label>
-                        {!! Form::radio('dashboard_blog_comments', '0', true) !!} False
+                        {!! Form::radio('dashboard_blog_comments', '0') !!} False
                     </label>
                 </div>
             </div>
@@ -92,7 +93,7 @@
                         {!! Form::radio('dashboard_statistics', '1') !!} True
                     </label>
                     <label>
-                        {!! Form::radio('dashboard_statistics', '0', true) !!} False
+                        {!! Form::radio('dashboard_statistics', '0') !!} False
                     </label>
                 </div>
             </div>
@@ -106,7 +107,7 @@
                         {!! Form::radio('user_store_buy', '1') !!} True
                     </label>
                     <label>
-                        {!! Form::radio('user_store_buy', '0', true) !!} False
+                        {!! Form::radio('user_store_buy', '0') !!} False
                     </label>
                 </div>
             </div>
@@ -120,7 +121,7 @@
                         {!! Form::radio('dashboard_store_add', '1') !!} True
                     </label>
                     <label>
-                        {!! Form::radio('dashboard_store_add', '0', true) !!} False
+                        {!! Form::radio('dashboard_store_add', '0') !!} False
                     </label>
                 </div>
             </div>
@@ -134,7 +135,7 @@
                         {!! Form::radio('dashboard_store_orders', '1') !!} True
                     </label>
                     <label>
-                        {!! Form::radio('dashboard_store_orders', '0', true) !!} False
+                        {!! Form::radio('dashboard_store_orders', '0') !!} False
                     </label>
                 </div>
             </div>
@@ -148,7 +149,7 @@
                         {!! Form::radio('dashboard_blog_posts', '1') !!} True
                     </label>
                     <label>
-                        {!! Form::radio('dashboard_blog_posts', '0', true) !!} False
+                        {!! Form::radio('dashboard_blog_posts', '0') !!} False
                     </label>
                 </div>
             </div>
@@ -162,7 +163,7 @@
                         {!! Form::radio('dashboard_appearance', '1') !!} True
                     </label>
                     <label>
-                        {!! Form::radio('dashboard_appearance', '0', true) !!} False
+                        {!! Form::radio('dashboard_appearance', '0') !!} False
                     </label>
                 </div>
             </div>
@@ -176,7 +177,7 @@
                         {!! Form::radio('dashboard_pages', '1') !!} True
                     </label>
                     <label>
-                        {!! Form::radio('dashboard_pages', '0', true) !!} False
+                        {!! Form::radio('dashboard_pages', '0') !!} False
                     </label>
                 </div>
             </div>
@@ -190,7 +191,7 @@
                         {!! Form::radio('dashboard_settings', '1') !!} True
                     </label>
                     <label>
-                        {!! Form::radio('dashboard_settings', '0', true) !!} False
+                        {!! Form::radio('dashboard_settings', '0') !!} False
                     </label>
                 </div>
             </div>
@@ -200,14 +201,14 @@
 
             <div class="jumbotron">
 
-                <p>Here you can create new role.</p>
+                <p>Here you can edit role.</p>
 
             </div>
 
             <!-- Comment Form group -->
             <div class="form-group col-md-12">
                 {!! Form::label('comment', 'Comment:') !!}
-                {!! Form::textarea('comment', null, ['class' => 'form-control']) !!}
+                {!! Form::textarea('comment', $role->comment, ['class' => 'form-control']) !!}
             </div>
 
         </div>

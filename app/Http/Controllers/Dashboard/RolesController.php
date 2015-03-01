@@ -44,7 +44,9 @@ class RolesController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+		$role = Role::with('user', 'permission')->findOrFail($id);
+
+		return View('dashboard.users.roles.edit', ['role' => $role]);
 	}
 
 	/**
@@ -79,19 +81,36 @@ class RolesController extends Controller {
 
 		$createRole->create($request->all());
 
-		return redirect(route('dashboard.users.roles.index'))->with('message', 'SomeMessage');
+		return redirect(route('dashboard.users.roles.index'))
+			->with('message_success', '<strong>Success!</strong> Role successfully created!');
 
 	}
 
 	/**
 	 * Update the specified resource in storage.
 	 *
+	 * @param Request $request
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(Request $request, $id)
 	{
-		//
+
+		$updateRole = new RoleService;
+
+		$validator = $updateRole->validator($request->all());
+
+		if ($validator->fails())
+		{
+			$this->throwValidationException(
+				$request, $validator
+			);
+		}
+
+		$updateRole->update($request->all(), $id);
+
+		return redirect(route('dashboard.users.roles.index'))
+			->with('message_success', '<strong>Success!</strong> Role successfully updated!');
 	}
 
 	/**

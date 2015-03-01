@@ -16,12 +16,26 @@ class PageService {
      */
     public function validator(array $data)
     {
-        return Validator::make($data, [
+        $v = Validator::make($data, [
             'name'    => 'required|max:255',
             'content' => 'required',
-            'url'     => 'required|unique:pages|alpha_dash',
+            'url' => 'required|alpha_dash',
             'type'    => 'required'
         ]);
+
+        $v->sometimes('url', 'unique:pages', function ($data)
+        {
+            if ($data['url'] == '')
+            {
+                return false;
+            }
+
+            $page = Page::where('url', $data['url'])->first();
+
+            return (!isset($page['id']));
+        });
+
+        return $v;
     }
 
     /**
@@ -61,7 +75,28 @@ class PageService {
      */
     public function update(array $data, $id)
     {
+        $page = Page::findOrNew($id);
 
+        $page->name = $data['name'];
+        $page->content = $data['content'];
+        $page->url = $data['url'];
+        $page->type = $data['type'];
+        $page->password = (($data['password'] !== '') ? Hash::make($data['password']) : '');
+
+
+        $page->save();
+
+        // Assign Role [Permission]
+        if (!empty($data['role_id']))
+        {
+            $page->role()->sync($data['role_id']);
+        }
+
+        // Assign users [Permission]
+        if (!empty($data['user_id']))
+        {
+            $page->user()->sync($data['user_id']);
+        }
 
     }
 
@@ -90,15 +125,20 @@ class PageService {
         // Do you need certain Role or be certain User to access?
         if (!(empty($page['role']) || (empty($page['user']))))
         {
+
+            // TODO: There should be || not &&, If permission specifies role & user;
+            // if user is in role and not correct user, he should be allowed!
+            // Or just made it possible to select || or && relationship, when creating/editing page!
+
             foreach ($page['role'] as $role)
             {
                 if (Auth::guest())
                 {
-                    abort(403, 'Unauthorized action.');
+                    abort(401, 'Unauthorized action.');
                 }
                 if ($role->id != Auth::user()->role->id)
                 {
-                    abort(403, 'Unauthorized action.');
+                    abort(401, 'Unauthorized action.');
                 }
             }
 
@@ -106,11 +146,11 @@ class PageService {
             {
                 if (Auth::guest())
                 {
-                    abort(403, 'Unauthorized action.');
+                    abort(401, 'Unauthorized action.');
                 }
                 if ($user->id != Auth::user()->id)
                 {
-                    abort(403, 'Unauthorized action.');
+                    abort(401, 'Unauthorized action.');
                 }
             }
         }

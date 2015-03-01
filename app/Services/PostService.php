@@ -63,20 +63,16 @@ class PostService {
 
         $post->save();
 
-        //Detach previus tags and categories
-        $post->tag()->detach();
-        $post->category()->detach();
-
         // Assign tags
         if (!empty($data['tags']))
         {
-            $post->tag()->attach($data['tags']);
+            $post->tag()->sync($data['tags']);
         }
 
         // Assign categories
         if (!empty($data['categories']))
         {
-            $post->category()->attach($data['categories']);
+            $post->category()->sync($data['categories']);
         }
 
     }

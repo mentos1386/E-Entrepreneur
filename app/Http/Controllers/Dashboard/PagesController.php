@@ -82,18 +82,39 @@ class PagesController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+		$page = Page::with('role', 'user')->findOrFail($id);
+
+		$roles = Role::all();
+
+		$users = User::all();
+
+		return view('dashboard.pages.edit', ['page' => $page, 'roles' => $roles, 'users' => $users]);
 	}
 
 	/**
 	 * Update the specified resource in storage.
 	 *
+	 * @param Request $request
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(Request $request, $id)
 	{
-		//
+		$updatePage = new PageService;
+
+		$validator = $updatePage->validator($request->all());
+
+		if ($validator->fails())
+		{
+			$this->throwValidationException(
+				$request, $validator
+			);
+		}
+
+		$updatePage->update($request->all(), $id);
+
+		return redirect(route('dashboard.pages.index'))
+			->with('message_success', '<strong>Success!</strong> Page successfully updated!');
 	}
 
 	/**
