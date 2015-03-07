@@ -14,8 +14,11 @@ class CreateAppTable extends Migration {
 	{
 		Schema::create('app', function(Blueprint $table)
 		{
+			$table->increments('id');
 			$table->string('name');
+			$table->string('description');
 			$table->string('language')->default('en');
+			$table->string('theme')->default('Default');
 		});
 	}
 

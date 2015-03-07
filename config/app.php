@@ -208,6 +208,7 @@ return [
 		'HtmlH' => 'App\Helpers\Html',
 
 		'Settings' 	=> 'App\App',
+		'Themes' => 'App\Helpers\Themes',
 
 	],
 

@@ -5,15 +5,12 @@
  * User Login/Register and Logout
  */
 Route::controllers([
-	'auth'     => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
+	'auth'     => 'Frontend\AuthController',
+	'password' => 'Frontend\PasswordController',
 ]);
-Route::get('/login', ['as' => 'login', 'uses' => 'Auth\AuthController@getLogin']);
-Route::get('/register', ['as' => 'register', 'uses' => 'Auth\AuthController@getRegister']);
-Route::get('/logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@getLogout']);
-
-
-
+Route::get('/login', ['as' => 'login', 'uses' => 'Frontend\AuthController@getLogin']);
+Route::get('/register', ['as' => 'register', 'uses' => 'Frontend\AuthController@getRegister']);
+Route::get('/logout', ['as' => 'logout', 'uses' => 'Frontend\AuthController@getLogout']);
 
 /*
  *
@@ -119,6 +116,9 @@ Route::group(array('middleware' => 'perm.dashboard'), function()
 	{
 		// Appearance
 		Route::resource('/dashboard/appearance', 'Dashboard\AppearanceController');
+		// Themes
+		Route::resource('/dashboard/appearance/themes', 'Dashboard\ThemesController');
+		Route::get('/dashboard/appearance/themes/{name}/set', 'Dashboard\ThemesController@set');
 	});
 
 	/*

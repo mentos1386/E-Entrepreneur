@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Post;
+use App\App;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller {
@@ -14,7 +15,7 @@ class HomeController extends Controller {
 	{
 		$posts = Post::with('tag', 'category', 'user')->orderBy('created_at', 'DEC')->paginate();
 
-		return view('frontend.home', ['posts' => $posts]);
+		return view('themes.' . App::first()->theme . '.home', ['posts' => $posts]);
 	}
 
 }

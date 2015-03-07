@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Helpers\Themes;
 use App\Post;
 use Illuminate\Http\Request;
 
@@ -28,7 +29,7 @@ class PostsController extends Controller {
 	{
 		$post = Post::with('comment', 'tag', 'category', 'user')->findOrFail($id);
 
-		return view('frontend.post.show', ['post' => $post]);
+		return Themes::view('.post.show', ['post' => $post]);
 	}
 
 

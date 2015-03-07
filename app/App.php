@@ -23,7 +23,7 @@ class App extends Model {
      *
      * @var array
      */
-    protected $fillable = ['name', 'language'];
+    protected $fillable = ['name', 'language', 'theme', 'description'];
 
     /**
      * The attributes excluded from the model's JSON form.

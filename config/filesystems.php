@@ -48,6 +48,21 @@ return [
 			'root'   => storage_path().'/app',
 		],
 
+		'theme'  => [
+			'driver' => 'local',
+			'root'   => base_path() . '/resources/views/themes',
+		],
+
+		'public' => [
+			'driver' => 'local',
+			'root'   => base_path() . '/public',
+		],
+
+		'app'    => [
+			'driver' => 'local',
+			'root'   => base_path(),
+		],
+
 		's3' => [
 			'driver' => 's3',
 			'key'    => 'your-key',

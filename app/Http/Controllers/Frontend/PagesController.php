@@ -1,8 +1,8 @@
 <?php namespace App\Http\Controllers\Frontend;
 
+use App\Helpers\Themes;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
 use App\Page;
 use App\Services\PageService;
 use Illuminate\Http\Request;
@@ -39,7 +39,7 @@ class PagesController extends Controller {
             return $return;
         }
 
-        return view('frontend.pages.show.' . $page['type'], ['page' => $page]);
+        return Themes::view('.pages.show.' . $page['type'], ['page' => $page]);
     }
 
     /**
@@ -52,7 +52,7 @@ class PagesController extends Controller {
     {
         $page_id = Page::findOrFail($id)->id;
 
-        return view('frontend.pages.password', ['page_id' => $page_id]);
+        return Themes::view('.pages.password', ['page_id' => $page_id]);
 
     }
 
