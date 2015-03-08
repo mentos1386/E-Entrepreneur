@@ -26,7 +26,7 @@
     <div class="inner">
         <span class="icon major fa-cloud"></span>
 
-        <h1>{{ $site->name }}</h1>
+        <a href="{{ Themes::home() }}"><h1>{{ $site->name }}</h1></a>
 
         <p>{{ $site->description }}</p>
         <ul class="actions">

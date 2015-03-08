@@ -30,7 +30,12 @@
         </ul>
     </div>
 
-    <div class="col-md-9 form-inline">
+    <div class="col-md-3">
+        <ul class="list-group cat-tags">
+            <ul class="list-group-item list-group-item-heading">
+                Create new link:
+            </ul>
+        </ul>
         {!! Form::open(['url' => route('dashboard.appearance.menus.store')]) !!}
 
         <div class="form-group">
@@ -60,7 +65,7 @@
                 </optgroup>
                 <optgroup label="Posts">
                     @foreach($posts as $post)
-                        <option value="/post/{{ $post['id'] }}">{{ $post['name'] }}</option>
+                        <option value="/post/{{ $post['id'] }}">{{ $post['title'] }}</option>
                     @endforeach
                 </optgroup>
 
@@ -89,6 +94,33 @@
 
         {!! Form::close() !!}
 
+    </div>
+
+    <div class="col-md-6">
+        <ul class="list-group cat-tags">
+            <ul class="list-group-item list-group-item-heading">
+                All Links:
+            </ul>
+
+            <table class="table">
+                <thead>
+                <th>#</th>
+                <th>Name</th>
+                <th>Icon</th>
+                <th>Url</th>
+                <th>Menu</th>
+                </thead>
+                @foreach($links as $link)
+                    <tbody>
+                    <td>{{ $link['id'] }}</td>
+                    <td>{{ $link['name'] }}</td>
+                    <td><span class="fa {{ $link['icon'] }}"></span></td>
+                    <td><a href="{{ $link['url'] }}">{{ $link['url'] }}</a></td>
+                    <td>{{ $link['menu']['name'] }}</td>
+                    </tbody>
+                @endforeach
+            </table>
+        </ul>
     </div>
 
 @endsection

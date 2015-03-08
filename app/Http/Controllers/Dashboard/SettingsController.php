@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers\Dashboard;
 
+use App\App;
+use App\Helpers\Themes;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +16,11 @@ class SettingsController extends Controller {
 	 */
 	public function index()
 	{
-		return view('dashboard.index');
+		$theme = Themes::about();
+
+		$app = App::first();
+
+		return view('dashboard.settings.index', ['app' => $app, 'theme' => $theme]);
 	}
 
 	/**
@@ -62,12 +68,23 @@ class SettingsController extends Controller {
 	/**
 	 * Update the specified resource in storage.
 	 *
+	 * @param Request $request
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(Request $request, $id)
 	{
-		//
+		$data = $request->all();
+
+		$settings = App::first();
+
+		$settings->name = $data['name'];
+		$settings->description = $data['description'];
+
+		$settings->save();
+
+		return redirect(route('dashboard.settings.index'))
+			->with('message_success', '<strong>Success!</strong> Site updated!');
 	}
 
 	/**

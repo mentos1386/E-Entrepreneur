@@ -29,9 +29,20 @@ class MenuService {
      */
     public function create(array $data)
     {
+        if ($data['url_custom'] != '')
+        {
+            $data['url'] = $data['url_custom'];
+        }
+
+
+        if (!(filter_var($data['url'], FILTER_VALIDATE_URL)))
+        {
+            $data['url'] = url($data['url']);
+        }
+
         $post = Link::create([
             'name'      => $data['name'],
-            'url'       => ((isset($data['url_custom'])) ? $data['url_custom'] : $data['url']),
+            'url' => $data['url'],
             'menu_id'   => $data['menu_id'],
             'drop_down' => ((isset($data['drop_down'])) ? $data['drop_down'] : '0'),
             'parent'    => ((isset($data['parent'])) ? $data['parent'] : null),

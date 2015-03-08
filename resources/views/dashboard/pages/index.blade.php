@@ -35,7 +35,7 @@
             <td><a href="{{ route('home').'/'.$page['url'] }}">{{ $page['url'] }}</a></td>
             <td>{{ $page['content'] }}</td>
             <td>{{ $page['created_at'] }}</td>
-            <td>{{ $page['pagetypes_id'] }}</td>
+            <td>{{ $page['pagetypes']['name'] }}</td>
             </tbody>
         @endforeach
     </table>

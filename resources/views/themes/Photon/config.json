@@ -26,16 +26,10 @@
       "view": "default"
     },
     {
-      "name": "About",
-      "description": "Page view designed for About pages",
+      "name": "Transparent",
+      "description": "Transparent Page view",
       "dashboard": "default",
-      "view": "about"
-    },
-    {
-      "name": "Location",
-      "description": "Page designed to show maps",
-      "dashboard": "layouts.dashboard.location",
-      "view": "location"
+      "view": "transparent"
     }
   ]
 }

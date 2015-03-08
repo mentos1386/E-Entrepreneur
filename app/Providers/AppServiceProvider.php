@@ -1,8 +1,10 @@
 <?php namespace App\Providers;
 
 use App\App;
+use App\Menu;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\DB;
 
 class AppServiceProvider extends ServiceProvider {
 
@@ -13,8 +15,13 @@ class AppServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		$data = App::first();
-		View::share('site', $data);
+		if (count(DB::select('SHOW TABLES')) > 18)
+		{
+			$data = App::first();
+			View::share('site', $data);
+			$menus = Menu::with('links')->get();
+			View::share('menus', $menus);
+		}
 	}
 
 	/**

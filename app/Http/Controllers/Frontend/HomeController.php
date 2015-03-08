@@ -15,11 +15,10 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		$menus = Menu::with('links')->get();
 
 		$posts = Post::with('tag', 'category', 'user')->orderBy('created_at', 'DEC')->paginate();
 
-		return view('themes.' . App::first()->theme . '.home', ['posts' => $posts, 'menus' => $menus]);
+		return view('themes.' . App::first()->theme . '.home', ['posts' => $posts]);
 	}
 
 }

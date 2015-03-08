@@ -112,10 +112,7 @@
                         data-live-search="true" data-selected-text-format="count>4">
 
                     @foreach($pagetypes as $pagetype)
-
-                        <option value="{{ $pagetype['id'] }}
-                            {{ FormH::check_selected($page['pagetypes'], $pagetype) }}
-                            "> {{$pagetype['name']}} </option>
+                        <option value="{{ $pagetype['id'] }}"> {{$pagetype['name']}} </option>
 
                     @endforeach
 

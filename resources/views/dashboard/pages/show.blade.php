@@ -57,7 +57,7 @@
                     </li>
                     <li class="list-group-item">
                         <span class="fa fa-paint-brush"></span> Type <span
-                                class="badge">{{ $page['pagetypes_id'] }}</span>
+                                class="badge">{{ $page['pagetypes']['name'] }}</span>
                     </li>
                 </ul>
             </div>

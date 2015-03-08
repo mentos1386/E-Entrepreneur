@@ -18,7 +18,7 @@ class PagesController extends Controller {
 	 */
 	public function index()
 	{
-		$pages = Page::paginate();
+		$pages = Page::with('pagetypes')->paginate();
 
 		return view('dashboard.pages.index', ['pages' => $pages]);
 	}
@@ -72,7 +72,7 @@ class PagesController extends Controller {
 	 */
 	public function show($id)
 	{
-		$page = Page::with('user', 'role')->find($id);
+		$page = Page::with('user', 'role', 'pagetypes')->find($id);
 
 		return view('dashboard.pages.show', ['page' => $page]);
 	}
@@ -85,7 +85,7 @@ class PagesController extends Controller {
 	 */
 	public function edit($id)
 	{
-		$page = Page::with('role', 'user')->findOrFail($id);
+		$page = Page::with('role', 'user', 'pagetypes')->findOrFail($id);
 
 		$roles = Role::all();
 

@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Link;
 use App\Menu;
 use App\Page;
 use App\Post;
@@ -19,10 +20,11 @@ class MenusController extends Controller {
     public function index()
     {
         $menus = Menu::with('links')->get();
+        $links = Link::with('menu')->get();
         $posts = Post::all();
         $pages = Page::all();
 
-        return view('dashboard.appearance.menus.index', ['menus' => $menus, 'posts' => $posts, 'pages' => $pages]);
+        return view('dashboard.appearance.menus.index', ['menus' => $menus, 'posts' => $posts, 'pages' => $pages, 'links' => $links]);
     }
 
     /**

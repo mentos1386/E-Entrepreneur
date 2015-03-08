@@ -17,7 +17,7 @@ class CreatePagesTable extends Migration {
             $table->increments('id');
 
             $table->string('name');
-            $table->string('content');
+            $table->longText('content');
             $table->string('url');
             $table->string('password', 60);
 

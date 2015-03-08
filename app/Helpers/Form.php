@@ -24,4 +24,23 @@ class Form {
             }
         }
     }
+
+    /**
+     * Check if strings match
+     *
+     * @param $selected
+     * @param $all
+     * @return string
+     */
+    public static function check_selected_single($selected, $all)
+    {
+
+        if ($selected !== null)
+        {
+            if ($all['id'] == $selected['id'])
+            {
+                return 'selected';
+            }
+        }
+    }
 }
