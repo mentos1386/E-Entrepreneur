@@ -12,7 +12,7 @@ $about = [
 ];
 
 /**
- * Listing of all available
+ * Listing of all available menus
  */
 $menus = [
     [
