@@ -30,7 +30,7 @@
 
         <p>{{ Settings::first()->description }}</p>
         <ul class="actions">
-            <li><a href="#one" class="button scrolly">Discover</a></li>
+            @include('themes.Photon.layouts.menus.top)
         </ul>
     </div>
 </section>

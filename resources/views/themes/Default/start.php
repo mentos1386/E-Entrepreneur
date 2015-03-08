@@ -12,7 +12,7 @@ $about = [
 ];
 
 /**
- * Listing of all available
+ * Listing of all available menus
  */
 $menus = [
     [
@@ -33,21 +33,26 @@ $menus = [
 $page_types = [
     [
         'name'        => 'Default',
-        'description' => 'Default page view',
+        'description' => 'Default page',
         'dashboard'   => 'default',
         'view'        => 'default',
     ],
     [
-        'name'        => 'About',
-        'description' => 'Page view designed for About pages',
+        'name'        => 'Red',
+        'description' => 'Red page',
         'dashboard'   => 'default',
-        'view'        => 'about',
+        'view'        => 'red',
     ],
-    // Overwrite default view of Page creating with custom one!
     [
-        'name'        => 'Location',
-        'description' => 'Page designed to show maps',
-        'dashboard'   => 'layouts.dashboard.location',
-        'view'        => 'location',
+        'name'        => 'Blue',
+        'description' => 'Blue page',
+        'dashboard'   => 'default',
+        'view'        => 'blue',
+    ],
+    [
+        'name'        => 'Green',
+        'description' => 'green page',
+        'dashboard'   => 'default',
+        'view'        => 'green',
     ],
 ];

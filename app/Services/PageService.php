@@ -20,7 +20,7 @@ class PageService {
             'name'    => 'required|max:255',
             'content' => 'required',
             'url' => 'required|alpha_dash',
-            'type'    => 'required'
+            'pagetypes_id' => 'required'
         ]);
 
         $v->sometimes('url', 'unique:pages', function ($data)
@@ -49,7 +49,7 @@ class PageService {
             'name'     => $data['name'],
             'content'  => $data['content'],
             'url'      => $data['url'],
-            'type'     => $data['type'],
+            'pagetypes_id' => $data['pagetypes_id'],
             'password' => (($data['password'] !== '') ? Hash::make($data['password']) : ''),
         ]);
 
@@ -80,7 +80,7 @@ class PageService {
         $page->name = $data['name'];
         $page->content = $data['content'];
         $page->url = $data['url'];
-        $page->type = $data['type'];
+        $page->pagetypes_id = $data['pagetypes_id'];
         $page->password = (($data['password'] !== '') ? Hash::make($data['password']) : '');
 
 

@@ -60,6 +60,28 @@ class Relationships extends Migration {
 		});
 
 		/*
+		 * Create relationship for links table
+		 */
+		Schema::table('links', function (Blueprint $table)
+		{
+
+			$table->integer('menu_id')->unsigned();
+			$table->foreign('menu_id')->references('id')->on('menus');
+
+		});
+
+		/*
+		 * Create relationship for pages table
+		 */
+		Schema::table('pages', function (Blueprint $table)
+		{
+
+			$table->integer('pagetypes_id')->unsigned();
+			$table->foreign('pagetypes_id')->references('id')->on('pagetypes');
+
+		});
+
+		/*
 		 *
 		 * Create basic roles for users
 		 *

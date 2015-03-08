@@ -108,13 +108,16 @@
             <!-- Select Page Type -->
             <div class="form-group col-md-12">
                 <label for="select-role" class="control-label">Page type:</label>
-                <select class="form-control" name="type">
+                <select class="form-control" name="pagetypes_id" data-size="10"
+                        data-live-search="true" data-selected-text-format="count>4">
 
-                    <!-- WHEN MAKING THEMES SYSTEM; HERE SHOULD BE AUTO POPULATED DEPENDING ON THEME CAPABILITIES !-->
+                    @foreach($pagetypes as $pagetype)
 
-                    <option value="red">Red</option>
-                    <option value="blue">Blue</option>
-                    <option value="green">Green</option>
+                        <option value="{{ $pagetype['id'] }}
+                            {{ FormH::check_selected($page['pagetypes'], $pagetype) }}
+                            "> {{$pagetype['name']}} </option>
+
+                    @endforeach
 
                 </select>
             </div>

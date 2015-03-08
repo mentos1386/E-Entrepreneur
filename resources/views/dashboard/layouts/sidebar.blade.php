@@ -109,8 +109,13 @@
     '<span class="fa fa-paint-brush"></span> Appearance <span class="fa fa-chevron-right pull-right"></span>',
     'appearance',
     route('dashboard.appearance.index'),
-    Request::url()
-    )
+    Request::url(),
+    array(
+    [
+    '<span class="fa fa-bars"></span> Menus <span class="fa fa-chevron-right pull-right"></span>',
+    route('dashboard.appearance.menus.index'),
+    ],
+    ))
 !!}
 <!-- Settings !-->
 {!! Sidebar::Pills(

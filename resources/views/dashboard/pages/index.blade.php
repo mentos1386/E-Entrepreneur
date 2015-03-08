@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.master')
 
 @section('meta')
-    <title>Posts</title>
+    <title>Pages</title>
 @endsection
 
 @section('header')
@@ -35,7 +35,7 @@
             <td><a href="{{ route('home').'/'.$page['url'] }}">{{ $page['url'] }}</a></td>
             <td>{{ $page['content'] }}</td>
             <td>{{ $page['created_at'] }}</td>
-            <td>{{ $page['type'] }}</td>
+            <td>{{ $page['pagetypes_id'] }}</td>
             </tbody>
         @endforeach
     </table>

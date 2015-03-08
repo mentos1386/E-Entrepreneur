@@ -56,7 +56,8 @@
                                 class="badge">{{(($page['password'] !== "")? 'True' : 'False') }}</span>
                     </li>
                     <li class="list-group-item">
-                        <span class="fa fa-paint-brush"></span> Type <span class="badge">{{ $page['type'] }}</span>
+                        <span class="fa fa-paint-brush"></span> Type <span
+                                class="badge">{{ $page['pagetypes_id'] }}</span>
                     </li>
                 </ul>
             </div>

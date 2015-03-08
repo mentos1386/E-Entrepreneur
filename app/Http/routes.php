@@ -111,14 +111,20 @@ Route::group(array('middleware' => 'perm.dashboard'), function()
 
 	/*
 	 * Appearance
+	 *  -> Menus
 	 */
 	Route::group(array('middleware' => 'perm.dashboard.appearance'), function()
 	{
+		// -> Menus
+		Route::resource('/dashboard/appearance/menus', 'Dashboard\MenusController');
+
 		// Appearance
 		Route::resource('/dashboard/appearance', 'Dashboard\AppearanceController');
 		// Themes
 		Route::resource('/dashboard/appearance/themes', 'Dashboard\ThemesController');
 		Route::get('/dashboard/appearance/themes/{name}/set', 'Dashboard\ThemesController@set');
+
+
 	});
 
 	/*

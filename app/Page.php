@@ -16,7 +16,7 @@ class Page extends Model {
      *
      * @var array
      */
-    protected $fillable = ['name', 'content', 'url', 'type', 'password'];
+    protected $fillable = ['name', 'content', 'url', 'pagetypes_id', 'password'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -32,7 +32,6 @@ class Page extends Model {
      */
     public function role()
     {
-
         return $this->belongsToMany('App\Role', 'page_role', 'page_id', 'role_id');
     }
 
@@ -43,8 +42,17 @@ class Page extends Model {
      */
     public function user()
     {
-
         return $this->belongsToMany('App\User', 'page_user', 'page_id', 'user_id');
+    }
+
+    /**
+     *  One page can have one pagetype
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function pagetypes()
+    {
+        return $this->belongsTo('App\Pagetypes');
     }
 
 }

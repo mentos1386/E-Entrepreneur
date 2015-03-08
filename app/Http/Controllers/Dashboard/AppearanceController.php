@@ -37,7 +37,6 @@ class AppearanceController extends Controller {
 			$themes[] =
 				[
 					'name'  => $theme,
-					'about' => Storage::disk('theme')->get($theme . '/about.txt'),
 					'img'   => 'data:image/png;base64,' . $encode,
 				];
 		}

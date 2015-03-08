@@ -30,7 +30,7 @@ class PagesController extends Controller {
      */
     public function show($url)
     {
-        $page = Page::with('user', 'role')->where('url', $url)->firstOrFail();
+        $page = Page::with('user', 'role', 'pagetypes')->where('url', $url)->firstOrFail();
 
         $checkPermission = new PageService;
 
@@ -39,7 +39,7 @@ class PagesController extends Controller {
             return $return;
         }
 
-        return Themes::view('.pages.show.' . $page['type'], ['page' => $page]);
+        return Themes::view('pages.show.' . $page['pagetypes']['view'], ['page' => $page]);
     }
 
     /**

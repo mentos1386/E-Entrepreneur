@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Pagetypes;
 use App\Services\PageService;
 use App\User;
 use Illuminate\Http\Request;
@@ -33,7 +34,9 @@ class PagesController extends Controller {
 
 		$users = User::all();
 
-		return view('dashboard.pages.create', ['roles' => $roles, 'users' => $users]);
+		$pagetypes = Pagetypes::all();
+
+		return view('dashboard.pages.create', ['roles' => $roles, 'users' => $users, 'pagetypes' => $pagetypes]);
 	}
 
 	/**
@@ -88,7 +91,9 @@ class PagesController extends Controller {
 
 		$users = User::all();
 
-		return view('dashboard.pages.edit', ['page' => $page, 'roles' => $roles, 'users' => $users]);
+		$pagetypes = Pagetypes::all();
+
+		return view('dashboard.pages.edit', ['page' => $page, 'roles' => $roles, 'users' => $users, 'pagetypes' => $pagetypes]);
 	}
 
 	/**
