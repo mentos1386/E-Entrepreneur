@@ -23,7 +23,7 @@ class Link extends Model {
      *
      * @var array
      */
-    protected $fillable = ['name', 'url', 'drop_down', 'parent', 'menu_id'];
+    protected $fillable = ['name', 'url', 'icon', 'drop_down', 'parent', 'menu_id'];
 
     /**
      *  Many links belongs to one menu

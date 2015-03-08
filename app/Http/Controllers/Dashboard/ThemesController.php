@@ -85,6 +85,7 @@ class ThemesController extends Controller {
      */
     public function set($name)
     {
+        // Check if theme has requierd start.php file
         if (!Storage::drive('theme')->exists($name . '/start.php'))
         {
             return redirect()->back()
@@ -95,11 +96,13 @@ class ThemesController extends Controller {
         include_once(base_path() . '/resources/views/themes/' . $name . '/start.php');
         //
 
+        // Check if start.php is valid
         if ((!isset($page_types)) || (!isset($menus)) || (!isset($about)) || empty($page_types) || empty($menus) || empty($about))
         {
             return redirect()->back()
                 ->with('message_danger', '<strong>Whops!</strong> Theme dosn\'t have valid <strong>start.php</strong>!');
         }
+        //
 
         // Save it to database
         $settings = App::first();

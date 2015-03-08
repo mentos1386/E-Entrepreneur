@@ -32,7 +32,7 @@ class Menu extends Model {
      */
     public function links()
     {
-        return $this->hasMany('App\Link');
+        return $this->hasMany('App\Link', 'menu_id');
     }
 
 

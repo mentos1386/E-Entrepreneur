@@ -17,6 +17,7 @@ class CreateLinksTable extends Migration {
             $table->increments('id');
             $table->string('name');
             $table->string('url');
+            $table->string('icon')->nullable();
             $table->boolean('drop_down');
             $table->integer('parent')->nullable();
         });

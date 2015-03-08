@@ -148,7 +148,7 @@ Route::group(array('middleware' => 'perm.dashboard'), function()
 /*
  * Front page
  */
-Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
+Route::get('/', ['as' => 'home', 'uses' => 'Frontend\HomeController@index']);
 
 /*
  * Posts
