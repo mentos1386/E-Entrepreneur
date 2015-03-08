@@ -26,7 +26,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            {!! HTML::linkRoute('dashboard', Settings::first()->name, null, array( 'class' => 'navbar-brand' ))!!}
+            {!! HTML::linkRoute('dashboard', $site->name, null, array( 'class' => 'navbar-brand' ))!!}
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">

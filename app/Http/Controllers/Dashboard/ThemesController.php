@@ -85,22 +85,23 @@ class ThemesController extends Controller {
      */
     public function set($name)
     {
-        // Check if theme has requierd start.php file
-        if (!Storage::drive('theme')->exists($name . '/start.php'))
+        // Check if theme has requierd config.json file
+        if (!Storage::drive('theme')->exists($name . '/config.json'))
         {
             return redirect()->back()
-                ->with('message_danger', '<strong>Whops!</strong> Theme dosn\'t have <strong>start.php</strong> file!');
+                ->with('message_danger', '<strong>Whops!</strong> Theme dosn\'t have <strong>config.json</strong> file!');
         }
 
         // Get custom menus/pages
-        include_once(base_path() . '/resources/views/themes/' . $name . '/start.php');
+        $file = base_path() . '/resources/views/themes/' . $name . '/config.json';
+        $config = json_decode(file_get_contents($file), true);
         //
 
         // Check if start.php is valid
-        if ((!isset($page_types)) || (!isset($menus)) || (!isset($about)) || empty($page_types) || empty($menus) || empty($about))
+        if ((!isset($config['about'])) || (!isset($config['menus'])) || (!isset($config['page_types'])) || empty($config['about']) || empty($config['menus']) || empty($config['page_types']))
         {
             return redirect()->back()
-                ->with('message_danger', '<strong>Whops!</strong> Theme dosn\'t have valid <strong>start.php</strong>!');
+                ->with('message_danger', '<strong>Whops!</strong> Theme dosn\'t have valid <strong>config.json</strong>!');
         }
         //
 
@@ -109,46 +110,52 @@ class ThemesController extends Controller {
 
         $prev_name = $settings->theme;
 
-        $settings->theme = $name;
+        $settings->theme = $config['about']['name'];
 
         $settings->save();
         //
 
 
-        // Remove previous menus && links && pagetypes
-        Menu::where('id', '>', '0')->delete();
-        Link::where('id', '>', '0')->delete();
-
-        // Create temp page type, so that we can delete other
-        $temp = Pagetypes::create(['name' => 'temp12w12sr124553', 'description' => 'temp type when theme changing', 'dashboard' => 'default', 'view' => 'temp']);
+        // Create temp page type and temp menu, so that we can delete other
+        $temp_page = Pagetypes::create(['name' => 'temp12w12sr124553', 'description' => 'temp type when theme changing', 'dashboard' => 'default', 'view' => 'temp']);
+        $temp_menu = Menu::create(['name' => 'temp12w12sr124553', 'description' => 'temp menu when theme changing', 'pos' => 'temp']);
 
         $pages = Page::all();
+        $links = Link::all();
 
         foreach ($pages as $page)
         {
-            $page->pagetypes_id = $temp['id'];
+            $page->pagetypes_id = $temp_page['id'];
             $page->save();
+        }
+
+        foreach ($links as $link)
+        {
+            $link->menu_id = $temp_menu['id'];
+            $link->save();
         }
         //
 
-        Pagetypes::where('id', '!=', $temp['id'])->delete();
+        //
+        Pagetypes::where('id', '!=', $temp_page['id'])->delete();
+        Menu::where('id', '!=', $temp_menu['id'])->delete();
         //
 
         // Create new menus
-        foreach ($menus as $menu)
+        foreach ($config['menus'] as $menu)
         {
             Menu::create($menu);
         }
         //
 
         // Create new page types
-        foreach ($page_types as $page_type)
+        foreach ($config['page_types'] as $page_type)
         {
             Pagetypes::create($page_type);
         }
         //
 
-        // Set all pages to default page
+        // Set all pages to default page and all menus to first menu
         $default = Pagetypes::where('name', 'Default')->first();
 
         $pages = Page::all();
@@ -158,10 +165,21 @@ class ThemesController extends Controller {
             $page->pagetypes_id = $default['id'];
             $page->save();
         }
+
+        $new_menu = Menu::where('id', '!=', $temp_menu['id'])->first();
+        $links = Link::all();
+
+        foreach ($links as $link)
+        {
+            $link->menu_id = $new_menu['id'];
+            $link->save();
+        }
         //
 
-        // Remove temp page type
-        Pagetypes::where('name', $temp['name'])->delete();
+        // Remove temp page type and temp menus
+        Pagetypes::where('id', $temp_page['id'])->delete();
+        Menu::where('id', $temp_menu['id'])->delete();
+
         //
 
         // Copy Public files

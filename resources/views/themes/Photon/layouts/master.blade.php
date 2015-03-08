@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>    @yield('head.title',Settings::first()->name)</title>
+    <title>    @yield('head.title', $site->name )</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <meta name="description" content=""/>
     <meta name="keywords" content=""/>
@@ -26,9 +26,9 @@
     <div class="inner">
         <span class="icon major fa-cloud"></span>
 
-        <h1>{{ Settings::first()->name }}</h1>
+        <h1>{{ $site->name }}</h1>
 
-        <p>{{ Settings::first()->description }}</p>
+        <p>{{ $site->description }}</p>
         <ul class="actions">
             @include('themes.Photon.layouts.menus.top')
         </ul>
@@ -44,7 +44,7 @@
 
     </ul>
     <ul class="copyright">
-        <li>&copy; Untitled</li>
+        <li>&copy; {{ $site->name }}</li>
         <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
     </ul>
 </section>

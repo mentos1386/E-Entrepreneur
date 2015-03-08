@@ -165,8 +165,29 @@ class Relationships extends Migration {
 		 */
 
 		DB::table('app')->insert(array(
-			'name' => 'E Podjetje',
+			'name'        => 'Company Co.',
 			'language' => 'en',
+			'description' => 'Some Awesome Company that dose Fun stuff'
+		));
+
+		DB::table('posts')->insert(array(
+			'title'   => 'John Lennon',
+			'body'    => 'John Ono Lennon, MBE, born John Winston Lennon; (9 October 1940 – 8 December 1980), was an English musician, singer and songwriter who rose to worldwide fame as a founder member of the rock band the Beatles, the most commercially successful band in the history of popular music. With Paul McCartney, he formed a songwriting partnership that is one of the most celebrated of the 20th century. Born and raised in Liverpool, as a teenager Lennon became involved in the skiffle craze; his first band, the Quarrymen, evolved into the Beatles in 1960. When the group disbanded in 1970, Lennon embarked on a solo career that produced the critically acclaimed albums John Lennon/Plastic Ono Band and Imagine, and iconic songs such as "Give Peace a Chance" and "Working Class Hero". After his marriage to Yoko Ono in 1969, he changed his name to John Ono Lennon. Lennon disengaged himself from the music business in 1975 to raise his infant son Sean, but re-emerged with Ono in 1980 with the new album Double Fantasy. He was murdered three weeks after its release.',
+			'user_id' => '1'
+		));
+
+		DB::table('pagetypes')->insert(array(
+			'name'        => 'Default',
+			'description' => 'Default page View',
+			'dashboard'   => 'default',
+			'view'        => 'default',
+		));
+
+		DB::table('pages')->insert(array(
+			'name'         => 'About',
+			'content'      => 'Some About Page.',
+			'url'          => 'about',
+			'pagetypes_id' => '1',
 		));
 	}
 

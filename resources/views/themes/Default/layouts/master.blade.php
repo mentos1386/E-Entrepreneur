@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		
 		<!-- Yield meta -->
-		@yield('meta', '<title>'.Settings::first()->name.'</title>')
+		@yield('meta', '<title>'.$site->name.'</title>')
 
 		<!-- Bootstrap CDN -->
 		<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
@@ -28,7 +28,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					{!! HTML::linkRoute('home', Settings::first()->name, NULL, array( 'class' => 'navbar-brand' ))!!}
+					{!! HTML::linkRoute('home', $site->name, NULL, array( 'class' => 'navbar-brand' ))!!}
 				</div>
 			
 				<div class="collapse navbar-collapse navbar-ex1-collapse">

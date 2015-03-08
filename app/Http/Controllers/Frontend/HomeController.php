@@ -15,27 +15,6 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		dd(json_encode($page_types = [
-			[
-				'name'        => 'Default',
-				'description' => 'Default page view',
-				'dashboard'   => 'default',
-				'view'        => 'default',
-			],
-			[
-				'name'        => 'About',
-				'description' => 'Page view designed for About pages',
-				'dashboard'   => 'default',
-				'view'        => 'about',
-			],
-			[
-				'name'        => 'Location',
-				'description' => 'Page designed to show maps',
-				'dashboard'   => 'layouts.dashboard.location',
-				'view'        => 'location',
-			],
-		]));
-
 		$menus = Menu::with('links')->get();
 
 		$posts = Post::with('tag', 'category', 'user')->orderBy('created_at', 'DEC')->paginate();

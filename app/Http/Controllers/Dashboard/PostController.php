@@ -51,8 +51,6 @@ class PostController extends Controller {
 	 */
 	public function store(Request $request)
 	{
-		//dd($request->all());
-
 		$createPost = new PostService;
 
 		$validator = $createPost->validator($request->all());
