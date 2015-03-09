@@ -1,6 +1,11 @@
-@extends('themes.Default.layouts.master')
+@extends('themes.Default.frontend.layouts.master')
 
 @section('content')
+    <style type="text/css">
+        body {
+            background: darkred;
+        }
+    </style>
     <div class="container">
         <div class="row">
             <div class="col-md-10 col-md-offset-1">

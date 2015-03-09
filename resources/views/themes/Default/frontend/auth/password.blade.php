@@ -19,7 +19,7 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-6 col-md-offset-3">
-			<h1><a href="{{ Link::home() }}"><strong>{{ Settings::first()->name }}</strong></a></h1>
+			<h1><a href="{{ Link::home() }}"><strong>{{ $site->name }}</strong></a></h1>
 			<div class="panel panel-default">
 				<div class="panel-heading">Reset Password</div>
 				<div class="panel-body">

@@ -1,16 +1,16 @@
-@extends('themes.Photon.layouts.master')
+@extends('themes.Photon.frontend.layouts.master')
 @section('head.title')
-    {{ $post['title'] }}
+    {{ $page['name'] }}
 @endsection
 @section('content')
-    <section id="two" class="main style1">
+    <section id="two" class="main style2">
         <div class="container">
             <div class="row 150%">
                 <div class="12u$ 12u$(medium)">
                     <header class="major">
-                        <h2>{{ $post['title'] }}</h2>
+                        <h2>{{ $page['name'] }}</h2>
                     </header>
-                    <p>{{ $post['body'] }}</p>
+                    <p>{{ $page['content'] }}</p>
                 </div>
             </div>
         </div>

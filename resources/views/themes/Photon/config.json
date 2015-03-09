@@ -31,6 +31,13 @@
       "dashboard": "default",
       "view": "transparent"
     }
+  ],
+  "database": [
+    {
+      "string": "location_address",
+      "string": "location_destination",
+      "string": "location_search"
+    }
   ]
 }
 

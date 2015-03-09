@@ -19,9 +19,9 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-6 col-md-offset-3">
-			<h1><a href="{{ Link::home() }}"><strong>{{ Settings::first()->name }}</strong></a></h1>
+			<h1><a href="{{ Link::home() }}"><strong>{{ $site->name }}</strong></a></h1>
 			<div class="panel panel-default">
-				<div class="panel-heading">Register</div>
+				<div class="panel-heading">Reset Password</div>
 				<div class="panel-body">
 					@if (count($errors) > 0)
 						<div class="alert alert-danger">
@@ -34,15 +34,9 @@
 						</div>
 					@endif
 
-					<form class="form-horizontal" role="form" method="POST" action="/auth/register">
+					<form class="form-horizontal" role="form" method="POST" action="/password/reset">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-						<div class="form-group">
-							<label class="col-md-4 control-label">Username</label>
-							<div class="col-md-6">
-								<input type="text" class="form-control" name="username" value="{{ old('username') }}">
-							</div>
-						</div>
+						<input type="hidden" name="token" value="{{ $token }}">
 
 						<div class="form-group">
 							<label class="col-md-4 control-label">E-Mail Address</label>
@@ -68,7 +62,7 @@
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
 								<button type="submit" class="btn btn-primary">
-									Register
+									Reset Password
 								</button>
 							</div>
 						</div>

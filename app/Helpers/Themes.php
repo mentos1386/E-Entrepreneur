@@ -9,14 +9,14 @@ class Themes {
 
         $theme = 'themes.';
         $theme .= App::first()->theme;
-        $theme .= '.';
+        $theme .= '.frontend.';
 
         if (view()->exists($theme . $name))
         {
             return view($theme . $name, $data);
         } else
         {
-            return view('themes.Default.' . $name, $data);
+            return view('themes.Default.frontend' . $name, $data);
         }
     }
 

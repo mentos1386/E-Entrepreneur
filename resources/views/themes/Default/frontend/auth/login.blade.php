@@ -19,7 +19,7 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-6 col-md-offset-3">
-					<h1><a href="{{ Link::home() }}"><strong>{{ Settings::first()->name }}</strong></a></h1>
+					<h1><a href="{{ Link::home() }}"><strong>{{ $site->name }}</strong></a></h1>
 					@if(Session::get('authenticate') !== null)
 						<div class="alert alert-danger">
 							<strong>Whoops!</strong> {{ Session::get('authenticate') }}

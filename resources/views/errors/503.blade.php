@@ -1,4 +1,4 @@
-@extends('themes.Default.layouts.master')
+@extends('themes.Default.frontend.layouts.master')
 
 @section('content')
 

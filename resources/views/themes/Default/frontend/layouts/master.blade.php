@@ -51,7 +51,7 @@
 			</div>
 		</nav>
 
-		@include('themes.Default.layouts.alerts')
+		@include('themes.Default.frontend.layouts.alerts')
 
 		<!-- Yield content -->
 		@yield('content')

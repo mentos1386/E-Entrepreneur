@@ -30,7 +30,7 @@
 
         <p>{{ $site->description }}</p>
         <ul class="actions">
-            @include('themes.Photon.layouts.menus.top')
+            @include('themes.Photon.frontend.layouts.menus.top')
         </ul>
     </div>
 </section>
@@ -39,7 +39,7 @@
 
 <section id="footer">
     <ul class="icons">
-        @include('themes.Photon.layouts.menus.bottom')
+        @include('themes.Photon.frontend.layouts.menus.bottom')
 
 
     </ul>

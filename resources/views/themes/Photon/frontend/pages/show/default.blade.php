@@ -1,4 +1,4 @@
-@extends('themes.Photon.layouts.master')
+@extends('themes.Photon.frontend.layouts.master')
 @section('head.title')
     {{ $page['name'] }}
 @endsection

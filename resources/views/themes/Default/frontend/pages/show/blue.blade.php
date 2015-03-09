@@ -1,4 +1,4 @@
-@extends('themes.Default.layouts.master')
+@extends('themes.Default.frontend.frontend.layouts.master')
 
 @section('content')
     <style type="text/css">

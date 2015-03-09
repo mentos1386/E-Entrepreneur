@@ -1,9 +1,9 @@
-@extends('themes.Default.layouts.master')
+@extends('themes.Default.frontend.layouts.master')
 
 @section('content')
     <style type="text/css">
         body {
-            background: darkred;
+            background: lightgreen;
         }
     </style>
     <div class="container">
