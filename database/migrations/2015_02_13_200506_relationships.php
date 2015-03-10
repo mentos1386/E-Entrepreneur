@@ -167,7 +167,9 @@ class Relationships extends Migration {
 		DB::table('app')->insert(array(
 			'name'        => 'Company Co.',
 			'language' => 'en',
-			'description' => 'Some Awesome Company that dose Fun stuff'
+			'description'     => 'Some Awesome Company that dose Fun stuff',
+			'theme'           => 'Default',
+			'theme_frontpage' => 'posts',
 		));
 
 		DB::table('posts')->insert(array(

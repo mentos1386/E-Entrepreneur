@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers\Dashboard;
 
 use App\App;
+use App\Helpers\Themes;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -41,9 +42,11 @@ class AppearanceController extends Controller {
 				];
 		}
 
+		$appearance = Themes::appearance();
+
 		$active_theme = App::first()->theme;
 
-		return view('dashboard.appearance.index', ['themes' => $themes, 'active_theme' => $active_theme]);
+		return view('dashboard.appearance.index', ['themes' => $themes, 'active_theme' => $active_theme, 'appearance' => $appearance]);
 	}
 
 	/**

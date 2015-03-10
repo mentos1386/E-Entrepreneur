@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class App extends Model {
+class Themedata extends Model {
 
     /**
      * Indicates if the model should be timestamped.
@@ -16,14 +16,14 @@ class App extends Model {
      *
      * @var string
      */
-    protected $table = 'app';
+    protected $table = 'theme_data';
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['name', 'language', 'theme', 'theme_frontpage', 'description'];
+    protected $fillable = ['type', 'data'];
 
     /**
      * The attributes excluded from the model's JSON form.

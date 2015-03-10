@@ -19,6 +19,7 @@ class CreateAppTable extends Migration {
 			$table->string('description');
 			$table->string('language')->default('en');
 			$table->string('theme')->default('Default');
+			$table->string('theme_frontpage')->default('posts');
 		});
 	}
 

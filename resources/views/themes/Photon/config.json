@@ -6,39 +6,54 @@
     "author_url": "http:\/\/html5up.net\/",
     "version": "1.0"
   },
-  "menus": [
-    {
-      "name": "Top Menu",
-      "description": "This is menu on top",
-      "pos": "top"
-    },
-    {
-      "name": "Bottom Menu",
-      "description": "This is menu on bottom, for social links",
-      "pos": "bottom"
+  "appearance": {
+    "menus": [
+      {
+        "name": "Top Menu",
+        "description": "This is menu on top",
+        "pos": "top"
+      },
+      {
+        "name": "Bottom Menu",
+        "description": "This is menu on bottom, for social links",
+        "pos": "bottom"
+      }
+    ],
+    "page_types": [
+      {
+        "name": "Default",
+        "description": "Default page view",
+        "dashboard": "default",
+        "view": "default"
+      },
+      {
+        "name": "Transparent",
+        "description": "Transparent Page view",
+        "dashboard": "default",
+        "view": "transparent"
+      }
+    ],
+    "front_page": {
+      "builders": {
+        "default": "false",
+        "types": [
+          {
+            "type": "Images",
+            "description": "Show images",
+            "dashboard": "backend.frontpage.images"
+          },
+          {
+            "type": "Form",
+            "description": "Show custom form",
+            "dashboard": "backend.frontpage.form"
+          }
+        ]
+      },
+      "posts": {
+        "default": "true"
+      }
     }
-  ],
-  "page_types": [
-    {
-      "name": "Default",
-      "description": "Default page view",
-      "dashboard": "default",
-      "view": "default"
-    },
-    {
-      "name": "Transparent",
-      "description": "Transparent Page view",
-      "dashboard": "default",
-      "view": "transparent"
-    }
-  ],
-  "database": [
-    {
-      "string": "location_address",
-      "string": "location_destination",
-      "string": "location_search"
-    }
-  ]
+  }
 }
 
 

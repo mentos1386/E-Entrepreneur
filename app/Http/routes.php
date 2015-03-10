@@ -112,11 +112,14 @@ Route::group(array('middleware' => 'perm.dashboard'), function()
 	/*
 	 * Appearance
 	 *  -> Menus
+	 *  -> Front Page
 	 */
 	Route::group(array('middleware' => 'perm.dashboard.appearance'), function()
 	{
 		// -> Menus
 		Route::resource('/dashboard/appearance/menus', 'Dashboard\MenusController');
+		// -> Front Page
+		Route::resource('/dashboard/appearance/frontpage', 'Dashboard\FrontPageController');
 
 		// Appearance
 		Route::resource('/dashboard/appearance', 'Dashboard\AppearanceController');

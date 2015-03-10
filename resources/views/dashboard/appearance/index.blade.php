@@ -1,13 +1,13 @@
 @extends('dashboard.layouts.master')
 
 @section('meta')
-    <title>Appearance</title>
+    <title>Themes</title>
 @endsection
 
 @section('header')
 
     <h1 class="page-header">
-        <span class="fa fa-paint-brush"></span> Appearance
+        <span class="fa fa-paint-brush"></span> Themes
         <div class="pull-right">
             <button data-target="#install_theme" data-toggle="modal" type="button" class="btn btn-default">
                 <span class="fa fa-upload"></span> Install Theme
@@ -19,7 +19,27 @@
 
 @section('content')
 
-    <div class="col-md-12">
+    <div class="col-md-3">
+        <ul class="list-group cat-tags">
+            <ul class="list-group-item list-group-item-heading">
+                Active theme support:
+            </ul>
+            <li class="list-group-item">
+                <span class="badge">{{ count($appearance['menus']) }}</span>
+                Menus
+            </li>
+            <li class="list-group-item">
+                <span class="badge">{{ count($appearance['page_types']) }}</span>
+                Page Types
+            </li>
+            <li class="list-group-item">
+                <span class="badge">{{ count($appearance['front_page']) }}</span>
+                Custom Front Pages
+            </li>
+        </ul>
+    </div>
+
+    <div class="col-md-9">
         <div class="row">
 
             @foreach($themes as $theme)

@@ -112,8 +112,16 @@
     Request::url(),
     array(
     [
+    '<span class="fa fa-paint-brush"></span> Themes <span class="fa fa-chevron-right pull-right"></span>',
+    route('dashboard.appearance.index'),
+    ],
+    [
     '<span class="fa fa-bars"></span> Menus <span class="fa fa-chevron-right pull-right"></span>',
     route('dashboard.appearance.menus.index'),
+    ],
+    [
+    '<span class="fa fa-th-large"></span> Front Page <span class="fa fa-chevron-right pull-right"></span>',
+    route('dashboard.appearance.frontpage.index'),
     ],
     ))
 !!}

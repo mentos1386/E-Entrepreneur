@@ -18,32 +18,41 @@
       "pos": "bottom"
     }
   ],
-  "page_types": [
-    {
-      "name": "Default",
-      "description": "Default page view",
-      "dashboard": "default",
-      "view": "default"
-    },
-    {
-      "name": "Red",
-      "description": "Red page",
-      "dashboard": "default",
-      "view": "red"
-    },
-    {
-      "name": "Green",
-      "description": "Green page",
-      "dashboard": "default",
-      "view": "green"
-    },
-    {
-      "name": "Blue",
-      "description": "Blue page",
-      "dashboard": "default",
-      "view": "blue"
-    }
-  ]
+  "appearance": {
+    "menus": [
+      {
+        "name": "Top Menu",
+        "description": "This is menu on top",
+        "pos": "top"
+      }
+    ],
+    "page_types": [
+      {
+        "name": "Default",
+        "description": "Default page view",
+        "dashboard": "default",
+        "view": "default"
+      },
+      {
+        "name": "Red",
+        "description": "Red page",
+        "dashboard": "default",
+        "view": "red"
+      },
+      {
+        "name": "Green",
+        "description": "Green page",
+        "dashboard": "default",
+        "view": "green"
+      },
+      {
+        "name": "Blue",
+        "description": "Blue page",
+        "dashboard": "default",
+        "view": "blue"
+      }
+    ]
+  }
 }
 
 

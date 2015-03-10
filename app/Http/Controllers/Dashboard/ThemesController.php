@@ -97,8 +97,9 @@ class ThemesController extends Controller {
         $config = json_decode(file_get_contents($file), true);
         //
 
+
         // Check if start.php is valid
-        if ((!isset($config['about'])) || (!isset($config['menus'])) || (!isset($config['page_types'])) || empty($config['about']) || empty($config['menus']) || empty($config['page_types']))
+        if ((!isset($config['about'])) || (!isset($config['appearance']['menus'])) || (!isset($config['appearance']['page_types'])) || (!isset($config['appearance']['front_page'])) || empty($config['about']) || empty($config['appearance']['menus']) || empty($config['appearance']['page_types']) || empty($config['appearance']['front_page']))
         {
             return redirect()->back()
                 ->with('message_danger', '<strong>Whops!</strong> Theme dosn\'t have valid <strong>config.json</strong>!');
@@ -112,13 +113,25 @@ class ThemesController extends Controller {
 
         $settings->theme = $config['about']['name'];
 
+        //Find default front page, and set it in database
+        foreach ($config['appearance']['front_page'] as $name => $front_page)
+        {
+            foreach ($front_page as $default)
+            {
+                if ($default == "true")
+                {
+                    $settings->theme_frontpage = $name;
+                }
+            }
+        }
+        //
         $settings->save();
         //
 
 
         // Create temp page type and temp menu, so that we can delete other
-        $temp_page = Pagetypes::create(['name' => 'temp12w12sr124553', 'description' => 'temp type when theme changing', 'dashboard' => 'default', 'view' => 'temp']);
-        $temp_menu = Menu::create(['name' => 'temp12w12sr124553', 'description' => 'temp menu when theme changing', 'pos' => 'temp']);
+        $temp_page = Pagetypes::create(['name' => 'sdfc12crfsdsv35we6sd', 'description' => 'temp', 'dashboard' => 'default', 'view' => 'temp']);
+        $temp_menu = Menu::create(['name' => 'scdse535jwrjhewg235se3', 'description' => 'temp', 'pos' => 'temp']);
 
         $pages = Page::all();
         $links = Link::all();
@@ -142,14 +155,14 @@ class ThemesController extends Controller {
         //
 
         // Create new menus
-        foreach ($config['menus'] as $menu)
+        foreach ($config['appearance']['menus'] as $menu)
         {
             Menu::create($menu);
         }
         //
 
         // Create new page types
-        foreach ($config['page_types'] as $page_type)
+        foreach ($config['appearance']['page_types'] as $page_type)
         {
             Pagetypes::create($page_type);
         }

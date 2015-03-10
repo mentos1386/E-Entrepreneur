@@ -21,7 +21,7 @@ class Themes {
     }
 
     /**
-     *  Return contents of themes config.json
+     *  Return contents of themes config.json about array
      *
      * @return mixed
      */
@@ -31,6 +31,19 @@ class Themes {
         $file = json_decode(file_get_contents($file), true);
 
         return $file['about'];
+    }
+
+    /**
+     *  Return contents of themes config.json appearance array
+     *
+     * @return mixed
+     */
+    public static function appearance()
+    {
+        $file = base_path() . '/resources/views/themes/' . App::first()->theme . '/config.json';
+        $file = json_decode(file_get_contents($file), true);
+
+        return $file['appearance'];
     }
 
     /**
