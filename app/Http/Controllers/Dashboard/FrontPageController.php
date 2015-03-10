@@ -5,6 +5,9 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Helpers\Themes;
+use App\Page;
+use App\Post;
+use App\Themedata;
 use Illuminate\Http\Request;
 
 class FrontPageController extends Controller {
@@ -53,11 +56,22 @@ class FrontPageController extends Controller {
     /**
      * Store a newly created resource in storage.
      *
+     * @param Request $request
      * @return Response
      */
-    public function store()
+    public function store(Request $request)
     {
-        //
+        $input = $request->all();
+
+
+        // TODO: TRANFORM DATA TO JSON AND SAVE IT TO DATABASE
+
+        $data = [
+            'type' => $input['item_name'],
+
+        ];
+
+        dd($request->all());
     }
 
     /**

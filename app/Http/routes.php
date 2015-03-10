@@ -119,8 +119,8 @@ Route::group(array('middleware' => 'perm.dashboard'), function()
 		// -> Menus
 		Route::resource('/dashboard/appearance/menus', 'Dashboard\MenusController');
 		// -> Front Page
-		Route::get('/dashboard/appearance/frontpage', ['as' => 'dashboard.appearance.frontpage.index', 'uses' => 'Dashboard\FrontPageController@index']);
 		Route::get('/dashboard/appearance/frontpage/create/{name}', ['as' => 'dashboard.appearance.frontpage.create', 'uses' => 'Dashboard\FrontPageController@create']);
+		Route::resource('/dashboard/appearance/frontpage', 'Dashboard\FrontPageController');
 
 		// Appearance
 		Route::resource('/dashboard/appearance', 'Dashboard\AppearanceController');

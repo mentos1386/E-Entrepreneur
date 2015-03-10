@@ -5,6 +5,7 @@ use App\Menu;
 use App\Post;
 use App\App;
 use App\Http\Controllers\Controller;
+use App\Themedata;
 
 class HomeController extends Controller {
 
@@ -18,7 +19,9 @@ class HomeController extends Controller {
 
 		$posts = Post::with('tag', 'category', 'user')->orderBy('created_at', 'DEC')->paginate();
 
-		return view('themes.' . App::first()->theme . '.home', ['posts' => $posts]);
+		$items = Themedata::all();
+
+		return view('themes.' . App::first()->theme . '.frontend.frontpage.home', ['posts' => $posts, 'items' => $items]);
 	}
 
 }

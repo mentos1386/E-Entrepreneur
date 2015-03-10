@@ -1,6 +1,8 @@
 <?php namespace App\Helpers;
 
 use App\App;
+use App\Page;
+use App\Post;
 
 class Themes {
 
@@ -100,6 +102,40 @@ class Themes {
     public static function home()
     {
         return route('home');
+    }
+
+    public static function html_posts_pages_drop_down($param)
+    {
+        $pages = Page::all();
+        $posts = Post::all();
+
+        $return = '
+        <div class="form-group">
+            <select class="form-control" name="' . $param . '" data-size="10">
+
+                <option value="">Custom url</option>
+
+                <optgroup label="Pages">
+            ';
+        foreach ($pages as $page)
+        {
+            $return .= '<option value="' . self::home() . '/' . $page->url . '">' . $page->name . '</option>';
+        }
+        $return .= '
+                </optgroup>
+                <optgroup label="Posts">
+                ';
+        foreach ($posts as $post)
+        {
+            $return .= '<option value="' . self::home() . '/post/' . $post->id . '">' . $post->title . '</option>';
+        }
+        $return .= '
+                </optgroup>
+            </select>
+        </div>
+        ';
+
+        return $return;
     }
 
 

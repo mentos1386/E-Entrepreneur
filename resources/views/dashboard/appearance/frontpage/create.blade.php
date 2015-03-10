@@ -16,6 +16,12 @@
 
 @section('content')
 
+    {!! Form::open(['url' => route('dashboard.appearance.frontpage.store')]) !!}
+
+    {!! Form::hidden('item_name', $name); !!}
+
     @include($view_path)
+
+    {!! Form::close() !!}
 
 @endsection
