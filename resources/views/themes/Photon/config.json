@@ -36,21 +36,23 @@
     "front_page": {
       "builders": {
         "default": "false",
-        "types": [
+        "items": [
           {
-            "type": "Images",
+            "name": "Images",
             "description": "Show images",
-            "dashboard": "backend.frontpage.images"
+            "dashboard": "backend.frontpage.images.index"
           },
           {
-            "type": "Form",
+            "name": "Form",
             "description": "Show custom form",
-            "dashboard": "backend.frontpage.form"
+            "dashboard": "backend.frontpage.form.index"
           }
         ]
       },
       "posts": {
-        "default": "true"
+        "default": "true",
+        "items": [
+        ]
       }
     }
   }

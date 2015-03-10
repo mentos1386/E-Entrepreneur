@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers\Dashboard;
 
+use App\App;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -23,11 +24,30 @@ class FrontPageController extends Controller {
     /**
      * Show the form for creating a new resource.
      *
+     * @param $name
      * @return Response
      */
-    public function create()
+    public function create($name)
     {
-        //
+
+        $current_theme = App::first()->theme;
+
+        $front_pages = Themes::appearance()['front_page'];
+
+        foreach ($front_pages as $front_page)
+        {
+            foreach ($front_page['items'] as $item)
+            {
+                if ($item['name'] == $name)
+                {
+                    $dashboard = $item['dashboard'];
+                }
+            }
+        }
+
+        $view_path = 'themes.' . $current_theme . '.' . $dashboard;
+
+        return view('dashboard.appearance.frontpage.create', ['name' => $name, 'view_path' => $view_path]);
     }
 
     /**

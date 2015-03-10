@@ -119,13 +119,14 @@ Route::group(array('middleware' => 'perm.dashboard'), function()
 		// -> Menus
 		Route::resource('/dashboard/appearance/menus', 'Dashboard\MenusController');
 		// -> Front Page
-		Route::resource('/dashboard/appearance/frontpage', 'Dashboard\FrontPageController');
+		Route::get('/dashboard/appearance/frontpage', ['as' => 'dashboard.appearance.frontpage.index', 'uses' => 'Dashboard\FrontPageController@index']);
+		Route::get('/dashboard/appearance/frontpage/create/{name}', ['as' => 'dashboard.appearance.frontpage.create', 'uses' => 'Dashboard\FrontPageController@create']);
 
 		// Appearance
 		Route::resource('/dashboard/appearance', 'Dashboard\AppearanceController');
 		// Themes
 		Route::resource('/dashboard/appearance/themes', 'Dashboard\ThemesController');
-		Route::get('/dashboard/appearance/themes/{name}/set', 'Dashboard\ThemesController@set');
+		Route::get('/dashboard/appearance/themes/{theme_name}/set', 'Dashboard\ThemesController@set');
 
 
 	});

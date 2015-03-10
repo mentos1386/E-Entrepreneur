@@ -47,6 +47,41 @@ class Themes {
     }
 
     /**
+     *  Return contents of themes config.json appearance array
+     *
+     * @return mixed
+     */
+    public static function front_page($param)
+    {
+        $file = base_path() . '/resources/views/themes/' . App::first()->theme . '/config.json';
+        $file = json_decode(file_get_contents($file), true);
+
+
+        foreach ($file['appearance']['front_page'] as $name => $data)
+        {
+            if ($param = "active")
+            {
+                if ($name == App::first()->theme_frontpage)
+                {
+                    $data['name'] = $name;
+
+                    return $data;
+                }
+            }
+
+            if ($param == "default")
+            {
+                if ($data['default'] == true)
+                {
+                    $data['name'] = $name;
+
+                    return $data;
+                }
+            }
+        }
+    }
+
+    /**
      *  Generate url to Post
      *
      * @param $postID

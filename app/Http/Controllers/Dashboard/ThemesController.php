@@ -80,20 +80,22 @@ class ThemesController extends Controller {
     /**
      * Set theme as active
      *
-     * @param  string $name
+     * @param  string $theme_name
      * @return Response
      */
-    public function set($name)
+    public function set($theme_name)
     {
-        // Check if theme has requierd config.json file
-        if (!Storage::drive('theme')->exists($name . '/config.json'))
+        // TODO: CLEAN THIS MESS UP! And implant errors for folders not writable!
+
+        // Check if theme has required config.json file
+        if (!Storage::drive('theme')->exists($theme_name . '/config.json'))
         {
             return redirect()->back()
                 ->with('message_danger', '<strong>Whops!</strong> Theme dosn\'t have <strong>config.json</strong> file!');
         }
 
         // Get custom menus/pages
-        $file = base_path() . '/resources/views/themes/' . $name . '/config.json';
+        $file = base_path() . '/resources/views/themes/' . $theme_name . '/config.json';
         $config = json_decode(file_get_contents($file), true);
         //
 
@@ -109,7 +111,9 @@ class ThemesController extends Controller {
         // Save it to database
         $settings = App::first();
 
+        // Save previous name
         $prev_name = $settings->theme;
+        //
 
         $settings->theme = $config['about']['name'];
 
@@ -120,11 +124,18 @@ class ThemesController extends Controller {
             {
                 if ($default == "true")
                 {
+                    $foundDefault = true;
                     $settings->theme_frontpage = $name;
                 }
             }
         }
+        if (!isset($foundDefault))
+        {
+            return redirect()->back()
+                ->with('message_danger', '<strong>Whops!</strong> Theme dosn\'t have valid <strong>config.json</strong>!<br><strong>Default Front Page</strong> is missing!');
+        }
         //
+
         $settings->save();
         //
 
@@ -192,14 +203,13 @@ class ThemesController extends Controller {
         // Remove temp page type and temp menus
         Pagetypes::where('id', $temp_page['id'])->delete();
         Menu::where('id', $temp_menu['id'])->delete();
-
         //
 
         // Copy Public files
         Storage::drive('public')->deleteDirectory($prev_name);
 
-        $directories = Storage::drive('theme')->allDirectories($name . '/public/');
-        $files = Storage::drive('theme')->allFiles($name . '/public/');
+        $directories = Storage::drive('theme')->allDirectories($theme_name . '/public/');
+        $files = Storage::drive('theme')->allFiles($theme_name . '/public/');
 
         foreach ($directories as $directory)
         {
