@@ -9,6 +9,7 @@ use App\Page;
 use App\Post;
 use App\Themedata;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 
 class FrontPageController extends Controller {
 
@@ -63,15 +64,15 @@ class FrontPageController extends Controller {
     {
         $input = $request->all();
 
+        $json = json_encode($input['data']);
 
-        // TODO: TRANFORM DATA TO JSON AND SAVE IT TO DATABASE
+        $theme_data = new Themedata;
+        $theme_data->type = $input['type'];
+        $theme_data->data = $json;
+        $theme_data->save();
 
-        $data = [
-            'type' => $input['item_name'],
-
-        ];
-
-        dd($request->all());
+        return redirect(route('dashboard.appearance.frontpage.index'))
+            ->with('message_success', '<strong>Success!</strong> ' . $input['type'] . ' created!');
     }
 
     /**

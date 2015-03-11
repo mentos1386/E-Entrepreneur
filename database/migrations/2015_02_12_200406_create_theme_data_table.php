@@ -15,8 +15,8 @@ class CreateThemeDataTable extends Migration {
         Schema::create('theme_data', function (Blueprint $table)
         {
             $table->increments('id');
-            $table->text('type');
-            $table->text('data');
+            $table->string('type');
+            $table->large_text('data');
 
         });
     }

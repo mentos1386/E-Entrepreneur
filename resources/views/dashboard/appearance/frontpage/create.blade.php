@@ -18,7 +18,7 @@
 
     {!! Form::open(['url' => route('dashboard.appearance.frontpage.store')]) !!}
 
-    {!! Form::hidden('item_name', $name); !!}
+    {!! Form::hidden('type', $name); !!}
 
     @include($view_path)
 

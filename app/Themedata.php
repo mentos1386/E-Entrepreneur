@@ -32,4 +32,9 @@ class Themedata extends Model {
      */
     protected $hidden = [];
 
+    public function setTypeAttribute($value)
+    {
+        $this->attributes['type'] = strtolower($value);
+    }
+
 }

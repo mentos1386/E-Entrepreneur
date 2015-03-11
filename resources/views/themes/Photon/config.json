@@ -46,6 +46,11 @@
             "name": "Form",
             "description": "Show custom form",
             "dashboard": "backend.frontpage.form.index"
+          },
+          {
+            "name": "Text",
+            "description": "Show custom text with image",
+            "dashboard": "backend.frontpage.text.index"
           }
         ]
       },
