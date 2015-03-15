@@ -45,7 +45,7 @@
 
         <div class="form-group">
             {!! Form::label('icon', 'Icon:') !!}
-            {!! Form::text('icon', null, ['class' => 'form-control']) !!}
+            {!! Themes::icon_picker_search_box('menu_icon', 'icon')!!}
         </div>
 
         <div class="form-group">
@@ -123,4 +123,8 @@
         </ul>
     </div>
 
+@endsection
+
+@section('scripts')
+    {!! Themes::icon_picker_script('menu_icon')!!}
 @endsection

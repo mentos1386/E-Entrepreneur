@@ -1,0 +1,20 @@
+/* Isotope JS */
+.gallery-container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80em;
+}
+
+.gallery {
+    width: 80em;
+}
+
+.gallery .item {
+    height: auto;
+    width: 33.33%;
+}
+
+.gallery .item img {
+    height: auto;
+    width: 100%;
+}

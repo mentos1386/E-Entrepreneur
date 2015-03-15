@@ -43,14 +43,19 @@
             "dashboard": "backend.frontpage.images.index"
           },
           {
-            "name": "Form",
-            "description": "Show custom form",
-            "dashboard": "backend.frontpage.form.index"
+            "name": "Gallery",
+            "description": "Show gallery with images",
+            "dashboard": "backend.frontpage.gallery.index"
           },
           {
             "name": "Text",
             "description": "Show custom text with image",
             "dashboard": "backend.frontpage.text.index"
+          },
+          {
+            "name": "Buttons",
+            "description": "Show custom buttons",
+            "dashboard": "backend.frontpage.buttons.index"
           }
         ]
       },

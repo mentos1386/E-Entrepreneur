@@ -1,0 +1,53 @@
+/* Isotope JS */
+.gallery-container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80em;
+}
+
+.gallery {
+    width: 80em;
+}
+
+.gallery .wide-2col {
+    max-width: 33.33%;
+    height: auto;
+}
+
+.gallery .narrow-1col {
+    max-width: 16.66%;
+    height: auto;
+}
+
+.gallery .item img {
+    height: auto;
+    width: 100%;
+}
+
+.gallery .item .hover {
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    background: rgba(59, 59, 59, 0.60);
+    transition: visibility 0.5s, opacity 0.5s;
+}
+
+.gallery .item:hover .hover {
+    visibility: visible;
+    opacity: 1;
+}
+
+.gallery .item .hover .center {
+    position: relative;
+    margin-top: 25px;
+}
+
+.gallery .item .hover .center h3 {
+    text-transform: uppercase;
+    color: #f3f3f3;
+}
+

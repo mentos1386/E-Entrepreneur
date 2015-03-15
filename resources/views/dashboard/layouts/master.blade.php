@@ -76,7 +76,6 @@
 </div>
 
 
-@yield('scripts')
 <!-- jQuery -->
 <script src="//code.jquery.com/jquery.js"></script>
 <!-- Bootstrap JavaScript -->
@@ -91,6 +90,7 @@
         $('select').selectpicker();
     });
 </script>
+@yield('scripts')
 
 </body>
 </html>

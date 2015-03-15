@@ -10,6 +10,7 @@
     <script src="/Photon/public/js/jquery.scrolly.min.js"></script>
     <script src="/Photon/public/js/skel.min.js"></script>
     <script src="/Photon/public/js/init.js"></script>
+    <script src="/Photon/public/js/masonry.pkgd.min.js"></script>
     <link rel="stylesheet" href="/Photon/public/css/skel.css"/>
     <link rel="stylesheet" href="/Photon/public/css/style.css"/>
     <link rel="stylesheet" href="/Photon/public/css/style-xlarge.css"/>
@@ -39,8 +40,8 @@
 
 <section id="footer">
     <ul class="icons">
-        @include('themes.Photon.frontend.layouts.menus.bottom')
 
+        @include('themes.Photon.frontend.layouts.menus.bottom')
 
     </ul>
     <ul class="copyright">

@@ -104,6 +104,12 @@ class Themes {
         return route('home');
     }
 
+    /**
+     * Generate drop down menu with Posts and Pages
+     *
+     * @param $param
+     * @return string
+     */
     public static function html_posts_pages_drop_down($param)
     {
         $pages = Page::all();
@@ -138,5 +144,18 @@ class Themes {
         return $return;
     }
 
+    public static function icon_picker_search_box($class, $name)
+    {
+        return '<input class="form-control ' . $class . ' icp icp-auto iconpicker-element iconpicker-input" name="' . $name . '" data-input-search="true" value="fa-plane" type="text">';
+    }
+
+    public static function icon_picker_script($class)
+    {
+        return '<script>
+                    $(document).ready(function () {
+                        $(\'.' . $class . '\').iconpicker();
+                    });
+                </script>';
+    }
 
 }
