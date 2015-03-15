@@ -51,3 +51,10 @@
     color: #f3f3f3;
 }
 
+/*
+ * Here Maps
+ */
+
+.map div {
+    max-height: 500px;
+}

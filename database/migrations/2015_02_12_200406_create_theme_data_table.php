@@ -16,7 +16,7 @@ class CreateThemeDataTable extends Migration {
         {
             $table->increments('id');
             $table->string('type');
-            $table->large_text('data');
+            $table->text('data');
 
         });
     }
