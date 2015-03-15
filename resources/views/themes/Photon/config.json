@@ -56,6 +56,11 @@
             "name": "Buttons",
             "description": "Show custom buttons",
             "dashboard": "backend.frontpage.buttons.index"
+          },
+          {
+            "name": "Maps",
+            "description": "Show google maps",
+            "dashboard": "backend.frontpage.maps.index"
           }
         ]
       },

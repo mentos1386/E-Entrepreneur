@@ -14,6 +14,8 @@
                 @include('themes.Photon.frontend.frontpage.builder.text', ['data' => json_decode($item['data'], true)])
             @elseif($item->type == "buttons")
                 @include('themes.Photon.frontend.frontpage.builder.buttons', ['data' => json_decode($item['data'], true)])
+            @elseif($item->type == "maps")
+                @include('themes.Photon.frontend.frontpage.builder.maps', ['data' => json_decode($item['data'], true)])
             @endif
 
         @endforeach
