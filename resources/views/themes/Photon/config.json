@@ -11,12 +11,14 @@
       {
         "name": "Top Menu",
         "description": "This is menu on top",
-        "pos": "top"
+        "pos": "top",
+        "max": "5"
       },
       {
         "name": "Bottom Menu",
         "description": "This is menu on bottom, for social links",
-        "pos": "bottom"
+        "pos": "bottom",
+        "max": "10"
       }
     ],
     "page_types": [
@@ -40,33 +42,38 @@
           {
             "name": "Images",
             "description": "Show images",
-            "dashboard": "backend.frontpage.images.index"
+            "dashboard": "backend.frontpage.builders.images.index"
           },
           {
             "name": "Gallery",
             "description": "Show gallery with images",
-            "dashboard": "backend.frontpage.gallery.index"
+            "dashboard": "backend.frontpage.builders.gallery.index"
           },
           {
             "name": "Text",
             "description": "Show custom text with image",
-            "dashboard": "backend.frontpage.text.index"
+            "dashboard": "backend.frontpage.builders.text.index"
           },
           {
             "name": "Buttons",
             "description": "Show custom buttons",
-            "dashboard": "backend.frontpage.buttons.index"
+            "dashboard": "backend.frontpage.builders.buttons.index"
           },
           {
             "name": "Maps",
             "description": "Show google maps",
-            "dashboard": "backend.frontpage.maps.index"
+            "dashboard": "backend.frontpage.builders.maps.index"
           }
         ]
       },
       "posts": {
         "default": "true",
         "items": [
+          {
+            "name": "Posts settings",
+            "description": "Post settings",
+            "dashboard": "backend.frontpage.posts.settings.index"
+          }
         ]
       }
     }

@@ -7,7 +7,7 @@
 @section('header')
 
     <h1 class="page-header">
-        <span class="fa fa-paint-brush"></span> Create {{ $name  }}
+        <span class="fa fa-paint-brush"></span> Front Page <span class="fa fa-angle-right"></span> {{ $name  }}
         <div class="pull-right">
         </div>
     </h1>

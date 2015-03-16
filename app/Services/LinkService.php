@@ -1,13 +1,14 @@
 <?php namespace App\Services;
 
 use App\Link;
+use App\Menu;
 use Validator;
 use Illuminate\Support\Facades\Auth;
 
-class MenuService {
+class LinkService {
 
     /**
-     * Get a validator for an incoming create post request.
+     * Get a validator for an incoming create link request.
      *
      * @param  array $data
      * @return \Illuminate\Contracts\Validation\Validator
@@ -16,6 +17,7 @@ class MenuService {
     {
         return Validator::make($data, [
             'name'       => 'required|max:255',
+            'pos' => 'required|unique:links,pos,NULL,id,menu_id,' . $data['menu_id'],
             'url'        => 'required_without:url_custom',
             'url_custom' => 'required_without:url',
             'menu_id'    => 'required',
@@ -23,12 +25,17 @@ class MenuService {
     }
 
     /**
-     *  Create new Post
+     *  Create new Link
      *
      * @param  array $data
+     * @return redirect IF ERROR (Menu is full!)
      */
     public function create(array $data)
     {
+        $menu = Menu::with('links')->findOrFail($data['menu_id'])->first();
+
+
+
         if ($data['url_custom'] != '')
         {
             $data['url'] = $data['url_custom'];
@@ -39,15 +46,22 @@ class MenuService {
         {
             $data['url'] = url($data['url']);
         }
+        if (!(count($menu['links']) >= $menu['max']))
+        {
+            Link::create([
+                'name'      => $data['name'],
+                'pos'       => $data['pos'],
+                'url'       => $data['url'],
+                'menu_id'   => $data['menu_id'],
+                'drop_down' => ((isset($data['drop_down'])) ? $data['drop_down'] : '0'),
+                'parent'    => ((isset($data['parent'])) ? $data['parent'] : null),
+                'icon'      => ((isset($data['icon'])) ? $data['icon'] : null),
+            ]);
+        } else
+        {
+            return $menu['name'];
+        }
 
-        $post = Link::create([
-            'name'      => $data['name'],
-            'url' => $data['url'],
-            'menu_id'   => $data['menu_id'],
-            'drop_down' => ((isset($data['drop_down'])) ? $data['drop_down'] : '0'),
-            'parent'    => ((isset($data['parent'])) ? $data['parent'] : null),
-            'icon'      => ((isset($data['icon'])) ? $data['icon'] : null),
-        ]);
     }
 
     /**

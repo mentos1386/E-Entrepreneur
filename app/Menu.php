@@ -23,7 +23,7 @@ class Menu extends Model {
      *
      * @var array
      */
-    protected $fillable = ['name', 'description', 'pos'];
+    protected $fillable = ['name', 'description', 'pos', 'max'];
 
     /**
      *  Menu can have many links

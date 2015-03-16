@@ -144,11 +144,20 @@ class Themes {
         return $return;
     }
 
+    /**
+     * @param $class
+     * @param $name
+     * @return string
+     */
     public static function icon_picker_search_box($class, $name)
     {
         return '<input class="form-control ' . $class . ' icp icp-auto iconpicker-element iconpicker-input" name="' . $name . '" data-input-search="true" value="fa-plane" type="text">';
     }
 
+    /**
+     * @param $class
+     * @return string
+     */
     public static function icon_picker_script($class)
     {
         return '<script>
@@ -157,5 +166,4 @@ class Themes {
                     });
                 </script>';
     }
-
 }

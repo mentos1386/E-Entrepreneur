@@ -23,7 +23,7 @@
             </ul>
             @foreach($menus as $menu)
                 <li class="list-group-item">
-                    <span class="badge">{{ count($menu['links']) }}</span>
+                    <span class="badge">{{ count($menu['links']).' / '. $menu['max'] }}</span>
                     {{$menu['name']}}
                 </li>
             @endforeach
@@ -73,6 +73,7 @@
         </div>
 
         <div class="form-group">
+            <label>Menu:</label>
             <select class="form-control" name="menu_id" data-size="10">
 
                 @foreach($menus as $menu)
@@ -81,12 +82,19 @@
 
             </select>
         </div>
-
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" value="true" name="drop_down"> Drop Down
-            </label>
+        <div class="form-group">
+            <label>Position</label>
+            <input type="number" class="form-control" name="pos">
         </div>
+
+        <div class="form-group">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="true" name="drop_down"> Drop Down
+                </label>
+            </div>
+        </div>
+
 
         <div class="form-group">
             {!! Form::submit('Save', array('class' => 'btn btn-md btn-success')) !!}
@@ -97,30 +105,42 @@
     </div>
 
     <div class="col-md-6">
-        <ul class="list-group cat-tags">
-            <ul class="list-group-item list-group-item-heading">
-                All Links:
-            </ul>
 
-            <table class="table">
-                <thead>
-                <th>#</th>
-                <th>Name</th>
-                <th>Icon</th>
-                <th>Url</th>
-                <th>Menu</th>
-                </thead>
-                @foreach($links as $link)
-                    <tbody>
-                    <td>{{ $link['id'] }}</td>
-                    <td>{{ $link['name'] }}</td>
-                    <td><span class="fa {{ $link['icon'] }}"></span></td>
-                    <td><a href="{{ $link['url'] }}">{{ $link['url'] }}</a></td>
-                    <td>{{ $link['menu']['name'] }}</td>
-                    </tbody>
-                @endforeach
-            </table>
-        </ul>
+        @foreach($menus as $menu)
+            <ul class="list-group cat-tags">
+                <ul class="list-group-item list-group-item-heading">
+                    {{ $menu['name'] }} Links:
+                </ul>
+
+                <table class="table">
+                    <thead>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Icon</th>
+                    <th>Url</th>
+                    <th>Position</th>
+                    <th>Remove/Edit</th>
+                    </thead>
+                    @foreach($menu['links'] as $link)
+                        <tbody>
+                        <td>{{ $link['id'] }}</td>
+                        <td>{{ $link['name'] }}</td>
+                        <td><span class="fa {{ $link['icon'] }}"></span></td>
+                        <td><a href="{{ $link['url'] }}">{{ $link['url'] }}</a></td>
+                        <td>{{ $link['pos'] }}</td>
+                        <td>
+                            <div class="btn-group">
+                                <a href="{{ route('dashboard.appearance.menus.index').'/'.$link['id'].'/delete' }}"
+                                   class="btn btn-danger btn-sm"><span class="fa fa-remove"></span></a>
+                                <a href="{{ route('dashboard.appearance.menus.index').'/'.$link['id'].'/edit' }}"
+                                   class="btn btn-info btn-sm"><span class="fa fa-pencil"></span></a>
+                            </div>
+                        </td>
+                        </tbody>
+                    @endforeach
+                </table>
+            </ul>
+        @endforeach
     </div>
 
 @endsection

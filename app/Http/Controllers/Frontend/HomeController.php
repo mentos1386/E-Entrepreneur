@@ -17,11 +17,13 @@ class HomeController extends Controller {
 	public function index()
 	{
 
-		$posts = Post::with('tag', 'category', 'user')->orderBy('created_at', 'DEC')->paginate();
+		// TODO: IT Should be somehow figured out, if theme needs DEC or ASC, and get ONLY that from DB
+		$posts_dec = Post::with('tag', 'category', 'user')->orderBy('created_at', 'DEC')->paginate();
+		$posts_asc = Post::with('tag', 'category', 'user')->orderBy('created_at', 'ASC')->paginate();
 
 		$items = Themedata::all();
 
-		return view('themes.' . App::first()->theme . '.frontend.frontpage.home', ['posts' => $posts, 'items' => $items]);
+		return view('themes.' . App::first()->theme . '.frontend.frontpage.home', ['posts_dec' => $posts_dec, 'posts_asc' => $posts_asc, 'items' => $items]);
 	}
 
 }

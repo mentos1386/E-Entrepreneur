@@ -21,7 +21,23 @@
         @endforeach
 
     @elseif($site->theme_frontpage == 'posts')
-        @include('themes.Photon.frontend.frontpage.posts.show')
+
+        @foreach($items as $item)
+
+            @if($item->type == "posts settings")
+
+                <?php $data = json_decode($item['data'], true); ?>
+
+                @if($data['style'] == '1')
+                    @include('themes.Photon.frontend.frontpage.posts.1', ['data' => $data])
+                @elseif($data['style'] == '2')
+                    @include('themes.Photon.frontend.frontpage.posts.2', ['data' => $data])
+                @endif
+
+            @endif
+
+        @endforeach
+
     @endif
 
 @endsection

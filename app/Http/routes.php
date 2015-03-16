@@ -118,8 +118,16 @@ Route::group(array('middleware' => 'perm.dashboard'), function()
 	{
 		// -> Menus
 		Route::resource('/dashboard/appearance/menus', 'Dashboard\MenusController');
+		Route::get('/dashboard/appearance/menus/{id}/delete', ['as' => 'dashboard.appearance.menus.destroy', 'uses' => 'Dashboard\MenusController@destroy']);
 		// -> Front Page
-		Route::get('/dashboard/appearance/frontpage/create/{name}', ['as' => 'dashboard.appearance.frontpage.create', 'uses' => 'Dashboard\FrontPageController@create']);
+		Route::get(
+			'/dashboard/appearance/frontpage/create/{name}',
+			['as' => 'dashboard.appearance.frontpage.create', 'uses' => 'Dashboard\FrontPageController@create']
+		);
+		Route::get(
+			'/dashboard/appearance/frontpage/select/{name}',
+			['as' => 'dashboard.appearance.frontpage.select', 'uses' => 'Dashboard\FrontPageController@select']
+		);
 		Route::resource('/dashboard/appearance/frontpage', 'Dashboard\FrontPageController');
 
 		// Appearance

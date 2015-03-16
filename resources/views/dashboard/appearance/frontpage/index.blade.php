@@ -22,12 +22,17 @@
                 Supported Front Pages
             </ul>
             @foreach($appearance['front_page'] as $name => $data)
-                <li class="list-group-item">
-                    @if ($name == $site->theme_frontpage)
+                @if ($name == $site->theme_frontpage)
+                    <li class="list-group-item">
                         <span class="badge"> Selected </span>
-                    @endif
-                    {{ $name }}
-                </li>
+                        {{ $name }}
+                    </li>
+                @else
+                    <a href="{{ route('dashboard.appearance.frontpage.index').'/select/'.$name }}"
+                       class="list-group-item">
+                        {{ $name }}
+                    </a>
+                @endif
             @endforeach
         </ul>
     </div>

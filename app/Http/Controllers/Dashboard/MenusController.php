@@ -7,7 +7,7 @@ use App\Link;
 use App\Menu;
 use App\Page;
 use App\Post;
-use App\Services\MenuService;
+use App\Services\LinkService;
 use Illuminate\Http\Request;
 
 class MenusController extends Controller {
@@ -20,11 +20,10 @@ class MenusController extends Controller {
     public function index()
     {
         $menus = Menu::with('links')->get();
-        $links = Link::with('menu')->get();
         $posts = Post::all();
         $pages = Page::all();
 
-        return view('dashboard.appearance.menus.index', ['menus' => $menus, 'posts' => $posts, 'pages' => $pages, 'links' => $links]);
+        return view('dashboard.appearance.menus.index', ['menus' => $menus, 'posts' => $posts, 'pages' => $pages]);
     }
 
     /**
@@ -38,13 +37,14 @@ class MenusController extends Controller {
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store links to menu
      *
+     * @param Request $request
      * @return Response
      */
     public function store(Request $request)
     {
-        $addLink = new MenuService;
+        $addLink = new LinkService;
 
         $validator = $addLink->validator($request->all());
 
@@ -55,7 +55,13 @@ class MenusController extends Controller {
             );
         }
 
-        $addLink->create($request->all());
+        $create = $addLink->create($request->all());
+
+        if ($create != '')
+        {
+            return redirect()->back()->withInput()
+                ->with('message_danger', '<strong>Whops!</strong> Cant add any more links to <b>' . $create . '</b>!');
+        }
 
         return redirect(route('dashboard.appearance.menus.index'))
             ->with('message_success', '<strong>Success!</strong> Link successfully added!');
@@ -102,7 +108,10 @@ class MenusController extends Controller {
      */
     public function destroy($id)
     {
-        //
+        $link = Link::find($id)->first()->delete();
+
+        return redirect()->back()
+            ->with('message_success', '<strong>Success!</strong> Link successfully deleted!');
     }
 
 }

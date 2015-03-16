@@ -15,11 +15,12 @@ class AppServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
+		//Check if we did migration, and we have tables
 		if (count(DB::select('SHOW TABLES')) > 18)
 		{
 			$data = App::first();
 			View::share('site', $data);
-			$menus = Menu::with('links')->get();
+			$menus = Menu::with('links')->get()->sortByDesc('pos');
 			View::share('menus', $menus);
 		}
 	}

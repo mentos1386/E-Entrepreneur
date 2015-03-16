@@ -66,13 +66,20 @@ class FrontPageController extends Controller {
 
         $json = json_encode($input['data']);
 
-        $theme_data = new Themedata;
+        if ($input['rewrite'])
+        {
+            $theme_data = Themedata::where('type', $input['type'])->first();
+        } else
+        {
+            $theme_data = new Themedata;
+        }
+
         $theme_data->type = $input['type'];
         $theme_data->data = $json;
         $theme_data->save();
 
         return redirect(route('dashboard.appearance.frontpage.index'))
-            ->with('message_success', '<strong>Success!</strong> ' . $input['type'] . ' created!');
+            ->with('message_success', '<strong>Success!</strong> ' . $input['type'] . ' saved!');
     }
 
     /**
@@ -87,28 +94,6 @@ class FrontPageController extends Controller {
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  int $id
-     * @return Response
-     */
-    public function update($id)
-    {
-        //
-    }
-
-    /**
      * Remove the specified resource from storage.
      *
      * @param  int $id
@@ -117,6 +102,22 @@ class FrontPageController extends Controller {
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Select front page type
+     *
+     * @param  int $name
+     * @return Response
+     */
+    public function select($name)
+    {
+        $data = App::all()->first();
+        $data->theme_frontpage = $name;
+        $data->save();
+
+        return redirect(route('dashboard.appearance.frontpage.index'))
+            ->with('message_success', '<strong>Success!</strong> Front page changed to <b>' . $name . '</b>!');
     }
 
 }
