@@ -58,3 +58,17 @@
 .map div {
     max-height: 500px;
 }
+
+/*
+ * Tags Styling
+ */
+
+.tags {
+    list-style: none;
+    display: inline-block;
+    padding: 0;
+}
+
+.tags li {
+    float: left;
+}
