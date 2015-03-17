@@ -1,4 +1,4 @@
-<section id="four" class="main style{{ $data['style'] }} special">
+<section class="main style{{ $data['style'] }} special">
     <div class="container">
         <header class="major">
             <h2>{{ $data['header'] }}</h2>

@@ -5,7 +5,7 @@
         </header>
         <p>{{ $data['sub_header'] }}</p>
 
-        <div class=" 150%">
+        <div class="row 150%">
 
             <div class="gallery js-masonry"
                  data-masonry-options='{ "itemSelector": ".item", "columnWidth": ".narrow-1col" }'>
