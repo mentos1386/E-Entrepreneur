@@ -28,7 +28,7 @@
     <section class="main style1">
         <div class="container">
             <div class="row 150%">
-                <div class="12$(medium)" id="comments">
+                <div class="width-100" id="comments">
                     <header>
                         <h2><span class="fa fa-comments-o"></span> Comments</h2>
                     </header>
