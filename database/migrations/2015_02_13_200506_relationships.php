@@ -54,7 +54,7 @@ class Relationships extends Migration {
 			$table->integer('post_id')->unsigned();
 			$table->foreign('post_id')->references('id')->on('posts');
 
-			$table->integer('user_id')->unsigned();
+			$table->integer('user_id')->unsigned()->nullable();
 			$table->foreign('user_id')->references('id')->on('users');
 
 		});
@@ -168,7 +168,7 @@ class Relationships extends Migration {
 			'name'        => 'Company Co.',
 			'language' => 'en',
 			'description'     => 'Some Awesome Company that dose Fun stuff',
-			'theme'           => 'Default',
+			'theme' => 'Photon',
 			'theme_frontpage' => 'posts',
 		));
 

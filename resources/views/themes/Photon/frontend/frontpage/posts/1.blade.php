@@ -9,6 +9,7 @@
             <section class="main style1">
                 @include('themes.Photon.frontend.frontpage.posts.partial.post')
             </section>
+            <hr class="major" style="margin:0;">
 
         @endforeach
 
@@ -19,9 +20,11 @@
             <section class="main style1">
                 @include('themes.Photon.frontend.frontpage.posts.partial.post')
             </section>
+            <hr class="major" style="margin:0;">
 
         @endforeach
 
     @endif
+
 
 @endsection

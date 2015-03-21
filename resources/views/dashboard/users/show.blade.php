@@ -70,16 +70,18 @@
             <table class="table">
                 <thead>
                     <th>#</th>
-                    <th>Body</th>
+                    <th>Comment</th>
                     <th>Created at</th>
-                    <th>Post Id</th>
+                    <th>Post Name</th>
                 </thead>
                 @foreach($user['comments'] as $comment)
                     <tbody>
                         <td>{{ $comment['id'] }}</td>
-                        <td>{{ $comment['body'] }}</td>
+                        <td>{{ $comment['comment'] }}</td>
                         <td>{{ $comment['created_at'] }}</td>
-                        <td><a href="{{ route('dashboard.blog.posts.index').'/'.$comment['post_id'] }}">{{ $comment['post_id'] }}</a></td>
+                        <td>
+                            <a href="{{ route('dashboard.blog.posts.index').'/'.$comment['post_id'] }}">{{ $comment['post']['title'] }}</a>
+                        </td>
                     </tbody>
                 @endforeach
             </table>

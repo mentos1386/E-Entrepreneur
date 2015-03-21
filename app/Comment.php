@@ -16,7 +16,7 @@ class Comment extends Model {
      *
      * @var array
      */
-    protected $fillable = [ 'body' ];
+    protected $fillable = ['comment', 'post_id', 'name', 'email', 'user_id'];
 
     /**
      *  One Comment belongs to One Post

@@ -3,6 +3,8 @@
 use App\App;
 use App\Page;
 use App\Post;
+use Illuminate\Html\FormFacade as Form;
+use Illuminate\Support\Facades\Auth;
 
 class Themes {
 
@@ -165,5 +167,32 @@ class Themes {
                         $(\'.' . $class . '\').iconpicker();
                     });
                 </script>';
+    }
+
+
+    /**
+     * Create opening tags for comments form
+     *
+     * @param $type
+     * @param $param
+     * @return string Form open and hidden token
+     */
+    public static function form_open($type, $param = null)
+    {
+        if ($type == 'comments')
+        {
+            return Form::open(['url' => route('comments.post')]) . Form::hidden('post_id', $param);
+        } elseif ($type == 'login')
+        {
+            return Form::open(['url' => 'auth/login']);
+        }
+    }
+
+    /**
+     * Create closing tags for comments form
+     */
+    public static function form_close()
+    {
+        return Form::close();;
     }
 }

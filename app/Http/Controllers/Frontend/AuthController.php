@@ -21,7 +21,7 @@ class AuthController extends Controller {
 			return $this->redirectPath;
 		}
 
-		return property_exists($this, 'redirectTo') ? $this->redirectTo : route('dashboard');
+		return property_exists($this, 'redirectTo') ? $this->redirectTo : back()->getTargetUrl();
 	}
 
 	use AuthenticatesAndRegistersUsers;

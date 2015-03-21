@@ -72,3 +72,107 @@
 .tags li {
     float: left;
 }
+
+/*
+ * Heading text
+ */
+
+.major a {
+    border-bottom: none;
+}
+
+/*
+ * Post Show, footer author
+ */
+
+.author {
+    display: inline-block;
+    float: right;
+    text-transform: capitalize;
+    color: #555;
+    font-weight: 400;
+}
+
+.author:before {
+    background: none repeat scroll 0% 0% rgba(144, 144, 144, 0.5);
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    height: 1px;
+    width: 0.5em;
+    margin-right: 0.25em;
+}
+
+/*
+ * Comments
+ */
+.comment {
+    list-style: none;
+}
+
+.comment:after {
+    background: none repeat scroll 0% 0% rgba(144, 144, 144, 0.5);
+    content: "";
+    display: inline-block;
+    height: 1px;
+    margin-top: 0.5em;
+    width: 100%;
+}
+
+.comment .gravatar {
+    display: inline-block;
+    float: left;
+    margin-top: auto;
+}
+
+.comment .gravatar img {
+    border-radius: 50%;
+}
+
+.comment .wrap {
+    margin-left: 90px;
+}
+
+.comment .header h4 {
+    display: inline-block;
+}
+
+.comment .header .name {
+    text-transform: capitalize;
+}
+
+.comment .header .date {
+    float: right;
+}
+
+.comment .content {
+    margin: 0.25em 1em 0.25em 0em;
+}
+
+.comment .content p {
+    margin: 0;
+}
+
+/*
+ * Post comment form
+ */
+
+.post-comment form {
+    width: 45%;
+    float: left;
+}
+
+.post-comment .header {
+    margin-bottom: 0;
+}
+
+.post-comment .middle {
+    width: 10%;
+    float: left;
+    text-align: center;
+}
+
+.post-comment .middle p {
+    margin-top: 5em;
+    font-size: 1.5em;
+}

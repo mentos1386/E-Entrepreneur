@@ -66,9 +66,17 @@ class FrontPageController extends Controller {
 
         $json = json_encode($input['data']);
 
-        if ($input['rewrite'])
+        if (isset($input['rewrite']))
         {
-            $theme_data = Themedata::where('type', $input['type'])->first();
+            if ($input['rewrite'])
+            {
+                $theme_data = Themedata::where('type', $input['type'])->first();
+            }
+            if (empty($theme_data))
+            {
+                $theme_data = new Themedata;
+            }
+
         } else
         {
             $theme_data = new Themedata;

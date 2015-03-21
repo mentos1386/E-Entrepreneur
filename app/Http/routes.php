@@ -163,9 +163,19 @@ Route::group(array('middleware' => 'perm.dashboard'), function()
 Route::get('/', ['as' => 'home', 'uses' => 'Frontend\HomeController@index']);
 
 /*
- * Posts
+ * Posts & Comments
  */
 Route::resource('/post', 'Frontend\PostsController', ['only' => ['index', 'show']]);
+Route::post('/comments', ['as' => 'comments.post', 'uses' => 'Frontend\CommentsController@store']);
+
+
+/*
+ * Tags & Categories
+ */
+Route::get('/tags', 'Frontend\TagsController@index');
+Route::get('/tag/{id}', 'Frontend\TagsController@show');
+Route::get('/categories', 'Frontend\CategoriesController@index');
+Route::get('/category/{id}', 'Frontend\CategoriesController@show');
 
 /*
  * Pages

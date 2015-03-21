@@ -37,7 +37,7 @@
             <td>
                 <a href="{{ route('dashboard.users.index').'/'.$post['user']['id'] }}">{{ $post['user']['username'] }}</a>
             </td>
-            <td>{{ count($post['comments']) }}</td>
+            <td>{{ count($post['comment']) }}</td>
             </tbody>
         @endforeach
     </table>

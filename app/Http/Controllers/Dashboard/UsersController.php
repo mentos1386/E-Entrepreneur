@@ -47,7 +47,7 @@ class UsersController extends Controller {
      */
     public function show($id)
     {
-        $user = User::with('role', 'comments', 'posts')->findOrFail($id);
+        $user = User::with('role', 'comments', 'comments.post', 'posts')->findOrFail($id);
 
         return view('dashboard.users.show', ['user' => $user]);
     }
