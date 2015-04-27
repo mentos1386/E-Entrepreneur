@@ -12,6 +12,13 @@ class Tag extends Model {
     protected $table = 'tags';
 
     /**
+     * Do not use timestamps
+     *
+     * @var bool
+     */
+    public $timestamps = false;
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -26,6 +33,17 @@ class Tag extends Model {
     public function post(){
 
         return $this->belongsToMany('App\Post', 'post_tag', 'tag_id', 'post_id');
+    }
+
+    /**
+     *  One tag can be used for many posts
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function store()
+    {
+
+        return $this->belongsToMany('App\Store', 'store_tag', 'tag_id', 'store_id');
     }
 
 }

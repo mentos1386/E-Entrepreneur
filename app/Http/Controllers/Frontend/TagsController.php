@@ -27,7 +27,7 @@ class TagsController extends Controller {
      */
     public function show($id)
     {
-        $tag = Tag::with('post')->findOrFail($id);
+        $tag = Tag::with('post', 'store')->findOrFail($id);
 
         return Themes::view('.tags.show', ['tag' => $tag]);
     }

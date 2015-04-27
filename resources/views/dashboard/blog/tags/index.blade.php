@@ -24,14 +24,12 @@
         <th>#</th>
         <th>Name</th>
         <th>Comment</th>
-        <th>Created at</th>
         </thead>
         @foreach($tags as $tag)
             <tbody>
             <td>{{ $tag['id'] }}</td>
             <td><a href="{{ route('dashboard.blog.tags.index').'/'.$tag['id'] }}">{{ $tag['name'] }}</a></td>
             <td>{{ $tag['comment'] }}</td>
-            <td>{{ $tag['created_at'] }}</td>
             </tbody>
         @endforeach
     </table>

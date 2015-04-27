@@ -12,6 +12,13 @@ class Categories extends Model {
     protected $table = 'categories';
 
     /**
+     * Do not use timestamps
+     *
+     * @var bool
+     */
+    public $timestamps = false;
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -26,6 +33,17 @@ class Categories extends Model {
     public function post(){
 
         return $this->belongsToMany('App\Post', 'post_category', 'category_id', 'post_id');
+    }
+
+    /**
+     *  One Category can belong to Many Store
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function store()
+    {
+
+        return $this->belongsToMany('App\Store', 'store_category', 'category_id', 'store_id');
     }
 
 }

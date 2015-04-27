@@ -59,6 +59,19 @@ class Relationships extends Migration {
 
 		});
 
+        /*
+         * Create relationship for reviews table
+         */
+        Schema::table('reviews', function (Blueprint $table) {
+
+            $table->integer('store_id')->unsigned();
+            $table->foreign('store_id')->references('id')->on('store');
+
+            $table->integer('user_id')->unsigned()->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
+
+        });
+
 		/*
 		 * Create relationship for links table
 		 */

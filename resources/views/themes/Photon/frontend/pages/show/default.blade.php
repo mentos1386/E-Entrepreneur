@@ -3,7 +3,7 @@
     {{ $page['name'] }}
 @endsection
 @section('content')
-    <section id="two" class="main style1">
+    <section class="main style1">
         <div class="container">
             <div class="row 150%">
                 <div class="12u$ 12u$(medium)">

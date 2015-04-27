@@ -12,7 +12,7 @@
     <!-- FontAwesome CDN -->
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    {!! HTML::style('dashboard/css/dashboard.css') !!}
+    {!! HTML::style('dashboard_style/css/dashboard.css') !!}
 
 </head>
 <body>
@@ -81,7 +81,7 @@
 <!-- Bootstrap JavaScript -->
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 <!-- FontAwesome icon picker -->
-{!! HTML::script('dashboard/js/fontawesome-iconpicker.min.js') !!}
+{!! HTML::script('dashboard_style/js/fontawesome-iconpicker.min.js') !!}
 <!-- Better selects -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/bootstrap-select.min.js"></script>
 <link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" rel="stylesheet">

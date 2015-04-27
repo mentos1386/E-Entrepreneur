@@ -69,4 +69,14 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		return $this->hasMany('App\Page', 'page_user', 'page_id', 'user_id');
 	}
 
+    /**
+     *  One User Has many Orders(bought stuff)
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function orders()
+    {
+        return $this->belongsToMany('App\Store', 'store_users', 'store_id', 'user_id');
+    }
+
 }

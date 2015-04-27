@@ -18,7 +18,6 @@ class CreateCategoriesTable extends Migration {
 			$table->string('name');
 			$table->string('comment');
 			$table->integer('parent')->nullable();
-			$table->timestamps();
 		});
 	}
 

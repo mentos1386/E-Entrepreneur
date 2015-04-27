@@ -47,6 +47,7 @@
     <ul class="copyright">
         <li>&copy; {{ $site->name }}</li>
         <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+        <li>Created by <a href="https://twitter.com/mentos1386">Mentos1386</a>.</li>
     </ul>
 </section>
 

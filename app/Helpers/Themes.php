@@ -185,6 +185,8 @@ class Themes {
         } elseif ($type == 'login')
         {
             return Form::open(['url' => 'auth/login']);
+        } elseif ($type == 'reviews') {
+            return Form::open(['url' => route('reviews.post')]) . Form::hidden('store_id', $param);
         }
     }
 

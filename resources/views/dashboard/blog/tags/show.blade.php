@@ -35,7 +35,6 @@
             <th>#</th>
             <th>Name</th>
             <th>Body</th>
-            <th>Created at</th>
             <th>Created by</th>
             </thead>
             @foreach($tag->post->toArray() as $post)
@@ -43,7 +42,6 @@
                 <td>{{ $post['id'] }}</td>
                 <td><a href="{{ route('dashboard.blog.posts.index').'/'.$post['id'] }}">{{ $post['title'] }}</a></td>
                 <td>{{ $post['body'] }}</td>
-                <td>{{ $post['created_at'] }}</td>
                 <td>
                     <a href="{{ route('dashboard.users.index').'/'.$post['user']['id'] }}">{{ $post['user']['username'] }}</a>
                 </td>

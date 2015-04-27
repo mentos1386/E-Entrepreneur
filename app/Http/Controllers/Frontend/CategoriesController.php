@@ -16,7 +16,9 @@ class CategoriesController extends Controller {
      */
     public function index()
     {
-        //
+        $categories = Categories::all();
+
+        return $categories;
     }
 
     /**
@@ -27,7 +29,7 @@ class CategoriesController extends Controller {
      */
     public function show($id)
     {
-        $category = Categories::with('post')->findOrFail($id);
+        $category = Categories::with('post', 'store')->findOrFail($id);
 
         return Themes::view('.categories.show', ['category' => $category]);
     }

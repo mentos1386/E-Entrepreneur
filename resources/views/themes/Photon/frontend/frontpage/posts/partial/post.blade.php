@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row 150%">
-        <div class="12u 12u$(medium)">
+        <div class="width-100">
             <header class="major">
 
                 <div class="wrap">
@@ -27,6 +27,13 @@
                         </a>
                     </li>
                 @endforeach
+                    @foreach($post['category'] as $category)
+                        <li><span class="fa fa-sitemap"></span>
+                            <a href="/category/{{ $category['id'] }}">
+                                {{ $category['name'] }}
+                            </a>
+                        </li>
+                    @endforeach
             </ul>
             <p class="author">{{ $post['user']['username'] }}</p>
         </div>

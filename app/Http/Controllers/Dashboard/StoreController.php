@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Store;
 use Illuminate\Http\Request;
 
 class StoreController extends Controller {
@@ -14,7 +15,9 @@ class StoreController extends Controller {
 	 */
 	public function index()
 	{
-		return view('dashboard.index');
+        $store = Store::with('categories', 'tags', 'buyers')->paginate();
+
+        return view('dashboard.store.index', ['store' => $store]);
 	}
 
 	/**

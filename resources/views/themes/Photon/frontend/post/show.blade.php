@@ -18,7 +18,22 @@
                         </div>
                     </header>
                     <p>{{ $post['body'] }}</p>
-
+                    <ul class="tags">
+                        @foreach($post['tag'] as $tag)
+                            <li><span class="fa fa-tag"></span>
+                                <a href="/tag/{{ $tag['id'] }}">
+                                    {{ $tag['name'] }}
+                                </a>
+                            </li>
+                        @endforeach
+                        @foreach($post['category'] as $category)
+                            <li><span class="fa fa-sitemap"></span>
+                                <a href="/category/{{ $category['id'] }}">
+                                    {{ $category['name'] }}
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
                     <p class="author">{{ $post['user']['username'] }}</p>
                 </div>
             </div>
@@ -30,7 +45,7 @@
             <div class="row 150%">
                 <div class="width-100" id="comments">
                     <header>
-                        <h2><span class="fa fa-comments-o"></span> Comments</h2>
+                        <h2><span class="fa fa-comments-o"></span> Comments | {{ count($post['comment']) }}</h2>
                     </header>
 
                     @if (empty($post['comment']->toArray()))

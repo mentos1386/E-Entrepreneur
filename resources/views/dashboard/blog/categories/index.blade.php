@@ -24,7 +24,6 @@
         <th>#</th>
         <th>Name</th>
         <th>Comment</th>
-        <th>Created at</th>
         <th>Parent</th>
         </thead>
         @foreach($categories as $category)
@@ -33,7 +32,6 @@
             <td><a href="{{ route('dashboard.blog.categories.index').'/'.$category['id'] }}">{{ $category['name'] }}</a>
             </td>
             <td>{{ $category['comment'] }}</td>
-            <td>{{ $category['created_at'] }}</td>
             <td>{{ $category['parent'] }}</td>
             </tbody>
         @endforeach

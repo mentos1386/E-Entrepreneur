@@ -3,7 +3,8 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePageUser extends Migration {
+class CreatePageRoleTable extends Migration
+{
 
     /**
      * Run the migrations.
@@ -12,13 +13,13 @@ class CreatePageUser extends Migration {
      */
     public function up()
     {
-        Schema::create('page_user', function (Blueprint $table)
+        Schema::create('page_role', function (Blueprint $table)
         {
             $table->increments('id');
             $table->integer('page_id')->unsigned()->index();
             $table->foreign('page_id')->references('id')->on('pages');
-            $table->integer('user_id')->unsigned()->index();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('role_id')->unsigned()->index();
+            $table->foreign('role_id')->references('id')->on('roles');
             $table->timestamps();
         });
     }
@@ -30,7 +31,7 @@ class CreatePageUser extends Migration {
      */
     public function down()
     {
-        Schema::drop('page_user');
+        Schema::drop('page_role');
     }
 
 }
