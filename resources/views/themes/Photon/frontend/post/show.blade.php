@@ -6,10 +6,10 @@
     <section class="main style1">
         <div class="container">
             <div class="row 150%">
-                <div class="12u$ 12u$(medium)">
+                <div class="width-100">
                     <header class="major">
                         <div class="wrap">
-                            <h2 style="display:inline-block;">
+                            <h2>
                                 <span class="fa fa-file-text-o"></span>
                                 {{ $post['title'] }}
                             </h2>

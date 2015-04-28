@@ -21,7 +21,7 @@
                 CMS Info:
             </ul>
             <li class="list-group-item">
-                <span class="badge">Alpha 1.2</span>
+                <span class="badge">Alpha 1.5</span>
                 Version
             </li>
         </ul>

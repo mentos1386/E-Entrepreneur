@@ -6,9 +6,10 @@
     <section class="main style1">
         <div class="container">
             <div class="row 150%">
-                <div class="12u$ 12u$(medium)">
+                <div class="width-100">
                     <header class="major">
-                        <h2><i class="fa fa-file-text-o"></i> Posts with <strong>{{ $tag['name'] }}</strong> Tag:</h2>
+                        <h2 class="width-100"><i class="fa fa-file-text-o"></i> Posts with
+                            <strong>{{ $tag['name'] }}</strong> Tag:</h2>
                     </header>
                     @if(empty($tag['post']->toArray()))
                         <h3>All empty here!</h3>
@@ -29,9 +30,10 @@
     <section class="main style1">
         <div class="container">
             <div class="row 150%">
-                <div class="12u$ 12u$(medium)">
+                <div class="width-100">
                     <header class="major">
-                        <h2><i class="fa fa-shopping-cart"></i> Store items with <strong>{{ $tag['name'] }}</strong>
+                        <h2 class="width-100"><i class="fa fa-shopping-cart"></i> Store items with
+                            <strong>{{ $tag['name'] }}</strong>
                             Tag:</h2>
                     </header>
                     @if(empty($tag['store']->toArray()))

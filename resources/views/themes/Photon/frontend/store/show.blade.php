@@ -9,21 +9,17 @@
                 <div class="width-100">
                     <header class="major">
                         <div class="wrap">
-                            <h2 style="display:inline-block;">
+                            <h2>
                                 <span class="fa fa-shopping-cart"></span>
                                 {{ $store['name'] }}
                             </h2>
 
-                            <h2 style="display:inline-block;padding-left: 10px">
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star-half-full"></span>
-                                <-DECOY
+                            <h2 style="padding-left: 10px">
+                                {!! Themes::reviews_ratio($reviewRatio) !!}
+
                             </h2>
 
-                            <h2 style="display:inline-block;float:right;">
+                            <h2 style="float:right;">
                                 <button class="button special small">{{ $store['price'] }}€ | Order</button>
                             </h2>
                         </div>
@@ -57,6 +53,7 @@
                                 @endif
                                         ">
                                     <?php $imgcount++ ?>
+                                </li>
                             @endforeach
                         </ol>
 
@@ -124,13 +121,7 @@
                                                 ($review['name'] != null) ? $review['name'] : $review['user']['username']
                                                 }}
                                                 |
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star-half-full"></span>
-                                                <- TODO!
-                                                <!-- TODO: YEAH DO THIS S**T !-->
+                                                {!! Themes::reviews_ratio($review['rating']) !!}
                                             </h4>
                                             <h4 class="date">
 

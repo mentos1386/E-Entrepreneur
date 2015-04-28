@@ -123,37 +123,43 @@ class StoreTableSeeder extends Seeder
 
         $faker = Faker::create();
 
-        $images = [
-
-            [
-                'url' => 'https://i.4cdn.org/wg/1429224967643.jpg',
-                'text' => 'Some info'
-            ],
-            [
-                'url' => 'https://i.4cdn.org/wg/1429225005165.jpg',
-                'text' => 'Some text'
-            ],
-            [
-                'url' => 'https://i.4cdn.org/wg/1429225044405.jpg',
-                'text' => 'Some shit'
-            ],
-            [
-                'url' => 'https://i.4cdn.org/wg/1429224930813.png',
-                'text' => 'Some amazing'
-            ],
-            [
-                'url' => 'https://i.4cdn.org/wg/1429225089299.jpg',
-                'text' => 'Some stuff'
-            ]
+        $image_urls = [
+            "https://i.4cdn.org/wg/1430236469188.jpg",
+            "https://i.4cdn.org/wg/1430234615806.jpg",
+            "https://i.4cdn.org/wg/1430234584056.jpg",
+            "https://i.4cdn.org/wg/1430232652813.jpg",
+            "https://i.4cdn.org/wg/1430232473024.jpg",
+            "https://i.4cdn.org/wg/1430230558900.jpg",
+            "https://i.4cdn.org/wg/1430228078394.jpg",
+            "https://i.4cdn.org/wg/1430227994572.jpg",
+            "https://i.4cdn.org/wg/1430227839282.png",
+            "https://i.4cdn.org/wg/1430227798951.jpg",
+            "https://i.4cdn.org/wg/1430224331450.jpg",
+            "https://i.4cdn.org/wg/1430148508607.jpg",
 
         ];
 
         foreach (range(1, 30) as $index) {
 
+            $images = [
+                [
+                    "url" => $faker->randomElement($image_urls),
+                    "text" => $faker->paragraph(),
+                ],
+                [
+                    "url" => $faker->randomElement($image_urls),
+                    "text" => $faker->paragraph(),
+                ],
+                [
+                    "url" => $faker->randomElement($image_urls),
+                    "text" => $faker->paragraph(),
+                ]
+            ];
+
             $store = Store::create([
-                'name' => $faker->name,
-                'description' => $faker->text(),
-                'price' => $faker->numberBetween(1, 1000),
+                'name' => $faker->company(),
+                'description' => $faker->realText() . implode($faker->paragraphs(10)),
+                'price' => $faker->numberBetween(1, 1500),
                 'stock' => $faker->numberBetween(1, 100),
                 'active' => 1,
                 'images' => json_encode($images),

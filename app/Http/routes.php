@@ -168,6 +168,12 @@ Route::get('/', ['as' => 'home', 'uses' => 'Frontend\HomeController@index']);
 Route::resource('/post', 'Frontend\PostsController', ['only' => ['index', 'show']]);
 Route::post('/comments', ['as' => 'comments.post', 'uses' => 'Frontend\CommentsController@store']);
 
+/*
+ * Store & Reviews
+ */
+Route::get('/store', ['as' => 'store.index', 'uses' => 'Frontend\StoreController@index']);
+Route::get('/store/{id}', ['as' => 'store.show', 'uses' => 'Frontend\StoreController@show']);
+Route::post('/reviews', ['as' => 'reviews.post', 'uses' => 'Frontend\ReviewsController@store']);
 
 /*
  * Tags & Categories
@@ -184,9 +190,4 @@ Route::get('/{url}', 'Frontend\PagesController@show');
 Route::get('/page/password/{id}', ['as' => 'page.password', 'uses' => 'Frontend\PagesController@password']);
 Route::post('/page/password/{id}', ['as' => 'page.password.check', 'uses' => 'Frontend\PagesController@password_check']);
 
-/*
- * Store & Reviews
- */
-Route::get('/store', ['as' => 'store.index', 'uses' => 'Frontend\StoreController@index']);
-Route::get('/store/{id}', 'Frontend\StoreController@show');
-Route::post('/reviews', ['as' => 'reviews.post', 'uses' => 'Frontend\ReviewsController@store']);
+

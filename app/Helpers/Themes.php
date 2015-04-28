@@ -197,4 +197,44 @@ class Themes {
     {
         return Form::close();;
     }
+
+
+    /**
+     * @param $string
+     * @param int $id
+     * @param int $num
+     * @return string
+     */
+    public static function first_word($string, $id, $num = 20)
+    {
+        $tokens = explode(" ", $string);
+
+        $return = "";
+
+        for ($count = 0; $count < $num; $count++) {
+            if (isset($tokens[$count])) {
+                $return .= " " . $tokens[$count];
+            }
+        }
+
+        if (count($tokens) > $num) {
+            $return .= '...<br/> <a href="' . route("store.index") . '/' . $id . '">More info</a>';
+        }
+
+        return $return;
+    }
+
+    public static function reviews_ratio($ratio)
+    {
+        $return = '';
+
+        for ($cntFull = 0; $cntFull < $ratio / 2; $cntFull++) {
+            $return .= '<span class="fa fa-star"></span>';
+        }
+        for ($cntEmpty = 0; $cntEmpty + $cntFull < 5; $cntEmpty++) {
+            $return .= '<span class="fa fa-star-o"></span>';
+        }
+        return $return;
+    }
+
 }
