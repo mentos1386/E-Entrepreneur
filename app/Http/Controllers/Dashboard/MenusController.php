@@ -27,16 +27,6 @@ class MenusController extends Controller {
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store links to menu
      *
      * @param Request $request
@@ -65,39 +55,6 @@ class MenusController extends Controller {
 
         return redirect(route('dashboard.appearance.menus.index'))
             ->with('message_success', '<strong>Success!</strong> Link successfully added!');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  int $id
-     * @return Response
-     */
-    public function update($id)
-    {
-        //
     }
 
     /**

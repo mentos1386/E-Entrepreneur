@@ -30,10 +30,12 @@ class PostsController extends Controller {
 	{
 		$post = Post::with('comment', 'comment.user', 'tag', 'category', 'user')->findOrFail($id);
 
+        $comments = $post->comment()->orderBy('created_at', 'desc')->paginate(6);
+
         // Markdown
         $post["body"] = Markdown::convertToHtml($post['body']);
 
-		return Themes::view('.post.show', ['post' => $post]);
+        return Themes::view('.post.show', ['post' => $post, 'comments' => $comments]);
 	}
 
 

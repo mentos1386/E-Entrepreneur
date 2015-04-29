@@ -54,9 +54,15 @@
         </div>
 
         <div class="form-group">
-            <select class="form-control" name="url" data-size="10">
+            <select class="form-control" name="url" data-size="10" data-live-search="true">
 
                 <option value="">Custom url</option>
+
+                <optgroup label="Site">
+                    <option value="/store/">Store</option>
+                    <option value="/login/">Login</option>
+                    <option value="/register/">Register</option>
+                </optgroup>
 
                 <optgroup label="Pages">
                     @foreach($pages as $page)

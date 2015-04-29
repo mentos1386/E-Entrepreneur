@@ -198,12 +198,58 @@ class Relationships extends Migration {
 			'view'        => 'default',
 		));
 
+        DB::table('pagetypes')->insert(array(
+            'name' => 'Transparent',
+            'description' => 'Transparent Page view',
+            'dashboard' => 'default',
+            'view' => 'transparent',
+        ));
+
 		DB::table('pages')->insert(array(
 			'name'         => 'About',
 			'content'      => 'Some About Page.',
 			'url'          => 'about',
 			'pagetypes_id' => '1',
 		));
+
+        DB::table('pages')->insert(array(
+            'name' => 'Markdown Demo',
+            'content' => '
+# H1 Heading
+## H2 Heading
+### H3 Heading
+
+Here is a little demonstration of Markdown
+
+[this is a Link](#)
+
+* Item
+* Item
+- Item
+
+1. Item 1
+2. Item 2
+3. Item 3
+
+In the words of Abraham Lincoln:
+> Pardon my french
+
+*This text will be italic*
+**This text will be bold**
+
+Heres an idea: why dont we take `SuperiorProject` and turn it into `**Reasonable**Project`.
+
+Check out this neat program I wrote:
+
+```
+x = 0
+x = 2 + 2
+what is x
+```
+',
+            'url' => 'markdown',
+            'pagetypes_id' => '2',
+        ));
 	}
 
 	/**

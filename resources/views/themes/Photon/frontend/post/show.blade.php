@@ -40,7 +40,7 @@
         </div>
     </section>
     <hr class="major" style="margin:0;">
-    <section class="main style1">
+    <section class="main style2">
         <div class="container">
             <div class="row 150%">
                 <div class="width-100" id="comments">
@@ -48,11 +48,11 @@
                         <h2><span class="fa fa-comments-o"></span> Comments | {{ count($post['comment']) }}</h2>
                     </header>
 
-                    @if (empty($post['comment']->toArray()))
+                    @if (count($comments) == 0)
                         <p style="text-align: center;">It's very lonely here, try posting a comment.</p>
                     @else
                         <ul class="comments">
-                            @foreach($post['comment'] as $comment)
+                            @foreach($comments as $comment)
                                 <li class="comment">
                                     <div class="gravatar">
                                         <img src="https://secure.gravatar.com/avatar/{{
@@ -78,6 +78,7 @@
                                     </div>
                                 </li>
                             @endforeach
+                            {!! $comments->fragment('comments')->render() !!}
                         </ul>
                     @endif
 
