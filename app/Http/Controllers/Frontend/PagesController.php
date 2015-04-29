@@ -9,18 +9,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use GrahamCampbell\Markdown\Facades\Markdown;
 
 class PagesController extends Controller {
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function index()
-    {
-        //
-    }
 
     /**
      * Display the specified resource.
@@ -38,6 +29,9 @@ class PagesController extends Controller {
         {
             return $return;
         }
+
+        $page["content"] = Markdown::convertToHtml($page['content']);
+
 
         return Themes::view('pages.show.' . $page['pagetypes']['view'], ['page' => $page]);
     }

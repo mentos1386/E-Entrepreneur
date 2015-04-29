@@ -83,11 +83,11 @@ class CategoryTableSeeder extends Seeder
 
         $faker = Faker::create();
 
-        foreach (range(1, 30) as $index) {
+        foreach (range(1, 10) as $index) {
 
             Categories::create([
                 'name' => $faker->name,
-                'comment' => $faker->text(),
+                'comment' => $faker->realText(),
             ]);
 
         }
@@ -103,11 +103,11 @@ class TagsTableSeeder extends Seeder
 
         $faker = Faker::create();
 
-        foreach (range(1, 30) as $index) {
+        foreach (range(1, 10) as $index) {
 
             Tag::create([
                 'name' => $faker->name,
-                'comment' => $faker->text(),
+                'comment' => $faker->realText(),
             ]);
 
         }
@@ -165,11 +165,11 @@ class StoreTableSeeder extends Seeder
                 'images' => json_encode($images),
             ]);
             //Add category
-            $store->categories()->attach($faker->numberBetween(1, 30));
+            $store->categories()->attach($faker->numberBetween(1, 15));
 
             //Add tags (2)
-            $store->tags()->attach($faker->numberBetween(1, 30));
-            $store->tags()->attach($faker->numberBetween(1, 30));
+            $store->tags()->attach($faker->numberBetween(1, 15));
+            $store->tags()->attach($faker->numberBetween(1, 15));
         }
     }
 }
@@ -215,11 +215,11 @@ class PostsTableSeeder extends Seeder
             ]);
 
             //Add category
-            $post->category()->attach($faker->numberBetween(1, 30));
+            $post->category()->attach($faker->numberBetween(1, 15));
 
             //Add tags (2)
-            $post->tag()->attach($faker->numberBetween(1, 30));
-            $post->tag()->attach($faker->numberBetween(1, 30));
+            $post->tag()->attach($faker->numberBetween(1, 15));
+            $post->tag()->attach($faker->numberBetween(1, 15));
 
         }
     }

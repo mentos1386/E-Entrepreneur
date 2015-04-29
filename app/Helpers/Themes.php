@@ -234,6 +234,11 @@ class Themes {
         for ($cntEmpty = 0; $cntEmpty + $cntFull < 5; $cntEmpty++) {
             $return .= '<span class="fa fa-star-o"></span>';
         }
+
+        if ($cntEmpty == 5) {
+            $return = 'No reviews';
+        }
+
         return $return;
     }
 

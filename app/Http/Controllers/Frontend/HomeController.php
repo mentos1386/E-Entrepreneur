@@ -1,11 +1,10 @@
 <?php namespace App\Http\Controllers\Frontend;
 
-use App\Link;
-use App\Menu;
 use App\Post;
 use App\App;
 use App\Http\Controllers\Controller;
 use App\Themedata;
+use GrahamCampbell\Markdown\Facades\Markdown;
 
 class HomeController extends Controller {
 
@@ -22,6 +21,19 @@ class HomeController extends Controller {
 		$posts_asc = Post::with('tag', 'category', 'user')->orderBy('created_at', 'ASC')->paginate();
 
 		$items = Themedata::all();
+
+        $cnt = 0;
+        foreach ($posts_asc as $post) {
+            // Markdown
+            $posts_asc[$cnt]["body"] = Markdown::convertToHtml($post['body']);
+            $cnt++;
+        }
+        $cnt = 0;
+        foreach ($posts_dec as $post) {
+            // Markdown
+            $posts_dec[$cnt]["body"] = Markdown::convertToHtml($post['body']);
+            $cnt++;
+        }
 
 		return view('themes.' . App::first()->theme . '.frontend.frontpage.home', ['posts_dec' => $posts_dec, 'posts_asc' => $posts_asc, 'items' => $items]);
 	}

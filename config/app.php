@@ -150,6 +150,8 @@ return [
 		 */
 		'Illuminate\Html\HtmlServiceProvider',
 
+        'GrahamCampbell\Markdown\MarkdownServiceProvider',
+
 	],
 
 	/*
@@ -199,6 +201,7 @@ return [
 		'View'      => 'Illuminate\Support\Facades\View',
 		'Form'		=> 'Illuminate\Html\FormFacade',
 		'HTML'		=> 'Illuminate\Html\HtmlFacade',
+        'Markdown' => 'GrahamCampbell\Markdown\Facades\Markdown',
 
 		## Helpers
 		'Gravatar'	=> 'App\Helpers\Gravatar',

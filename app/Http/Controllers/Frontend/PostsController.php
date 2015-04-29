@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 
 use App\Helpers\Themes;
 use App\Post;
+use GrahamCampbell\Markdown\Facades\Markdown;
 use Illuminate\Http\Request;
 
 class PostsController extends Controller {
@@ -28,6 +29,9 @@ class PostsController extends Controller {
 	public function show($id)
 	{
 		$post = Post::with('comment', 'comment.user', 'tag', 'category', 'user')->findOrFail($id);
+
+        // Markdown
+        $post["body"] = Markdown::convertToHtml($post['body']);
 
 		return Themes::view('.post.show', ['post' => $post]);
 	}

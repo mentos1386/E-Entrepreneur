@@ -173,6 +173,7 @@ Route::post('/comments', ['as' => 'comments.post', 'uses' => 'Frontend\CommentsC
  */
 Route::get('/store', ['as' => 'store.index', 'uses' => 'Frontend\StoreController@index']);
 Route::get('/store/{id}', ['as' => 'store.show', 'uses' => 'Frontend\StoreController@show']);
+Route::get('/store/category/{id}', ['as' => 'store.category.index', 'uses' => 'Frontend\StoreController@category']);
 Route::post('/reviews', ['as' => 'reviews.post', 'uses' => 'Frontend\ReviewsController@store']);
 
 /*

@@ -17,7 +17,7 @@
                             <h2 style="display:inline-block;float:right;">{{ date('j M Y' , strtotime($post['created_at'])) }}</h2>
                         </div>
                     </header>
-                    <p>{{ $post['body'] }}</p>
+                    <p>{!! $post['body'] !!}</p>
                     <ul class="tags">
                         @foreach($post['tag'] as $tag)
                             <li><span class="fa fa-tag"></span>
