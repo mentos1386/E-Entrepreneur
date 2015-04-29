@@ -165,11 +165,11 @@ class StoreTableSeeder extends Seeder
                 'images' => json_encode($images),
             ]);
             //Add category
-            $store->categories()->attach($faker->numberBetween(1, 15));
+            $store->categories()->attach($faker->numberBetween(1, 10));
 
             //Add tags (2)
-            $store->tags()->attach($faker->numberBetween(1, 15));
-            $store->tags()->attach($faker->numberBetween(1, 15));
+            $store->tags()->attach($faker->numberBetween(1, 10));
+            $store->tags()->attach($faker->numberBetween(1, 10));
         }
     }
 }
@@ -215,11 +215,11 @@ class PostsTableSeeder extends Seeder
             ]);
 
             //Add category
-            $post->category()->attach($faker->numberBetween(1, 15));
+            $post->category()->attach($faker->numberBetween(1, 10));
 
             //Add tags (2)
-            $post->tag()->attach($faker->numberBetween(1, 15));
-            $post->tag()->attach($faker->numberBetween(1, 15));
+            $post->tag()->attach($faker->numberBetween(1, 10));
+            $post->tag()->attach($faker->numberBetween(1, 10));
 
         }
     }
