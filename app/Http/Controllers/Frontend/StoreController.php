@@ -51,12 +51,11 @@ class StoreController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function show($id)
+    public function show($id, Request $request)
     {
-
         $store = Store::with('categories', 'tags', 'buyers', 'reviews')->where('active', 1)->findOrFail($id);
 
-        $reviews = $store->reviews()->paginate(6);
+        $reviews = $store->reviews()->orderBy('created_at', 'desc')->paginate(6);
 
         $reviewRatio = $this->review_rating($store['reviews']);
 

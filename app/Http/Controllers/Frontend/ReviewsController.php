@@ -29,8 +29,9 @@ class ReviewsController extends Controller
      */
     public function store(Request $request)
     {
+        $createReview = new ReviewService;
+
         if (Auth::guest()) {
-            $createReview = new ReviewService;
 
             $validator = $createReview->validator_guest($request->all());
 
@@ -45,8 +46,6 @@ class ReviewsController extends Controller
             return redirect(back()->getTargetUrl() . '#reviews')
                 ->with('message_success', '<strong>Success!</strong> Review successfully created!');
         }
-
-        $createReview = new ReviewService;
 
         $validator = $createReview->validator_user($request->all());
 

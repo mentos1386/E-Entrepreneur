@@ -32,6 +32,8 @@
                     @include('themes.Photon.frontend.frontpage.posts.1', ['data' => $data])
                 @elseif($data['style'] == '2')
                     @include('themes.Photon.frontend.frontpage.posts.2', ['data' => $data])
+                @elseif($data['style'] == '3')
+                    @include('themes.Photon.frontend.frontpage.posts.3', ['data' => $data])
                 @endif
 
             @endif

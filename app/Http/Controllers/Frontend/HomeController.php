@@ -17,8 +17,8 @@ class HomeController extends Controller {
 	{
 
 		// TODO: IT Should be somehow figured out, if theme needs DEC or ASC, and get ONLY that from DB
-		$posts_dec = Post::with('tag', 'category', 'user')->orderBy('created_at', 'DEC')->paginate();
-		$posts_asc = Post::with('tag', 'category', 'user')->orderBy('created_at', 'ASC')->paginate();
+        $posts_dec = Post::with('tag', 'category', 'user')->orderBy('created_at', 'DEC')->paginate(5);
+        $posts_asc = Post::with('tag', 'category', 'user')->orderBy('created_at', 'ASC')->paginate(5);
 
 		$items = Themedata::all();
 

@@ -20,7 +20,7 @@ class ReviewService
             'name' => 'required|max:255|unique:users,username',
             'store_id' => 'required|exists:store,id',
             'comment' => 'required|max:255',
-            'rating' => 'required|numeric|max:10'
+            'rating' => 'required|numeric|max:10|min:1'
         ]);
     }
 
@@ -35,7 +35,7 @@ class ReviewService
         return Validator::make($data, [
             'comment' => 'required|max:255',
             'store_id' => 'required|exists:store,id',
-            'rating' => 'required|numeric|max:10'
+            'rating' => 'required|numeric|max:10|min:1'
         ]);
     }
 

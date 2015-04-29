@@ -11,7 +11,7 @@
                         <div class="wrap">
                             <h2 class="store-header">
                                 <div class="width-70 block">
-                                    <a href="{{ URL::previous() }}" title="Back"><i
+                                    <a href="{{ route('store.index') }}" title="Back"><i
                                                 class="fa fa-chevron-circle-left"></i> </a>
                                     |
                                     <span class="fa fa-shopping-cart"></span>
@@ -22,7 +22,12 @@
                                     </span>
                                 </div>
                                 <div class="width-30 sm-width-100 block buy-header">
-                                    <button class="button special small buy-button">{{ $store['price'] }}€ | Order
+                                    <button class="button special small buy-button">
+                                        @if($store['stock'] > 0)
+                                            {{ $store['price'] }}€ | Order
+                                        @else
+                                            Out of Stock
+                                        @endif
                                     </button>
                                 </div>
                             </h2>
@@ -151,19 +156,42 @@
                         <h2><span class="fa fa-comment-o"></span> Write a Review</h2>
                     </header>
 
-                    <div class="post-comment" style="width: 100%">
-
-                        @if( Auth::guest() )
-                            @include('themes.Photon.frontend.store.reviews.guest')
-                        @else
-                            @include('themes.Photon.frontend.store.reviews.user')
-                        @endif
-
-                    </div>
+                    @if( Auth::guest() )
+                        @include('themes.Photon.frontend.store.reviews.guest')
+                    @else
+                        @include('themes.Photon.frontend.store.reviews.user')
+                    @endif
 
                 </div>
             </div>
         </div>
     </section>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var ratingSetClass = function (rating) {
+                for (var cnt = 0; cnt < 5; cnt++) {
+                    if (cnt < rating) {
+                        $('.star-' + (cnt + 1)).addClass('fa-star').removeClass('fa-star-o');
+                    }
+                    else {
+                        $('.star-' + (cnt + 1)).addClass('fa-star-o').removeClass('fa-star');
+                    }
+                }
+            }
+
+            if ($('.review-rating-input').val() !== 0) {
+                ratingSetClass($('.review-rating-input').val());
+            }
+
+            $('.rate-star').click(function () {
+                var rating = $(this).data().rating;
+                ratingSetClass(rating);
+                $('.review-rating-input').val(rating * 2)
+            });
+        });
+    </script>
+
 @endsection

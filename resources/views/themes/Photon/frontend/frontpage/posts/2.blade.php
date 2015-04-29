@@ -12,6 +12,9 @@
             <hr class="major" style="margin:0;">
 
         @endforeach
+        <section class="main style2">
+            {!! $posts_dec->render() !!}
+        </section>
 
     @elseif($data['posts']['order'] == 'asc')
 
@@ -23,7 +26,9 @@
             <hr class="major" style="margin:0;">
 
         @endforeach
-
+        <section class="main style2">
+            {!! $posts_asc->render() !!}
+        </section>
     @endif
 
 

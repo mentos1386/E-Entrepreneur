@@ -37,6 +37,7 @@
             <select class="form-control" name="data[style]" data-size="10">
                 <option value="1">Style 1</option>
                 <option value="2">Style 2</option>
+                <option value="3">Interchanging</option>
             </select>
         </div>
     </div>
