@@ -161,6 +161,7 @@ Route::group(array('middleware' => 'perm.dashboard'), function()
  * Front page
  */
 Route::get('/', ['as' => 'home', 'uses' => 'Frontend\HomeController@index']);
+Route::post('/search/{query}', ['as' => 'search', 'uses' => 'Frontend\HomeController@search']);
 
 /*
  * Posts & Comments
@@ -172,6 +173,10 @@ Route::post('/comments', ['as' => 'comments.post', 'uses' => 'Frontend\CommentsC
  * Store & Reviews
  */
 Route::get('/store', ['as' => 'store.index', 'uses' => 'Frontend\StoreController@index']);
+Route::get('/store/cart', ['as' => 'store.cart', 'uses' => 'Frontend\StoreController@cart']);
+Route::get('/store/cart/add/{id}', ['as' => 'store.cart.add', 'uses' => 'Frontend\StoreController@cartAdd']);
+Route::get('/store/cart/remove/{id}', ['as' => 'store.cart.remove', 'uses' => 'Frontend\StoreController@cartRemove']);
+Route::post('/store/search/', ['as' => 'store.search', 'uses' => 'Frontend\StoreController@search']);
 Route::get('/store/{id}', ['as' => 'store.show', 'uses' => 'Frontend\StoreController@show']);
 Route::get('/store/category/{id}', ['as' => 'store.category.index', 'uses' => 'Frontend\StoreController@category']);
 Route::post('/reviews', ['as' => 'reviews.post', 'uses' => 'Frontend\ReviewsController@store']);

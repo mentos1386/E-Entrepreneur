@@ -8,9 +8,15 @@
             <div class="row 150%">
                 <div class="width-100">
                     <header class="major">
-                        <h2><i class="fa fa-shopping-cart"></i> Welcome to the {{$site->name}} store!</h2>
+                        <h2 class="width-70"><i class="fa fa-shopping-cart"></i> Welcome to the {{$site->name}} store!
+                        </h2>
 
-                        <div class="search width-20 l-width-100"><input type="text" placeholder="Search">
+                        <div class="search width-30 sm-width-100 l-width-100">
+                            {!! Form::open(['url' => route('store.search')]) !!}
+                            <input class="search-input block" type="text" name="query" placeholder="Search store">
+                            <button class="width-30 sm-width-100 block" type="submit"><i class="fa fa-search"></i>
+                            </button>
+                            {!! Form::close() !!}
                         </div>
                         <p class="width-100">There are {{ $store->toArray()['total']}} items on sale!</p>
                     </header>

@@ -2,27 +2,13 @@
 
 use App\Helpers\Themes;
 use App\Http\Controllers\Controller;
+use App\Http\Middleware\Permissions\Dashboard\Dashboard as Dashboard;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\Registrar;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
 class AuthController extends Controller {
 
-	/**
-	 *  Redirect after login
-	 * 	If Successfully
-	 *
-	 * @return string
-     */
-	public function redirectPath()
-	{
-		if (property_exists($this, 'redirectPath'))
-		{
-			return $this->redirectPath;
-		}
-
-		return property_exists($this, 'redirectTo') ? $this->redirectTo : back()->getTargetUrl();
-	}
 
 	use AuthenticatesAndRegistersUsers;
 
@@ -31,11 +17,13 @@ class AuthController extends Controller {
 	 *
 	 * @param  \Illuminate\Contracts\Auth\Guard  $auth
 	 * @param  \Illuminate\Contracts\Auth\Registrar  $registrar
+     * @param  \App\Http\Middleware\Permissions\Dashboard\Dashboard $dashboard
 	 */
-	public function __construct(Guard $auth, Registrar $registrar)
+    public function __construct(Guard $auth, Registrar $registrar, Dashboard $dashboard)
 	{
 		$this->auth = $auth;
 		$this->registrar = $registrar;
+        $this->dashboard = $dashboard;
 
 		$this->middleware('guest', ['except' => 'getLogout']);
 	}
@@ -81,4 +69,26 @@ class AuthController extends Controller {
 	{
 		return property_exists($this, 'loginPath') ? $this->loginPath : '/login';
 	}
+
+    /**
+     *  Redirect after login
+     *    If Successfully
+     *
+     * @return string
+     */
+    public function redirectPath()
+    {
+        if ($this->dashboard->check_perm()) {
+            $redirect = '/dashboard/';
+        } else {
+            $redirect = '/';
+        }
+
+        if (property_exists($this, 'redirectPath')) {
+            return $this->redirectPath;
+        }
+
+        return property_exists($this, 'redirectTo') ? $this->redirectTo : $redirect;
+
+    }
 }

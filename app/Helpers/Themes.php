@@ -224,15 +224,15 @@ class Themes {
         return $return;
     }
 
-    public static function reviews_ratio($ratio)
+    public static function reviews_ratio($ratio, $size = '1em')
     {
         $return = '';
 
         for ($cntFull = 0; $cntFull < $ratio / 2; $cntFull++) {
-            $return .= '<span class="fa fa-star"></span>';
+            $return .= '<span class="fa fa-star" style="font-size: ' . $size . '"></span>';
         }
         for ($cntEmpty = 0; $cntEmpty + $cntFull < 5; $cntEmpty++) {
-            $return .= '<span class="fa fa-star-o"></span>';
+            $return .= '<span class="fa fa-star-o" style="font-size: ' . $size . '"></span>';
         }
 
         if ($cntEmpty == 5) {

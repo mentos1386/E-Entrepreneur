@@ -1,5 +1,4 @@
 @import url(font-awesome.min.css);
-@import url(custom.css);
 @import url("http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400,400italic");
 
 /*
@@ -1325,3 +1324,5 @@ body.is-loading #header:after {
     margin-left: 0;
     padding: 0;
 }
+
+@import url(custom.css);

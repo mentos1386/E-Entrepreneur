@@ -52,6 +52,106 @@
 }
 
 /*
+ * Header
+ */
+
+#user-header .button {
+    margin-bottom: 5px;
+}
+
+/*
+ * User Header /Login Register/
+ */
+
+#user-header {
+    position: absolute;
+    right: 5%;
+    top: 5%;
+    z-index: 1;
+}
+
+#user-header .user {
+    display: inline-block;
+    height: 79px;
+}
+
+#user-header .user .buttons {
+    display: inline-block;
+    margin-top: 15px;
+    margin-right: 10px;
+}
+
+#user-header .user .gravatar {
+    display: inline-block;
+    float: right;
+    position: relative;
+    height: 79px;
+}
+
+#user-header .user .gravatar .hover {
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    background: rgba(59, 59, 59, 0.60);
+    transition: visibility 0.5s, opacity 0.5s;
+    border-radius: 50px;
+}
+
+#user-header .user .gravatar .hover .center {
+    margin-top: 25%;
+    font-size: 2em;
+}
+
+#user-header .user .gravatar:hover .hover {
+    visibility: visible;
+    opacity: 1;
+}
+
+#user-header .user .gravatar a {
+    border-bottom: none;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+#user-header .user .gravatar img {
+    border-radius: 50px;
+    border: 2px solid #f3f3f3;
+}
+
+@media (max-width: 970px) {
+    #user-header {
+        position: inherit;
+        right: auto;
+        display: block;
+        width: 500px;
+        margin-right: auto;
+        margin-left: auto;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 750px) {
+    #user-header {
+        width: auto;
+    }
+
+    #user-header .user {
+        height: auto;
+    }
+}
+
+@media (max-width: 440px) {
+    #user-header .user .gravatar {
+        float: none;
+    }
+}
+
+/*
  * Here Maps
  */
 
@@ -222,8 +322,16 @@
     border-radius: 5px;
 }
 
+.store-card .image {
+    margin-bottom: 0.5em !important;
+}
+
 .store-card .info {
     margin: 0 2% 0 2%;
+}
+
+.store-card p {
+    margin-bottom: 1em !important;
 }
 
 .store-card .info .store-rating {
@@ -285,6 +393,18 @@
     right: 2%;
 }
 
+.store-card .store-buttons .buy-button .disabled:hover {
+    background-color: #ffffff;
+    box-shadow: inset 0 0 0 1px #ffffff !important;
+    color: #333 !important;
+}
+
+.store-card .store-buttons .buy-button .disabled {
+    background-color: #ffffff;
+    box-shadow: inset 0 0 0 1px #ffffff !important;
+    color: #333 !important;
+}
+
 .store-categories-list {
     list-style: none;
 }
@@ -309,6 +429,49 @@
 .store-header .buy-header .buy-button {
     width: 100%;
 }
+
+.store-header .buy-header .buy-button:hover .not-avalible {
+    background-color: #555 !important;
+    cursor: default;
+}
+
+.store-cart .id {
+    width: 2.5%;
+    text-align: center;
+}
+
+.store-cart .quantity {
+    width: 5%;
+    text-align: center;
+}
+
+.store-cart .remove {
+    width: 5%;
+    text-align: center;
+}
+
+.store-cart .remove a {
+    border-bottom: none;
+}
+
+.store-cart .price {
+    width: 10%;
+    text-align: center;
+}
+
+.store-cart .total {
+    text-align: right;
+}
+
+.store-cart .total-cost {
+    width: 15%;
+    text-align: center;
+}
+
+.store-cart .total-cost-fix {
+    width: 3.5%;
+}
+
 
 @media (max-width: 768px) {
     .store-card {
@@ -355,6 +518,22 @@
     float: right;
 }
 
+.major .search .search-input {
+    width: 68% !important;
+}
+
+@media (max-width: 992px) {
+    .major .search .search-input {
+        width: 100% !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .major .search .search-input {
+        width: 98% !important;
+    }
+}
+
 .style2 .major .search input {
     background: #f3f3f3;
     color: #333333;
@@ -366,6 +545,14 @@
 
 .major p {
     display: inline-block;
+}
+
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+button,
+.button {
+    height: 2.95em !important;
 }
 
 /*
@@ -475,6 +662,10 @@
 
     .sm-width-100 {
         width: 100%;
+    }
+
+    .sm-width-98 {
+        width: 98%;
     }
 
 }

@@ -22,13 +22,16 @@
                                     </span>
                                 </div>
                                 <div class="width-30 sm-width-100 block buy-header">
-                                    <button class="button special small buy-button">
-                                        @if($store['stock'] > 0)
+                                    @if($store['stock'] > 0)
+                                        <a href="{{ route('store.cart') .'/add/'. $store['id'] }}"
+                                           class="button special small buy-button">
                                             {{ $store['price'] }}€ | Order
-                                        @else
+                                        </a>
+                                    @else
+                                        <div class="button special width-100 small buy-button not-avalible">
                                             Out of Stock
-                                        @endif
-                                    </button>
+                                        </div>
+                                    @endif
                                 </div>
                             </h2>
                         </div>
