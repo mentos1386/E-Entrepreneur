@@ -1,7 +1,9 @@
 <section class="main style{{ $data['style'] }} special" style="padding-bottom: 0">
-    <div class="container" style="width: 100%;">
+    <div class="container" style="width: 100%">
         <header class="major">
-            <h2>{{ $data['header'] }}</h2>
+            <div class="wrap">
+                <h2>{{ $data['header'] }}</h2>
+            </div>
         </header>
         <p>{{ $data['sub_header'] }}</p>
 
@@ -67,7 +69,8 @@
     //Step 3: make the map interactive
     // MapEvents enables the event system
     // Behavior implements default interactions for pan/zoom (also on mobile touch environments)
-    var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
+    // TODO: Scrolling should be disabled (it interferes with browsing the site)
+    //var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
 
     // Create the default UI components
     var ui = H.ui.UI.createDefault(map, defaultLayers);

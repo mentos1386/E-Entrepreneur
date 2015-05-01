@@ -59,6 +59,7 @@
                 <option value="">Custom url</option>
 
                 <optgroup label="Site">
+                    <option value="/posts/">Blog</option>
                     <option value="/store/">Store</option>
                     <option value="/login/">Login</option>
                     <option value="/register/">Register</option>

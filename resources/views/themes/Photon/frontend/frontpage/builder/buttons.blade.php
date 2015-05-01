@@ -1,8 +1,12 @@
 <section class="main style{{ $data['style'] }} special">
     <div class="container">
-        <header class="major">
-            <h2>{{ $data['header'] }}</h2>
-        </header>
+        <div class="wrap">
+            <header class="major">
+                <div class="wrap">
+                    <h2>{{ $data['header'] }}</h2>
+                </div>
+            </header>
+        </div>
         <p>{{ $data['sub_header'] }}</p>
         <ul class="actions uniform">
             @foreach($data['buttons'] as $button)
@@ -13,7 +17,8 @@
                     @else
                         {{ $button['url'] }}
                     @endif
-                                " class="button {{ $button['special'] }}">{{ $button['text'] }}</a></li>
+                                " class="button {{ $button['special'] }}"> <i
+                                    class="fa {{$button['icon']}}"></i> {{ $button['text'] }}</a></li>
                 @endif
             @endforeach
         </ul>

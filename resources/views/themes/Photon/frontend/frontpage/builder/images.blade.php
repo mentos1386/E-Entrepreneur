@@ -1,14 +1,16 @@
 <section class="main style{{ $data['style'] }} special">
     <div class="container">
         <header class="major">
-            <h2>{{ $data['header'] }}</h2>
+            <div class="wrap">
+                <h2>{{ $data['header'] }}</h2>
+            </div>
         </header>
         <p>{{ $data['sub_header'] }}</p>
 
         <div class="row 150%">
 
             @foreach($data['images'] as $item)
-                <div class="4u$ 12u$(medium)">
+                <div class="width-33">
                     <span class="image fit"><img src="{{ $item['url'] }}" alt="{{ $item['title'] }}"/></span>
 
                     <h3>{{ $item['title'] }}</h3>

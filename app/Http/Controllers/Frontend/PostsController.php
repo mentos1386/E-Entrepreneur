@@ -17,7 +17,18 @@ class PostsController extends Controller {
 	 */
 	public function index()
 	{
-		//
+        // TODO: IT Should be somehow figured out, if theme needs DEC or ASC, and get ONLY that from DB
+        $posts = Post::with('tag', 'category', 'user')->orderBy('created_at', 'DEC')->paginate(5);
+
+        $cnt = 0;
+        foreach ($posts as $post) {
+            // Markdown
+            $posts[$cnt]["body"] = Markdown::convertToHtml($post['body']);
+            $cnt++;
+        }
+        $cnt = 0;
+
+        return Themes::view('.post.index', ['posts' => $posts]);
 	}
 
 	/**

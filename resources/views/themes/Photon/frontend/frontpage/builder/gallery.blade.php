@@ -1,11 +1,13 @@
 <section class="main style{{ $data['style'] }} special">
-    <div class="gallery-container">
+    <div class=" container">
         <header class="major">
-            <h2>{{ $data['header'] }}</h2>
+            <div class="wrap">
+                <h2>{{ $data['header'] }}</h2>
+            </div>
         </header>
         <p>{{ $data['sub_header'] }}</p>
 
-        <div class="row 150%">
+        <div class="width-100">
 
             <div class="gallery js-masonry"
                  data-masonry-options='{ "itemSelector": ".item", "columnWidth": ".narrow-1col" }'>

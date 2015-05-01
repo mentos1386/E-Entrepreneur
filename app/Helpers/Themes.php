@@ -1,6 +1,7 @@
 <?php namespace App\Helpers;
 
 use App\App;
+use App\Store;
 use App\Page;
 use App\Post;
 use Illuminate\Html\FormFacade as Form;
@@ -93,7 +94,7 @@ class Themes {
      */
     public static function postUrl($postID)
     {
-        return route('post.index') . '/' . $postID;
+        return '/post/' . $postID;
     }
 
     /**
@@ -116,13 +117,20 @@ class Themes {
     {
         $pages = Page::all();
         $posts = Post::all();
+        $storeItems = Store::all();
 
         $return = '
         <div class="form-group">
-            <select class="form-control" name="' . $param . '" data-size="10">
+            <select class="form-control" name="' . $param . '" data-size="10" data-live-search="true">
 
                 <option value="">Custom url</option>
-
+                <optgroup label="Store Items">
+            ';
+        foreach ($storeItems as $storeItem) {
+            $return .= '<option value="' . self::home() . '/store/' . $storeItem->id . '">' . $storeItem->name . '</option>';
+        }
+        $return .= '
+                </optgroup>
                 <optgroup label="Pages">
             ';
         foreach ($pages as $page)
@@ -153,7 +161,8 @@ class Themes {
      */
     public static function icon_picker_search_box($class, $name)
     {
-        return '<input class="form-control ' . $class . ' icp icp-auto iconpicker-element iconpicker-input" name="' . $name . '" data-input-search="true" value="fa-plane" type="text">';
+        return '<input class="form-control ' . $class . ' icp icp-auto iconpicker-element iconpicker-input" name="' . $name . '" data-input-search="true" value="" type="text">';
+
     }
 
     /**

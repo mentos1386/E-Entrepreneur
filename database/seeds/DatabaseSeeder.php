@@ -22,6 +22,10 @@ class DatabaseSeeder extends Seeder {
 	{
 		Model::unguard();
 
+        $this->call('ThemeTableSeeder');
+        $this->command->info('Theme_Data table seeded!');
+        $this->command->info('--------');
+
 		$this->call('UserTableSeeder');
 		$this->command->info('User table seeded!');
         $this->command->info('--------');
@@ -54,6 +58,47 @@ class DatabaseSeeder extends Seeder {
 	}
 
 }
+
+class ThemeTableSeeder extends Seeder
+{
+
+    public function run()
+    {
+
+        DB::table('theme_data')->insert(
+            [
+                'pos' => '0',
+                'type' => 'text',
+                'data' => '{"title":"Who are we?","text":"Company Co. is a new production company offering technology and production services to artists, brands and cultural institutions. We bring together experience from video production, events, digital and the arts to help people realise cross disciplinary projects","image":"https:\/\/farm6.staticflickr.com\/5154\/14185447737_0aba637f46_b.jpg","style":"1"}',
+            ]);
+        DB::table('theme_data')->insert(
+            [
+                'pos' => '0',
+                'type' => 'images',
+                'data' => '{"header":"Our Products","sub_header":"","images":{"1":{"title":"Beatty-Waters","text":"Adipiscing a commodo ante nunc magna lorem et interdum mi ante nunc lobortis non amet vis sed volutpat et nascetur.","url":"https:\/\/farm3.staticflickr.com\/2931\/14185401130_c97e7c4c28_b.jpg","btn_text":"More","btn_custom_url":"","btn_url":"http:\/\/epodjetnik.app\/store\/10"},"2":{"title":"Goodwin PLC","text":"Adipiscing a commodo ante nunc magna lorem et interdum mi ante nunc lobortis non amet vis sed volutpat et nascetur.","url":"https:\/\/farm4.staticflickr.com\/3840\/14185496197_946aa54169_b.jpg","btn_text":"More","btn_custom_url":"","btn_url":"http:\/\/epodjetnik.app\/store\/21"},"3":{"title":"Cruickshank Inc","text":"Adipiscing a commodo ante nunc magna lorem et interdum mi ante nunc lobortis non amet vis sed volutpat et nascetur.","url":"https:\/\/farm6.staticflickr.com\/5553\/14348881016_d8cfc543e7_b.jpg","btn_text":"More","btn_custom_url":"","btn_url":"http:\/\/epodjetnik.app\/store\/6"}},"style":"2"}',
+            ]);
+        DB::table('theme_data')->insert(
+            [
+                'pos' => '0',
+                'type' => 'buttons',
+                'data' => '{"header":"You can find us here","sub_header":"","buttons":{"1":{"text":"Facebook","icon":"fa-facebook","custom_url":"https:\/\/www.facebook.com\/","url":"","special":""},"2":{"text":"Twitter","icon":"fa-twitter","custom_url":"https:\/\/www.twitter.com\/","url":"","special":""},"3":{"text":"","icon":"","custom_url":"","url":"","special":""}},"style":"1"}',
+            ]);
+        DB::table('theme_data')->insert(
+            [
+                'pos' => '0',
+                'type' => 'gallery',
+                'data' => '{"header":"Our Passion","sub_header":"","images":{"1":{"url":"\/Photon\/public\/images\/travel.jpg","hover":"Travel","size":"wide-2col"},"2":{"url":"\/Photon\/public\/images\/breakfast.jpg","hover":"Breakfast","size":"narrow-1col"},"3":{"url":"\/Photon\/public\/images\/coffe.jpg","hover":"Coffe","size":"wide-2col"},"4":{"url":"\/Photon\/public\/images\/freetime.jpg","hover":"Free time","size":"wide-2col"},"5":{"url":"\/Photon\/public\/images\/work.jpg","hover":"Work","size":"wide-2col"},"6":{"url":"\/Photon\/public\/images\/culture.jpg","hover":"Culture","size":"narrow-1col"},"7":{"url":"\/Photon\/public\/images\/coding.jpg","hover":"Coding","size":"wide-2col"},"8":{"url":"\/Photon\/public\/images\/snow.jpg","hover":"Snow","size":"narrow-1col"},"9":{"url":"\/Photon\/public\/images\/nature.jpg","hover":"Nature","size":"narrow-1col"}},"style":"2"}',
+            ]);
+        DB::table('theme_data')->insert(
+            [
+                'pos' => '0',
+                'type' => 'maps',
+                'data' => '{"header":"We are here","sub_header":"","address":"","style":"1"}',
+            ]);
+
+    }
+}
+
 
 class UserTableSeeder extends Seeder {
 

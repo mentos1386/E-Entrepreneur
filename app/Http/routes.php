@@ -166,7 +166,8 @@ Route::post('/search/{query}', ['as' => 'search', 'uses' => 'Frontend\HomeContro
 /*
  * Posts & Comments
  */
-Route::resource('/post', 'Frontend\PostsController', ['only' => ['index', 'show']]);
+Route::get('/posts', ['as' => 'posts', 'uses' => 'Frontend\PostsController@index']);
+Route::resource('/post', 'Frontend\PostsController', ['only' => ['show']]);
 Route::post('/comments', ['as' => 'comments.post', 'uses' => 'Frontend\CommentsController@store']);
 
 /*

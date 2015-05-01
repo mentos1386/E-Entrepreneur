@@ -2,11 +2,10 @@
 .gallery-container {
     margin-left: auto;
     margin-right: auto;
-    width: 80em;
 }
 
 .gallery {
-    width: 80em;
+    width: 100%;
 }
 
 .gallery .wide-2col {
@@ -17,6 +16,30 @@
 .gallery .narrow-1col {
     max-width: 16.66%;
     height: auto;
+}
+
+@media (max-width: 992px) {
+    .gallery .wide-2col {
+        max-width: 50%;
+        height: auto;
+    }
+
+    .gallery .narrow-1col {
+        max-width: 25%;
+        height: auto;
+    }
+}
+
+@media (max-width: 750px) {
+    .gallery .wide-2col {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .gallery .narrow-1col {
+        max-width: 50%;
+        height: auto;
+    }
 }
 
 .gallery .item img {
@@ -55,7 +78,7 @@
  * Header
  */
 
-#user-header .button {
+#header .button {
     margin-bottom: 5px;
 }
 

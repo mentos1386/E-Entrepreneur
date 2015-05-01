@@ -24,6 +24,10 @@
             <input type="text" name="data[buttons][1][text]" class="form-control" placeholder="Enter button text">
         </div>
         <div class="form-group">
+            <label>Icon</label>
+            {!! Themes::icon_picker_search_box('button_icon_1', 'data[buttons][1][icon]')!!}
+        </div>
+        <div class="form-group">
             <label for="style">Button url</label>
             <input type="text" name="data[buttons][1][custom_url]" class="form-control" placeholder="Enter button url">
             {!! Themes::html_posts_pages_drop_down('data[buttons][1][url]') !!}
@@ -43,6 +47,10 @@
             <input type="text" name="data[buttons][2][text]" class="form-control" placeholder="Enter button text">
         </div>
         <div class="form-group">
+            <label>Icon</label>
+            {!! Themes::icon_picker_search_box('button_icon_2', 'data[buttons][2][icon]')!!}
+        </div>
+        <div class="form-group">
             <label for="style">Button url</label>
             <input type="text" name="data[buttons][2][custom_url]" class="form-control" placeholder="Enter button url">
             {!! Themes::html_posts_pages_drop_down('data[buttons][2][url]') !!}
@@ -60,6 +68,10 @@
 
         <div class="form-group">
             <input type="text" name="data[buttons][3][text]" class="form-control" placeholder="Enter button text">
+        </div>
+        <div class="form-group">
+            <label>Icon</label>
+            {!! Themes::icon_picker_search_box('button_icon_3', 'data[buttons][3][icon]')!!}
         </div>
         <div class="form-group">
             <label for="style">Button url</label>
@@ -101,3 +113,9 @@
     </div>
 
 </div>
+
+@section('scripts')
+    {!! Themes::icon_picker_script('button_icon_1')!!}
+    {!! Themes::icon_picker_script('button_icon_2')!!}
+    {!! Themes::icon_picker_script('button_icon_3')!!}
+@endsection

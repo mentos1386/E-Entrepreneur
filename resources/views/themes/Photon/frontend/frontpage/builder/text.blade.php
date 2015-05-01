@@ -3,17 +3,19 @@
         <div class="row 150%">
 
             @if ($data['image'] != '')
-                <div class="6u 12u$(medium)">
+                <div class="width-50">
                     @else
-                        <div class="12u$ 12u$(medium)">
+                        <div class="width-100">
                             @endif
                             <header class="major">
-                                <h2>{{ $data['title'] }}</h2>
+                                <div class="wrap">
+                                    <h2>{{ $data['title'] }}</h2>
+                                </div>
                             </header>
                             <p>{{ $data['text'] }}</p>
                         </div>
                         @if ($data['image'] != '')
-                            <div class="6u$ 12u$(medium) important(medium)">
+                            <div class="width-50">
                                 <span class="image fit"><img src="{{ $data['image'] }}" alt=""></span>
                             </div>
                         @endif

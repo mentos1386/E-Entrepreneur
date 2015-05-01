@@ -182,7 +182,7 @@ class Relationships extends Migration {
 			'language' => 'en',
 			'description'     => 'Some Awesome Company that dose Fun stuff',
 			'theme' => 'Photon',
-			'theme_frontpage' => 'posts',
+            'theme_frontpage' => 'builders',
 		));
 
 		DB::table('posts')->insert(array(

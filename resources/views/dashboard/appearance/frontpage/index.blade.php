@@ -40,7 +40,7 @@
     <div class="col-md-9">
         <ul class="list-group cat-tags">
             <ul class="list-group-item list-group-item-heading">
-                Avalible settings
+                Available settings
             </ul>
             @foreach(Themes::front_page('active')['items'] as $item)
                 <a href="{{ route('dashboard.appearance.frontpage.index').'/create/'.$item['name'] }}"
