@@ -11,7 +11,7 @@
     @endif
     {!! Themes::form_open('reviews',$store['id']) !!}
     <div class="row uniform" id="review">
-        <h3 class="header width- block">Post without Account</h3>
+        <h3 class="header width-100 block">Post without Account</h3>
 
         <div class="width-50 sm-width-100 block"><input name="name" placeholder="Name" type="text"></div>
         <div class="width-50 sm-width-100 block"><input name="email" placeholder="Email-Won't be published"

@@ -3,7 +3,8 @@
     <title>@yield('head.title', $site->name )</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <meta name="description" content="{{ $site->description }}"/>
-    <meta name="keywords" content="site store comments posts news reviews"/>
+    <meta name="keywords" content="site store comments posts news reviews blog"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--[if lte IE 8]>
     <script src="/Photon/public/css/ie/html5shiv.js"></script>
     <![endif]-->

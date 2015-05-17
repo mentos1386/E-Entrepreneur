@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStoreUserTable extends Migration
+class CreateOrdersTable extends Migration
 {
 
     /**
@@ -13,12 +13,11 @@ class CreateStoreUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('store_user', function (Blueprint $table) {
+        Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('store_id')->unsigned()->index();
-            $table->foreign('store_id')->references('id')->on('store');
             $table->integer('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users');
+            $table->text('comment');
             $table->timestamps();
         });
     }
@@ -30,7 +29,7 @@ class CreateStoreUserTable extends Migration
      */
     public function down()
     {
-        Schema::drop('store_user');
+        Schema::drop('orders');
     }
 
 }

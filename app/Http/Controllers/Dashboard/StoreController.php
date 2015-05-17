@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Order;
 use App\Store;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,7 @@ class StoreController extends Controller {
 	 */
 	public function index()
 	{
-        $store = Store::with('categories', 'tags', 'buyers')->paginate();
+        $store = Store::with('categories', 'tags', 'orders')->paginate();
 
         return view('dashboard.store.index', ['store' => $store]);
 	}
@@ -27,7 +28,14 @@ class StoreController extends Controller {
 	 */
 	public function create()
 	{
-		//
+        // WIP
+        $order = Order::create(['user_id' => 1, 'comment' => 'Some Comment']);
+
+        $order->items()->attach(1, ['quantity' => '10']);
+
+        $order = Order::with('items')->get();
+
+        //dd($order);
 	}
 
 	/**

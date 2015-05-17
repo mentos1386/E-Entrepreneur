@@ -18,11 +18,7 @@ class Relationships extends Migration {
 		Schema::table('users', function(Blueprint $table){
 
 			$table->integer('role_id')->unsigned();
-			$table->foreign('role_id')->references('id')->on('roles')->onUpdate('cascade');
-
-			// TODO: Implant this?
-			//$table->integer('data_id')->unsigned();
-			//$table->foreign('data_id')->references('id')->on('data')->onUpdate('cascade');
+            $table->foreign('role_id')->references('id')->on('roles');
 
 		});
 
@@ -166,7 +162,7 @@ class Relationships extends Migration {
 			'username' => 'root',
 			'email' => 'root@root.com',
 			'password' => Hash::make('root'),
-			'role_id' => 2
+            'role_id' => 2,
 		));
 
 		/*

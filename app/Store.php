@@ -25,9 +25,9 @@ class Store extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function buyers()
+    public function orders()
     {
-        return $this->belongsToMany('App\User', 'store_user', 'store_id', 'user_id');
+        return $this->belongsToMany('App\Order', 'order_store', 'store_id', 'order_id');
     }
 
     /**

@@ -22,7 +22,7 @@ class StoreController extends Controller
      */
     public function index()
     {
-        $store = Store::with('categories', 'buyers', 'reviews')->where('active', 1)->paginate(8);
+        $store = Store::with('categories', 'reviews')->where('active', 1)->paginate(8);
 
         $categories = [];
 
@@ -56,7 +56,7 @@ class StoreController extends Controller
      */
     public function show($id, Request $request)
     {
-        $store = Store::with('categories', 'tags', 'buyers', 'reviews')->where('active', 1)->findOrFail($id);
+        $store = Store::with('categories', 'tags', 'reviews')->where('active', 1)->findOrFail($id);
 
         $reviews = $store->reviews()->orderBy('created_at', 'desc')->paginate(6);
 
@@ -78,7 +78,7 @@ class StoreController extends Controller
     {
         $category = Categories::with('store')->findOrFail($id);
 
-        $store = $category->store()->with('buyers', 'reviews')->where('active', 1)->paginate(8);
+        $store = $category->store()->with('reviews')->where('active', 1)->paginate(8);
 
         $cnt = 0;
         foreach ($store as $item) {
@@ -99,7 +99,7 @@ class StoreController extends Controller
 
         $query = '%' . $data['query'] . '%';
 
-        $store = Store::with('categories', 'buyers', 'reviews')
+        $store = Store::with('categories', 'reviews')
             ->where('active', 1)
             ->where('name', 'like', $query)
             ->orWhere('description', 'like', $query)

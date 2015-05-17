@@ -47,11 +47,11 @@ class Permission {
 		{
 			if ($request->ajax())
 			{
-				return response('Restricted access.', 401);
+                return response('Forbidden', 403);
 			}
 			else
 			{
-				abort(401, 'Restricted access');
+                abort(403, 'Restricted access');
 			}
 		}
 

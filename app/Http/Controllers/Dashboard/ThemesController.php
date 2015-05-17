@@ -14,70 +14,6 @@ use Illuminate\Http\Request;
 class ThemesController extends Controller {
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating/installing a new resource.
-     *
-     * @return Response
-     */
-    public function install()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created/installed resource in storage.
-     *
-     * @return Response
-     */
-    public function store()
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  int $id
-     * @return Response
-     */
-    public function update($id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-
-    /**
      * Set theme as active
      *
      * @param  string $theme_name
@@ -100,7 +36,7 @@ class ThemesController extends Controller {
         //
 
 
-        // Check if start.php is valid
+        // Check if config.json is valid
         if ((!isset($config['about'])) || (!isset($config['appearance']['menus'])) || (!isset($config['appearance']['page_types'])) || (!isset($config['appearance']['front_page'])) || empty($config['about']) || empty($config['appearance']['menus']) || empty($config['appearance']['page_types']) || empty($config['appearance']['front_page']))
         {
             return redirect()->back()

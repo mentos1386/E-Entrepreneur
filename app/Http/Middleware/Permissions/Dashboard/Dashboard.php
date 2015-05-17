@@ -11,8 +11,6 @@ class Dashboard extends Permission {
      public function check_perm(){
 
         /*
-         *  Make Logic to check if user has Permission!
-         *
          *  Return True/False
          */
 
@@ -29,7 +27,6 @@ class Dashboard extends Permission {
         {
             return false;
         }
-
     }
 
 }

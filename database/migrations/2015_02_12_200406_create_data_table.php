@@ -15,6 +15,10 @@ class CreateDataTable extends Migration {
 		Schema::create('data', function(Blueprint $table)
 		{
 			$table->increments('id');
+
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
+
 			$table->string('firstname')->nullable();
 			$table->string('lastname')->nullable();
 
@@ -25,9 +29,6 @@ class CreateDataTable extends Migration {
 			$table->string('address_city')->nullable();
 			$table->string('address_post')->nullable();
 			$table->string('address_country')->nullable();
-
-			$table->timestamps();
-
 		});
 	}
 
